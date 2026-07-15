@@ -450,6 +450,26 @@ h1 .accent {
   color: var(--muted);
 }
 
+.project-visual {
+  margin: 24px 0 0;
+  max-width: 980px;
+}
+
+.project-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #07111d;
+}
+
+.project-visual figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
