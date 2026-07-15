@@ -205,6 +205,28 @@ h1 .accent {
   gap: 14px;
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-email {
+  margin-top: 18px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+}
+
+.contact-email a {
+  color: var(--muted);
+  text-underline-offset: 4px;
+}
+
+.contact-email a:hover,
+.contact-email a:focus-visible {
+  color: var(--cyan);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
