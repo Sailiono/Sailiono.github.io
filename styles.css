@@ -1594,6 +1594,14 @@ html[lang="en"] .home-page .hero h1 > span {
 html[lang="en"] .home-page .hero-emphasis {
   margin-top: 13px;
 }
+@media (min-width: 861px) {
+  html[lang="en"] .home-page .hero-copy {
+    width: 43%;
+  }
+  html[lang="en"] .home-page .hero-figure {
+    width: 58%;
+  }
+}
 
 /* A full-bleed, dark workbench contrasts with the quiet reading sections. */
 .home-page .project-story {
