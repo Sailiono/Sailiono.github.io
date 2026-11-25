@@ -136,7 +136,8 @@
     // cannot fit. Measuring also covers translated captions and browser zoom.
     const stageFits =
       stageHeight + stageTop + (mobile.matches ? 200 : 24) <= height;
-    const scrollPadding = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+    const scrollPadding =
+      parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
     const chapterTop =
       mobile.matches && stageFits
         ? stageTop + stageHeight + 12
