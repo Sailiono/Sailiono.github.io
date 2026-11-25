@@ -128,6 +128,14 @@
     const bounds = chapters.map((chapter) => chapter.getBoundingClientRect());
     const workflowBounds = workflow?.getBoundingClientRect();
     const heroHeight = hero?.offsetHeight || 1;
+    const stageHeight = stage?.offsetHeight || 0;
+    const stageTop = stage
+      ? parseFloat(getComputedStyle(stage).getPropertyValue("--story-top"))
+      : 0;
+    // Leave room to read below a mobile illustration; never pin a panel that
+    // cannot fit. Measuring also covers translated captions and browser zoom.
+    const stageFits =
+      stageHeight + stageTop + (mobile.matches ? 200 : 24) <= height;
     const trigger = height * (mobile.matches ? 0.76 : 0.58);
     let active = 0;
     bounds.forEach((rect, index) => {
@@ -136,6 +144,7 @@
     const progress = bounds.length
       ? clamp((trigger - bounds[active].top) / bounds[active].height)
       : 1;
+    stage?.classList.toggle("is-unpinned", !stageFits);
     root.style.setProperty(
       "--reading-progress",
       total > 0 ? clamp(scroll / total).toFixed(4) : "0",
@@ -239,6 +248,9 @@
   window.addEventListener("scroll", scheduleFrame, { passive: true });
   window.addEventListener("resize", scheduleFrame, { passive: true });
   window.addEventListener("load", scheduleFrame, { once: true });
+  if (stage && "ResizeObserver" in window) {
+    new ResizeObserver(scheduleFrame).observe(stage);
+  }
   document.fonts?.ready.then(scheduleFrame);
   const savedLanguage = read("portfolio-language");
   applyLanguage(savedLanguage === "en" ? "en" : "zh");

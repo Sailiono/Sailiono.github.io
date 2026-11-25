@@ -445,13 +445,20 @@ svg {
   align-items: start;
 }
 .story-visual {
+  --story-top: 110px;
   position: sticky;
-  top: 110px;
+  top: var(--story-top);
   min-width: 0;
   border: 1px solid var(--line);
   background: var(--wash);
   z-index: 3;
   --scene-progress: 0;
+}
+.story-visual.is-unpinned,
+html:not(.js) .story-visual {
+  position: relative;
+  top: auto;
+  box-shadow: none;
 }
 .stage-top {
   display: flex;
@@ -1177,7 +1184,7 @@ html[lang="en"] .scene-nav {
     display: block;
   }
   .story-visual {
-    top: 72px;
+    --story-top: 72px;
     margin-bottom: 20px;
     box-shadow: 0 12px 0 var(--paper);
   }
