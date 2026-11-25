@@ -6,27 +6,27 @@
     <meta name="theme-color" content="#f5f4ee" />
     <meta
       name="description"
-      content="一台基于 STM32F407 和 UM982 的 RTK 基站。除了把差分数据送出去，我还处理供电、双路 RS-422、USB 调试、配置保存和台架测试。"
+      content="基于 STM32F407 与 UM982 的 RTK 基站，包含隔离供电、双路 RS-422、USB CDC、固件及台架测试记录。"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="dpiny — GNSS 模块之外，还要做些什么。" />
+    <meta property="og:title" content="dpiny — RTK 基站硬件与固件" />
     <meta
       property="og:description"
-      content="一台基于 STM32F407 和 UM982 的 RTK 基站。除了把差分数据送出去，我还处理供电、双路 RS-422、USB 调试、配置保存和台架测试。"
+      content="基于 STM32F407 与 UM982 的 RTK 基站，包含隔离供电、双路 RS-422、USB CDC、固件及台架测试记录。"
     />
     <meta
       property="og:url"
       content="https://sailiono.github.io/cases/dpiny.html"
     />
-    <title>dpiny — GNSS 模块之外，还要做些什么。</title>
+    <title>dpiny — RTK 基站硬件与固件</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script src="../script.js" defer></script>
   </head>
   <body
     class="case-page"
-    data-title-zh="dpiny — GNSS 模块之外，还要做些什么。"
-    data-title-en="dpiny — What goes around a GNSS module."
+    data-title-zh="dpiny — RTK 基站硬件与固件"
+    data-title-en="dpiny — RTK base-station hardware &amp; firmware"
   >
     <a class="skip-link" href="#main"
       ><span class="" data-zh="跳到正文" data-en="Skip to content"
@@ -51,8 +51,8 @@
             ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
           ><a href="../index.html#method" class="nav-link"
-            ><span class="" data-zh="代码与笔记" data-en="Code &amp; notes"
-              >代码与笔记</span
+            ><span class="" data-zh="开源与文档" data-en="Source &amp; docs"
+              >开源与文档</span
             ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
           ><a href="../index.html#contact" class="nav-link"
@@ -97,8 +97,8 @@
     </header>
     <main id="main" class="case-main wrap">
       <a href="../index.html#projects" class="back-link"
-        ><span class="" data-zh="回到项目" data-en="Back to projects"
-          >回到项目</span
+        ><span class="" data-zh="返回项目概览" data-en="Back to projects"
+          >返回项目概览</span
         ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
           <path d="M5 12h14m-6-6 6 6-6 6" /></svg
       ></a>
@@ -110,33 +110,29 @@
         <h1>
           <span
             class=""
-            data-zh="GNSS 模块之外，还要做些什么。"
-            data-en="What goes around a GNSS module."
-            >GNSS 模块之外，还要做些什么。</span
+            data-zh="RTK 基站硬件与固件"
+            data-en="RTK base-station hardware &amp; firmware"
+            >RTK 基站硬件与固件</span
           >
         </h1>
         <p
           class="case-intro"
-          data-zh="一台基于 STM32F407 和 UM982 的 RTK 基站。除了把差分数据送出去，我还处理供电、双路 RS-422、USB 调试、配置保存和台架测试。"
-          data-en="An RTK base station built around an STM32F407 and UM982. Alongside correction-data output, the work covers power, dual RS-422, USB diagnostics, saved configuration and bench tests."
+          data-zh="基于 STM32F407 与 UM982 的 RTK 基站，覆盖供电、通信接口、模块配置和设备诊断。项目包括硬件架构、固件实现及配套调试工具。"
+          data-en="An STM32F407 and UM982 RTK base station covering power, communication interfaces, module configuration and diagnostics. The project includes hardware architecture, firmware and supporting debug tools."
         >
-          一台基于 STM32F407 和 UM982 的 RTK
-          基站。除了把差分数据送出去，我还处理供电、双路 RS-422、USB
-          调试、配置保存和台架测试。
+          基于 STM32F407 与 UM982 的 RTK
+          基站，覆盖供电、通信接口、模块配置和设备诊断。项目包括硬件架构、固件实现及配套调试工具。
         </p>
         <p class="case-tech mono">STM32F407 · UM982 · FreeRTOS · RS-422</p>
       </header>
       <aside class="scope-banner">
-        <h2 class="" data-zh="这次公开了什么" data-en="What is public">
-          这次公开了什么
-        </h2>
+        <h2 class="" data-zh="公开内容" data-en="Public scope">公开内容</h2>
         <p
           class=""
-          data-zh="仓库公开硬件架构、固件、工具和台架记录。这里介绍的是设备实现，不是 GNSS 性能测评。"
-          data-en="The repository includes the hardware architecture, firmware, tools and bench records. This is a device implementation, not a GNSS performance review."
+          data-zh="公开仓库提供硬件架构、固件、工具和台架记录；本页重点介绍接口集成、设备维护及调试方法。"
+          data-en="The public repository provides the hardware architecture, firmware, tools and bench records. This page focuses on interface integration, device maintenance and debugging."
         >
-          仓库公开硬件架构、固件、工具和台架记录。这里介绍的是设备实现，不是
-          GNSS 性能测评。
+          公开仓库提供硬件架构、固件、工具和台架记录；本页重点介绍接口集成、设备维护及调试方法。
         </p>
       </aside>
       <figure class="case-figure reveal">
@@ -151,39 +147,35 @@
         <figcaption>
           <span
             class=""
-            data-zh="按公开说明画的简化结构图，不是实物照片。"
-            data-en="A simplified diagram based on the public documentation, not a hardware photograph."
-            >按公开说明画的简化结构图，不是实物照片。</span
+            data-zh="依据公开文档绘制的设备结构图，非实物照片。"
+            data-en="Device architecture based on the public documentation, not a hardware photograph."
+            >依据公开文档绘制的设备结构图，非实物照片。</span
           >
         </figcaption>
       </figure>
       <section class="case-section reveal">
         <div>
-          <p
-            class="eyebrow"
-            data-zh="01 / 从哪里开始"
-            data-en="01 / Starting point"
-          >
-            01 / 从哪里开始
+          <p class="eyebrow" data-zh="01 / 项目背景" data-en="01 / Context">
+            01 / 项目背景
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="模块能输出 RTCM，为什么还要一颗 STM32？"
-              data-en="The module already outputs RTCM. Why add an STM32?"
-              >模块能输出 RTCM，为什么还要一颗 STM32？</span
+              data-zh="GNSS 模块的设备级集成"
+              data-en="Integrating the GNSS module"
+              >GNSS 模块的设备级集成</span
             >
           </h2>
           <p
             class=""
-            data-zh="UM982 负责定位和差分数据，设备还要负责配置它、查看状态、处理复位，以及把数据送到两路隔离接口。STM32 把这些事情接起来，也留出设备出问题时能用的调试入口。"
-            data-en="The UM982 handles GNSS and corrections. The device still needs configuration, status reporting, reset handling and two isolated outputs. The STM32 connects those pieces and provides a way to investigate faults."
+            data-zh="UM982 提供定位及 RTCM 数据。设备侧完成供电与接口适配，并提供模块配置、状态查询和复位管理。STM32 承担控制与维护功能，通过独立接口提供调试支持。"
+            data-en="The UM982 provides positioning and RTCM data. Device integration adds power and interface adaptation, configuration, status queries and reset management. The STM32 implements control and maintenance functions with a separate diagnostic interface."
           >
-            UM982
-            负责定位和差分数据，设备还要负责配置它、查看状态、处理复位，以及把数据送到两路隔离接口。STM32
-            把这些事情接起来，也留出设备出问题时能用的调试入口。
+            UM982 提供定位及 RTCM
+            数据。设备侧完成供电与接口适配，并提供模块配置、状态查询和复位管理。STM32
+            承担控制与维护功能，通过独立接口提供调试支持。
           </p>
         </div>
       </section>
@@ -191,10 +183,10 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="02 / 我怎么做"
-            data-en="02 / Working through it"
+            data-zh="02 / 实现要点"
+            data-en="02 / Implementation"
           >
-            02 / 我怎么做
+            02 / 实现要点
           </p>
         </div>
         <div class="decision-list">
@@ -204,18 +196,18 @@
               <h3>
                 <span
                   class=""
-                  data-zh="调试口单独留着"
-                  data-en="Keep a separate diagnostic path"
-                  >调试口单独留着</span
+                  data-zh="数据与维护接口分离"
+                  data-en="Separate data and maintenance interfaces"
+                  >数据与维护接口分离</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="RTCM 走 RS-422，配置和诊断走 USB CDC。数据输出和维护入口分开，排查时不用先猜是哪一端没响应。"
-                data-en="RTCM uses RS-422; configuration and diagnostics use USB CDC. Keeping those paths separate makes it easier to investigate which part stopped responding."
+                data-zh="RS-422 承载 RTCM 输出，USB CDC 提供配置与诊断通道。两类接口分别承担数据传输和设备维护，便于定位通信与设备状态问题。"
+                data-en="RS-422 carries RTCM output; USB CDC provides configuration and diagnostics. Separate data and maintenance paths support communication and device-state investigations."
               >
-                RTCM 走 RS-422，配置和诊断走 USB
-                CDC。数据输出和维护入口分开，排查时不用先猜是哪一端没响应。
+                RS-422 承载 RTCM 输出，USB CDC
+                提供配置与诊断通道。两类接口分别承担数据传输和设备维护，便于定位通信与设备状态问题。
               </p>
             </div>
           </article>
@@ -225,18 +217,19 @@
               <h3>
                 <span
                   class=""
-                  data-zh="收到字节之后，还要看内容"
-                  data-en="Look past the received bytes"
-                  >收到字节之后，还要看内容</span
+                  data-zh="RTCM 检查与底层诊断"
+                  data-en="RTCM inspection &amp; low-level diagnostics"
+                  >RTCM 检查与底层诊断</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="用消息类型和 CRC 检查 RTCM 数据流。遇到外设、GPIO 或复位问题，再通过 SWD 看寄存器，不只盯着串口日志。"
-                data-en="Check RTCM message types and CRCs. For peripheral, GPIO or reset problems, inspect registers over SWD rather than relying on serial logs alone."
+                data-zh="以消息类型和 CRC 检查 RTCM 数据流；对 GPIO、外设状态及复位问题，结合 SWD 寄存器读取与串口日志分析故障。"
+                data-en="Inspect RTCM message types and CRCs. Investigate GPIO, peripheral-state and reset issues using SWD register reads alongside serial logs."
               >
-                用消息类型和 CRC 检查 RTCM 数据流。遇到外设、GPIO
-                或复位问题，再通过 SWD 看寄存器，不只盯着串口日志。
+                以消息类型和 CRC 检查 RTCM 数据流；对
+                GPIO、外设状态及复位问题，结合 SWD
+                寄存器读取与串口日志分析故障。
               </p>
             </div>
           </article>
@@ -246,18 +239,18 @@
               <h3>
                 <span
                   class=""
-                  data-zh="把重复调试的步骤留下来"
-                  data-en="Keep the steps worth repeating"
-                  >把重复调试的步骤留下来</span
+                  data-zh="调试流程与问题记录"
+                  data-en="Debugging procedures &amp; issue records"
+                  >调试流程与问题记录</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="构建、烧录、测试和记录整理成 Liakia 工作流。USB CDC 复位恢复的那次排查也单独写了下来，链接在下面。"
-                data-en="Build, flash, test and record-keeping became the Liakia workflow. The USB CDC reset-recovery investigation has its own write-up below."
+                data-zh="将构建、烧录、测试和记录步骤整理为 Liakia 工作流，并单独保留 USB CDC 复位恢复问题的分析、修改与回归记录。"
+                data-en="Build, flash, test and recording procedures form the Liakia workflow. A separate USB CDC reset-recovery record documents the investigation, changes and regression checks."
               >
-                构建、烧录、测试和记录整理成 Liakia 工作流。USB CDC
-                复位恢复的那次排查也单独写了下来，链接在下面。
+                将构建、烧录、测试和记录步骤整理为 Liakia 工作流，并单独保留 USB
+                CDC 复位恢复问题的分析、修改与回归记录。
               </p>
             </div>
           </article>
@@ -265,12 +258,8 @@
       </section>
       <section class="case-section reveal">
         <div>
-          <p
-            class="eyebrow"
-            data-zh="03 / 去仓库看"
-            data-en="03 / In the repository"
-          >
-            03 / 去仓库看
+          <p class="eyebrow" data-zh="03 / 公开资料" data-en="03 / Resources">
+            03 / 公开资料
           </p>
         </div>
         <div class="evidence-links">
@@ -282,18 +271,18 @@
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="代码与设备说明"
-                data-en="Code &amp; device overview"
-                >代码与设备说明</span
+                data-zh="设备与固件仓库"
+                data-en="Device &amp; firmware repository"
+                >设备与固件仓库</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
             <p
               class=""
-              data-zh="硬件结构、固件目录、接口和工具。"
-              data-en="Hardware structure, firmware, interfaces and tools."
+              data-zh="硬件架构、固件目录、接口定义与配套工具。"
+              data-en="Hardware architecture, firmware layout, interface definitions and supporting tools."
             >
-              硬件结构、固件目录、接口和工具。
+              硬件架构、固件目录、接口定义与配套工具。
             </p>
           </article>
           <article>
@@ -323,18 +312,18 @@
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="USB 复位恢复笔记"
-                data-en="USB reset-recovery notes"
-                >USB 复位恢复笔记</span
+                data-zh="USB CDC 复位恢复分析"
+                data-en="USB CDC reset-recovery analysis"
+                >USB CDC 复位恢复分析</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
             <p
               class=""
-              data-zh="从故障现象到修改，再到重新检查。"
-              data-en="The fault, the change and the subsequent checks."
+              data-zh="故障分析、修复方法与回归检查。"
+              data-en="Fault analysis, changes and regression checks."
             >
-              从故障现象到修改，再到重新检查。
+              故障分析、修复方法与回归检查。
             </p>
           </article>
         </div>
@@ -343,28 +332,25 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="04 / 还没覆盖的部分"
-            data-en="04 / Not covered yet"
+            data-zh="04 / 范围与限制"
+            data-en="04 / Scope &amp; limitations"
           >
-            04 / 还没覆盖的部分
+            04 / 范围与限制
           </p>
         </div>
         <div>
           <h2>
-            <span
-              class=""
-              data-zh="这些记录能说明到哪。"
-              data-en="What these records can tell you."
-              >这些记录能说明到哪。</span
+            <span class="" data-zh="台架测试范围" data-en="Bench-test scope"
+              >台架测试范围</span
             >
           </h2>
           <p
             class=""
-            data-zh="台架能回答设备在这些测试条件下怎么工作，不能替代 GNSS 精度、EMC、环境或具体应用验收。这些项目没有在这里被包装成已完成的认证。"
-            data-en="The bench records describe behavior under their stated conditions. They do not substitute for GNSS accuracy, EMC, environmental or application acceptance tests. No certification is claimed here."
+            data-zh="台架记录反映特定硬件、固件及测试条件下的设备行为，不替代 GNSS 精度、EMC、环境可靠性或具体应用的验收。"
+            data-en="Bench records describe device behavior under the specified hardware, firmware and test conditions. They do not replace GNSS accuracy, EMC, environmental-reliability or application-acceptance testing."
           >
-            台架能回答设备在这些测试条件下怎么工作，不能替代 GNSS
-            精度、EMC、环境或具体应用验收。这些项目没有在这里被包装成已完成的认证。
+            台架记录反映特定硬件、固件及测试条件下的设备行为，不替代 GNSS
+            精度、EMC、环境可靠性或具体应用的验收。
           </p>
         </div>
       </section>
@@ -375,9 +361,9 @@
         <a href="aerakia.html" class="next-link"
           ><span
             class=""
-            data-zh="Aerakia / 先在电脑上，把算法跑明白。"
-            data-en="Aerakia / Run the estimator on a computer first."
-            >Aerakia / 先在电脑上，把算法跑明白。</span
+            data-zh="Aerakia / 飞行估计算法与主机验证"
+            data-en="Aerakia / Flight-estimation algorithms &amp; host validation"
+            >Aerakia / 飞行估计算法与主机验证</span
           ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
             <path d="M5 12h14m-6-6 6 6-6 6" /></svg
         ></a>
@@ -387,10 +373,10 @@
       <a href="../index.html">Clark Cui / Sailiono</a>
       <p
         class=""
-        data-zh="一些项目，和做项目时的笔记。"
-        data-en="Projects, and notes from working on them."
+        data-zh="嵌入式项目、开源代码与技术记录。"
+        data-en="Embedded projects, open-source code and technical documentation."
       >
-        一些项目，和做项目时的笔记。
+        嵌入式项目、开源代码与技术记录。
       </p>
       <span class="mono">© 2026</span>
     </footer>

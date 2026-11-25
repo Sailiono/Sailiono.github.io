@@ -6,30 +6,27 @@
     <meta name="theme-color" content="#f5f4ee" />
     <meta
       name="description"
-      content="一块 SBUS 到 RS-422 的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。"
+      content="SBUS–RS-422 隔离透明桥、浏览器分析器及采集对比工具，包含原理图 PDF 与验证报告。"
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="SBUS–RS-422 — 换一种电平，别换掉原来的数据。"
-    />
+    <meta property="og:title" content="SBUS–RS-422 — 隔离透明桥与分析工具" />
     <meta
       property="og:description"
-      content="一块 SBUS 到 RS-422 的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。"
+      content="SBUS–RS-422 隔离透明桥、浏览器分析器及采集对比工具，包含原理图 PDF 与验证报告。"
     />
     <meta
       property="og:url"
       content="https://sailiono.github.io/cases/sbus.html"
     />
-    <title>SBUS–RS-422 — 换一种电平，别换掉原来的数据。</title>
+    <title>SBUS–RS-422 — 隔离透明桥与分析工具</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script src="../script.js" defer></script>
   </head>
   <body
     class="case-page"
-    data-title-zh="SBUS–RS-422 — 换一种电平，别换掉原来的数据。"
-    data-title-en="SBUS–RS-422 — Change the electrical interface, not the data."
+    data-title-zh="SBUS–RS-422 — 隔离透明桥与分析工具"
+    data-title-en="SBUS–RS-422 — Isolated bridge &amp; analysis tools"
   >
     <a class="skip-link" href="#main"
       ><span class="" data-zh="跳到正文" data-en="Skip to content"
@@ -54,8 +51,8 @@
             ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
           ><a href="../index.html#method" class="nav-link"
-            ><span class="" data-zh="代码与笔记" data-en="Code &amp; notes"
-              >代码与笔记</span
+            ><span class="" data-zh="开源与文档" data-en="Source &amp; docs"
+              >开源与文档</span
             ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
           ><a href="../index.html#contact" class="nav-link"
@@ -100,8 +97,8 @@
     </header>
     <main id="main" class="case-main wrap">
       <a href="../index.html#projects" class="back-link"
-        ><span class="" data-zh="回到项目" data-en="Back to projects"
-          >回到项目</span
+        ><span class="" data-zh="返回项目概览" data-en="Back to projects"
+          >返回项目概览</span
         ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
           <path d="M5 12h14m-6-6 6 6-6 6" /></svg
       ></a>
@@ -113,59 +110,54 @@
         <h1>
           <span
             class=""
-            data-zh="换一种电平，别换掉原来的数据。"
-            data-en="Change the electrical interface, not the data."
-            >换一种电平，别换掉原来的数据。</span
+            data-zh="隔离透明桥与分析工具"
+            data-en="Isolated bridge &amp; analysis tools"
+            >隔离透明桥与分析工具</span
           >
         </h1>
         <p
           class="case-intro"
-          data-zh="一块 SBUS 到 RS-422 的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。"
-          data-en="An isolated SBUS-to-RS-422 bridge, with a browser analyzer and capture-comparison tools. The hardware changes the electrical interface; the tools inspect what goes in and comes out."
+          data-zh="SBUS–RS-422 隔离透明桥，配套浏览器分析器与采集对比工具。项目分别实现电气接口转换和输入输出检查，并提供验证报告。"
+          data-en="An isolated SBUS–RS-422 bridge with a browser analyzer and capture-comparison tools. The project combines electrical-interface conversion with input/output inspection and documented verification."
         >
-          一块 SBUS 到 RS-422
-          的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。
+          SBUS–RS-422
+          隔离透明桥，配套浏览器分析器与采集对比工具。项目分别实现电气接口转换和输入输出检查，并提供验证报告。
         </p>
         <p class="case-tech mono">SBUS · RS-422 · Web Serial · Logic capture</p>
       </header>
       <aside class="scope-banner">
-        <h2 class="" data-zh="这次公开了什么" data-en="What is public">
-          这次公开了什么
-        </h2>
+        <h2 class="" data-zh="公开内容" data-en="Public scope">公开内容</h2>
         <p
           class=""
-          data-zh="目前公开原理图 PDF、上位机和验证报告。PCB、BOM、制造文件及可编辑硬件源还没整理成完整发布包。"
-          data-en="The schematic PDF, host analyzer and verification reports are public. PCB, BOM, manufacturing files and editable hardware sources are not yet a complete release package."
+          data-zh="已公开原理图 PDF、上位机工具与验证报告；PCB、BOM、制造文件及可编辑硬件源尚未形成完整发布包。"
+          data-en="The schematic PDF, host tools and verification reports are public. PCB, BOM, manufacturing files and editable hardware sources do not yet form a complete release package."
         >
-          目前公开原理图
-          PDF、上位机和验证报告。PCB、BOM、制造文件及可编辑硬件源还没整理成完整发布包。
+          已公开原理图
+          PDF、上位机工具与验证报告；PCB、BOM、制造文件及可编辑硬件源尚未形成完整发布包。
         </p>
       </aside>
       <section class="case-section reveal">
         <div>
-          <p
-            class="eyebrow"
-            data-zh="01 / 从哪里开始"
-            data-en="01 / Starting point"
-          >
-            01 / 从哪里开始
+          <p class="eyebrow" data-zh="01 / 项目背景" data-en="01 / Context">
+            01 / 项目背景
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="电脑收到一帧数据，还不够。"
-              data-en="Receiving a frame on a PC is only the start."
-              >电脑收到一帧数据，还不够。</span
+              data-zh="数据一致性与时序测量"
+              data-en="Content consistency &amp; timing measurements"
+              >数据一致性与时序测量</span
             >
           </h2>
           <p
             class=""
-            data-zh="极性、波特率、校验和帧结构都可能影响结果。检查内容有没有变，要对齐输入输出；检查时间有没有变，还需要同一时间轴上的采集。两件事不能混着说。"
-            data-en="Polarity, baud rate, parity and frame structure matter. Comparing content requires aligned input and output. Comparing timing requires a shared timebase. They answer different questions."
+            data-zh="SBUS 接口涉及极性、波特率、校验及帧结构。验证中分别检查输入输出内容是否一致，以及桥接过程对时序的影响；两类结论采用相应的采集和对齐方法。"
+            data-en="SBUS operation depends on polarity, baud rate, parity and frame structure. Verification separates input/output content consistency from timing effects, using the appropriate capture and alignment method for each."
           >
-            极性、波特率、校验和帧结构都可能影响结果。检查内容有没有变，要对齐输入输出；检查时间有没有变，还需要同一时间轴上的采集。两件事不能混着说。
+            SBUS
+            接口涉及极性、波特率、校验及帧结构。验证中分别检查输入输出内容是否一致，以及桥接过程对时序的影响；两类结论采用相应的采集和对齐方法。
           </p>
         </div>
       </section>
@@ -173,10 +165,10 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="02 / 我怎么做"
-            data-en="02 / Working through it"
+            data-zh="02 / 实现要点"
+            data-en="02 / Implementation"
           >
-            02 / 我怎么做
+            02 / 实现要点
           </p>
         </div>
         <div class="decision-list">
@@ -186,17 +178,17 @@
               <h3>
                 <span
                   class=""
-                  data-zh="硬件不替分析器做事"
-                  data-en="Separate the bridge from the analyzer"
-                  >硬件不替分析器做事</span
+                  data-zh="硬件转换与软件分析分工"
+                  data-en="Hardware conversion &amp; software analysis"
+                  >硬件转换与软件分析分工</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="隔离、电平和极性转换留在硬件里。浏览器工具做采集、解码和对比；界面重建出的波形不会当成示波器实测。"
-                data-en="Isolation, levels and polarity belong in hardware. The browser captures, decodes and compares. Its reconstructed waveforms are not oscilloscope measurements."
+                data-zh="硬件完成隔离、电平和极性转换，浏览器工具用于采集数据的解码、对齐及对比。界面波形由采集数据重建，不作为示波器实测波形。"
+                data-en="Hardware handles isolation, levels and polarity. The browser tool decodes, aligns and compares captures. Displayed waveforms are reconstructed from captured data, not oscilloscope measurements."
               >
-                隔离、电平和极性转换留在硬件里。浏览器工具做采集、解码和对比；界面重建出的波形不会当成示波器实测。
+                硬件完成隔离、电平和极性转换，浏览器工具用于采集数据的解码、对齐及对比。界面波形由采集数据重建，不作为示波器实测波形。
               </p>
             </div>
           </article>
@@ -206,17 +198,17 @@
               <h3>
                 <span
                   class=""
-                  data-zh="内容和时间分开比较"
-                  data-en="Compare content and timing separately"
-                  >内容和时间分开比较</span
+                  data-zh="区分同步与分次采集"
+                  data-en="Synchronized and separate captures"
+                  >区分同步与分次采集</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="同步采集可以比较时序。分次隔离采集可以对齐字节内容，但不能拿来直接算传播延迟。"
-                data-en="Synchronized captures support timing comparison. Separately isolated captures can align byte content but cannot directly measure propagation delay."
+                data-zh="同一时间轴上的同步采集用于时序比较；分次隔离采集用于字节内容对齐，不用于直接计算传播延迟。"
+                data-en="Synchronized captures on one timebase support timing comparison. Separate isolated captures support byte alignment, not direct propagation-delay measurement."
               >
-                同步采集可以比较时序。分次隔离采集可以对齐字节内容，但不能拿来直接算传播延迟。
+                同一时间轴上的同步采集用于时序比较；分次隔离采集用于字节内容对齐，不用于直接计算传播延迟。
               </p>
             </div>
           </article>
@@ -226,17 +218,17 @@
               <h3>
                 <span
                   class=""
-                  data-zh="采样精度写进报告"
-                  data-en="Keep the sampling limits in the report"
-                  >采样精度写进报告</span
+                  data-zh="记录测量条件与分辨率"
+                  data-en="Measurement conditions &amp; resolution"
+                  >记录测量条件与分辨率</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="测量分辨率内没看出差别，不等于绝对零延迟。商用模块对比报告保留了测试条件，不推广到没测过的环境。"
-                data-en="An unresolved difference is not proof of zero delay. The commercial-module comparison keeps its test conditions alongside the results."
+                data-zh="报告同时列出测试条件、采样分辨率和结果。低于测量分辨率的差异不作零延迟结论，商用模块对比结果仅适用于报告所列条件。"
+                data-en="Reports state test conditions, sampling resolution and results together. An unresolved difference does not establish zero delay; commercial-module comparisons apply only to their stated conditions."
               >
-                测量分辨率内没看出差别，不等于绝对零延迟。商用模块对比报告保留了测试条件，不推广到没测过的环境。
+                报告同时列出测试条件、采样分辨率和结果。低于测量分辨率的差异不作零延迟结论，商用模块对比结果仅适用于报告所列条件。
               </p>
             </div>
           </article>
@@ -244,12 +236,8 @@
       </section>
       <section class="case-section reveal">
         <div>
-          <p
-            class="eyebrow"
-            data-zh="03 / 去仓库看"
-            data-en="03 / In the repository"
-          >
-            03 / 去仓库看
+          <p class="eyebrow" data-zh="03 / 公开资料" data-en="03 / Resources">
+            03 / 公开资料
           </p>
         </div>
         <div class="evidence-links">
@@ -283,9 +271,9 @@
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="自研模块测试"
-                data-en="Bridge verification"
-                >自研模块测试</span
+                data-zh="透明桥验证报告"
+                data-en="Bridge verification report"
+                >透明桥验证报告</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
@@ -313,10 +301,10 @@
             ></a>
             <p
               class=""
-              data-zh="在报告所列条件下做的对比。"
-              data-en="A comparison under the conditions stated in the report."
+              data-zh="测试条件、对比方法与适用范围。"
+              data-en="Test conditions, comparison methods and scope."
             >
-              在报告所列条件下做的对比。
+              测试条件、对比方法与适用范围。
             </p>
           </article>
         </div>
@@ -325,27 +313,27 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="04 / 还没覆盖的部分"
-            data-en="04 / Not covered yet"
+            data-zh="04 / 范围与限制"
+            data-en="04 / Scope &amp; limitations"
           >
-            04 / 还没覆盖的部分
+            04 / 范围与限制
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="这些记录能说明到哪。"
-              data-en="What these records can tell you."
-              >这些记录能说明到哪。</span
+              data-zh="测量条件与开源范围"
+              data-en="Measurement conditions &amp; public scope"
+              >测量条件与开源范围</span
             >
           </h2>
           <p
             class=""
-            data-zh="报告没有覆盖所有线长、温度和干扰条件。要复用到别的设备，先确认电气条件，再按实际场景重新检查；当前公开资料也不等于完整生产资料。"
-            data-en="The reports do not cover every cable length, temperature or interference condition. Check the electrical requirements and retest for the intended application. The public files are not a complete manufacturing package."
+            data-zh="现有报告未覆盖全部线长、温度及干扰条件。用于其他设备前，需要检查电气兼容性并按实际场景补充测试。公开资料尚不构成完整生产资料包。"
+            data-en="The reports do not cover every cable length, temperature or interference condition. Other applications require electrical-compatibility checks and application-specific tests. The public material is not a complete manufacturing package."
           >
-            报告没有覆盖所有线长、温度和干扰条件。要复用到别的设备，先确认电气条件，再按实际场景重新检查；当前公开资料也不等于完整生产资料。
+            现有报告未覆盖全部线长、温度及干扰条件。用于其他设备前，需要检查电气兼容性并按实际场景补充测试。公开资料尚不构成完整生产资料包。
           </p>
         </div>
       </section>
@@ -356,9 +344,9 @@
         <a href="splicia.html" class="next-link"
           ><span
             class=""
-            data-zh="Splicia / 先让相机链路跑起来。"
-            data-en="Splicia / Start with the camera path."
-            >Splicia / 先让相机链路跑起来。</span
+            data-zh="Splicia / Linux 相机平台调试"
+            data-en="Splicia / Linux camera-platform bring-up"
+            >Splicia / Linux 相机平台调试</span
           ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
             <path d="M5 12h14m-6-6 6 6-6 6" /></svg
         ></a>
@@ -368,10 +356,10 @@
       <a href="../index.html">Clark Cui / Sailiono</a>
       <p
         class=""
-        data-zh="一些项目，和做项目时的笔记。"
-        data-en="Projects, and notes from working on them."
+        data-zh="嵌入式项目、开源代码与技术记录。"
+        data-en="Embedded projects, open-source code and technical documentation."
       >
-        一些项目，和做项目时的笔记。
+        嵌入式项目、开源代码与技术记录。
       </p>
       <span class="mono">© 2026</span>
     </footer>

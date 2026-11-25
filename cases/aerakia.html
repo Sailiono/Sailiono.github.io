@@ -6,27 +6,27 @@
     <meta name="theme-color" content="#f5f4ee" />
     <meta
       name="description"
-      content="把飞行估计算法拆成可移植的 C99 代码，用主机程序读取数据、重放输入、比较结果。Mahony、ESKF 和相关验证资料放在同一个公开仓库里。"
+      content="可移植 C99 飞行估计算法，包含 Mahony、ESKF、统一输入约定、数据回放及主机侧验证资料。"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Aerakia — 先在电脑上，把算法跑明白。" />
+    <meta property="og:title" content="Aerakia — 飞行估计算法与主机验证" />
     <meta
       property="og:description"
-      content="把飞行估计算法拆成可移植的 C99 代码，用主机程序读取数据、重放输入、比较结果。Mahony、ESKF 和相关验证资料放在同一个公开仓库里。"
+      content="可移植 C99 飞行估计算法，包含 Mahony、ESKF、统一输入约定、数据回放及主机侧验证资料。"
     />
     <meta
       property="og:url"
       content="https://sailiono.github.io/cases/aerakia.html"
     />
-    <title>Aerakia — 先在电脑上，把算法跑明白。</title>
+    <title>Aerakia — 飞行估计算法与主机验证</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script src="../script.js" defer></script>
   </head>
   <body
     class="case-page"
-    data-title-zh="Aerakia — 先在电脑上，把算法跑明白。"
-    data-title-en="Aerakia — Run the estimator on a computer first."
+    data-title-zh="Aerakia — 飞行估计算法与主机验证"
+    data-title-en="Aerakia — Flight-estimation algorithms &amp; host validation"
   >
     <a class="skip-link" href="#main"
       ><span class="" data-zh="跳到正文" data-en="Skip to content"
@@ -51,8 +51,8 @@
             ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
           ><a href="../index.html#method" class="nav-link"
-            ><span class="" data-zh="代码与笔记" data-en="Code &amp; notes"
-              >代码与笔记</span
+            ><span class="" data-zh="开源与文档" data-en="Source &amp; docs"
+              >开源与文档</span
             ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
               <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
           ><a href="../index.html#contact" class="nav-link"
@@ -97,8 +97,8 @@
     </header>
     <main id="main" class="case-main wrap">
       <a href="../index.html#projects" class="back-link"
-        ><span class="" data-zh="回到项目" data-en="Back to projects"
-          >回到项目</span
+        ><span class="" data-zh="返回项目概览" data-en="Back to projects"
+          >返回项目概览</span
         ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
           <path d="M5 12h14m-6-6 6 6-6 6" /></svg
       ></a>
@@ -110,59 +110,53 @@
         <h1>
           <span
             class=""
-            data-zh="先在电脑上，把算法跑明白。"
-            data-en="Run the estimator on a computer first."
-            >先在电脑上，把算法跑明白。</span
+            data-zh="飞行估计算法与主机验证"
+            data-en="Flight-estimation algorithms &amp; host validation"
+            >飞行估计算法与主机验证</span
           >
         </h1>
         <p
           class="case-intro"
-          data-zh="把飞行估计算法拆成可移植的 C99 代码，用主机程序读取数据、重放输入、比较结果。Mahony、ESKF 和相关验证资料放在同一个公开仓库里。"
-          data-en="Portable C99 flight-estimation code with host programs for loading data, replaying inputs and comparing results. Mahony, ESKF and the validation material share one public repository."
+          data-zh="以可移植 C99 实现飞行估计算法，配套主机程序完成数据读取、输入回放与结果比较。公开仓库包含 Mahony、ESKF 等算法及其验证资料。"
+          data-en="Portable C99 flight-estimation algorithms with host programs for data loading, input replay and result comparison. The public repository includes Mahony, ESKF and related validation documentation."
         >
-          把飞行估计算法拆成可移植的 C99
-          代码，用主机程序读取数据、重放输入、比较结果。Mahony、ESKF
-          和相关验证资料放在同一个公开仓库里。
+          以可移植 C99
+          实现飞行估计算法，配套主机程序完成数据读取、输入回放与结果比较。公开仓库包含
+          Mahony、ESKF 等算法及其验证资料。
         </p>
         <p class="case-tech mono">C99 · Mahony · ESKF · Host replay</p>
       </header>
       <aside class="scope-banner">
-        <h2 class="" data-zh="这次公开了什么" data-en="What is public">
-          这次公开了什么
-        </h2>
+        <h2 class="" data-zh="公开内容" data-en="Public scope">公开内容</h2>
         <p
           class=""
-          data-zh="公开部分是算法和主机侧验证，不是完整飞控固件，也没有把主机测试说成实飞验收。"
-          data-en="The public scope is algorithms and host-side validation—not full flight-controller firmware or flight qualification."
+          data-zh="公开范围为算法模块与主机侧验证，不包含完整飞控固件；主机测试结果不代表实飞验收。"
+          data-en="The public scope is algorithm modules and host validation, not complete flight-controller firmware. Host-test results do not constitute flight qualification."
         >
-          公开部分是算法和主机侧验证，不是完整飞控固件，也没有把主机测试说成实飞验收。
+          公开范围为算法模块与主机侧验证，不包含完整飞控固件；主机测试结果不代表实飞验收。
         </p>
       </aside>
       <section class="case-section reveal">
         <div>
-          <p
-            class="eyebrow"
-            data-zh="01 / 从哪里开始"
-            data-en="01 / Starting point"
-          >
-            01 / 从哪里开始
+          <p class="eyebrow" data-zh="01 / 项目背景" data-en="01 / Context">
+            01 / 项目背景
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="改完算法，先拿什么检查？"
-              data-en="What do you check after changing an estimator?"
-              >改完算法，先拿什么检查？</span
+              data-zh="统一输入条件下的算法比较"
+              data-en="Comparing algorithms with consistent inputs"
+              >统一输入条件下的算法比较</span
             >
           </h2>
           <p
             class=""
-            data-zh="如果输入、时间戳和单位各用一套，算法之间很难直接比较。这个仓库先统一输入约定，再用确定性场景、回放和公开数据检查算法行为，让问题尽量留在电脑上重现。"
-            data-en="Different timestamps, units and input formats make estimators hard to compare. This repository starts with a shared input contract, then uses deterministic scenarios, replay and public data to reproduce behavior on the host."
+            data-zh="估计算法的比较依赖一致的单位、坐标系、时间戳和数据有效性约定。项目通过统一接口、确定性场景及数据回放，在主机环境中检查算法行为，并保留运行方法与覆盖范围。"
+            data-en="Estimator comparison requires consistent units, frames, timestamps and data-validity rules. Shared interfaces, deterministic scenarios and replay support host-side checks, with documented procedures and coverage."
           >
-            如果输入、时间戳和单位各用一套，算法之间很难直接比较。这个仓库先统一输入约定，再用确定性场景、回放和公开数据检查算法行为，让问题尽量留在电脑上重现。
+            估计算法的比较依赖一致的单位、坐标系、时间戳和数据有效性约定。项目通过统一接口、确定性场景及数据回放，在主机环境中检查算法行为，并保留运行方法与覆盖范围。
           </p>
         </div>
       </section>
@@ -170,10 +164,10 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="02 / 我怎么做"
-            data-en="02 / Working through it"
+            data-zh="02 / 实现要点"
+            data-en="02 / Implementation"
           >
-            02 / 我怎么做
+            02 / 实现要点
           </p>
         </div>
         <div class="decision-list">
@@ -183,17 +177,17 @@
               <h3>
                 <span
                   class=""
-                  data-zh="先把输入说清楚"
-                  data-en="Agree on the input first"
-                  >先把输入说清楚</span
+                  data-zh="统一算法输入"
+                  data-en="Consistent algorithm inputs"
+                  >统一算法输入</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="单位、坐标系、时间戳和有效性有统一约定。算法之间切换时，尽量不连输入含义也一起换掉。"
-                data-en="Units, frames, timestamps and validity share one contract, so changing estimators does not also change what their inputs mean."
+                data-zh="统一定义单位、坐标系、时间戳与有效性，减少输入约定差异对算法比较的影响。"
+                data-en="Define shared units, frames, timestamps and validity rules to reduce input-contract differences in algorithm comparisons."
               >
-                单位、坐标系、时间戳和有效性有统一约定。算法之间切换时，尽量不连输入含义也一起换掉。
+                统一定义单位、坐标系、时间戳与有效性，减少输入约定差异对算法比较的影响。
               </p>
             </div>
           </article>
@@ -203,17 +197,17 @@
               <h3>
                 <span
                   class=""
-                  data-zh="用同一段数据重放"
-                  data-en="Replay the same inputs"
-                  >用同一段数据重放</span
+                  data-zh="固定输入与数据回放"
+                  data-en="Fixed inputs &amp; data replay"
+                  >固定输入与数据回放</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="主机侧重放把输入固定下来，修改前后可以重复检查。公开验证资料保留了运行方式和覆盖范围。"
-                data-en="Host replay holds the input fixed for repeatable checks before and after changes. The validation documentation explains how to run it and what it covers."
+                data-zh="以固定输入进行主机回放，重复检查修改前后的算法行为。验证文档说明运行方式、测试场景与覆盖范围。"
+                data-en="Host replay uses fixed inputs to repeat checks before and after changes. Validation documentation states procedures, scenarios and coverage."
               >
-                主机侧重放把输入固定下来，修改前后可以重复检查。公开验证资料保留了运行方式和覆盖范围。
+                以固定输入进行主机回放，重复检查修改前后的算法行为。验证文档说明运行方式、测试场景与覆盖范围。
               </p>
             </div>
           </article>
@@ -223,17 +217,17 @@
               <h3>
                 <span
                   class=""
-                  data-zh="异常输入也单独检查"
-                  data-en="Check the awkward inputs too"
-                  >异常输入也单独检查</span
+                  data-zh="异常场景与回归检查"
+                  data-en="Fault scenarios &amp; regression checks"
+                  >异常场景与回归检查</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="确定性故障场景和回归检查用于观察异常时的行为。通过了哪一项，就写哪一项，不顺手外推成整套飞控已经可靠。"
-                data-en="Deterministic fault scenarios and regression checks examine behavior under bad inputs. Results are reported at that level, not promoted into claims about an entire aircraft."
+                data-zh="以确定性故障场景和回归检查覆盖异常输入，分别记录已验证行为与尚未覆盖的情况。主机侧结果仅用于对应算法和测试场景的分析。"
+                data-en="Deterministic fault scenarios and regression checks examine abnormal inputs, documenting verified behavior and remaining gaps. Host-side conclusions apply to the algorithms and scenarios tested."
               >
-                确定性故障场景和回归检查用于观察异常时的行为。通过了哪一项，就写哪一项，不顺手外推成整套飞控已经可靠。
+                以确定性故障场景和回归检查覆盖异常输入，分别记录已验证行为与尚未覆盖的情况。主机侧结果仅用于对应算法和测试场景的分析。
               </p>
             </div>
           </article>
@@ -241,12 +235,8 @@
       </section>
       <section class="case-section reveal">
         <div>
-          <p
-            class="eyebrow"
-            data-zh="03 / 去仓库看"
-            data-en="03 / In the repository"
-          >
-            03 / 去仓库看
+          <p class="eyebrow" data-zh="03 / 公开资料" data-en="03 / Resources">
+            03 / 公开资料
           </p>
         </div>
         <div class="evidence-links">
@@ -277,9 +267,9 @@
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="怎么运行验证"
-                data-en="Running the checks"
-                >怎么运行验证</span
+                data-zh="验证方法与运行说明"
+                data-en="Validation procedures"
+                >验证方法与运行说明</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
@@ -299,18 +289,18 @@
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="各算法目前做到哪"
-                data-en="Current algorithm status"
-                >各算法目前做到哪</span
+                data-zh="算法状态与覆盖范围"
+                data-en="Algorithm status &amp; coverage"
+                >算法状态与覆盖范围</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
             <p
               class=""
-              data-zh="逐项列出已有检查和仍缺的部分。"
-              data-en="The checks available for each algorithm and the remaining gaps."
+              data-zh="各算法的已完成检查与未覆盖内容。"
+              data-en="Completed checks and remaining coverage gaps for each algorithm."
             >
-              逐项列出已有检查和仍缺的部分。
+              各算法的已完成检查与未覆盖内容。
             </p>
           </article>
         </div>
@@ -319,27 +309,27 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="04 / 还没覆盖的部分"
-            data-en="04 / Not covered yet"
+            data-zh="04 / 范围与限制"
+            data-en="04 / Scope &amp; limitations"
           >
-            04 / 还没覆盖的部分
+            04 / 范围与限制
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="这些记录能说明到哪。"
-              data-en="What these records can tell you."
-              >这些记录能说明到哪。</span
+              data-zh="主机验证的适用范围"
+              data-en="Scope of host-side validation"
+              >主机验证的适用范围</span
             >
           </h2>
           <p
             class=""
-            data-zh="主机回放不等于实飞。这里没有宣称完整飞行估计栈验证、飞行安全或适航结论；硬件接入和实飞问题仍需另做验证。"
-            data-en="Host replay is not flight testing. No complete flight-estimation validation, flight-safety or airworthiness conclusion is claimed. Hardware integration and flight behavior need separate validation."
+            data-zh="当前公开资料覆盖算法实现与主机测试，不包含完整飞行估计栈的系统级验收。硬件接入、传感器特性和实飞行为仍需独立验证，不能据此推导飞行安全或适航结论。"
+            data-en="The public material covers algorithm implementations and host tests, not system-level acceptance of a complete flight-estimation stack. Hardware integration, sensor characteristics and flight behavior require separate validation; no flight-safety or airworthiness conclusion follows."
           >
-            主机回放不等于实飞。这里没有宣称完整飞行估计栈验证、飞行安全或适航结论；硬件接入和实飞问题仍需另做验证。
+            当前公开资料覆盖算法实现与主机测试，不包含完整飞行估计栈的系统级验收。硬件接入、传感器特性和实飞行为仍需独立验证，不能据此推导飞行安全或适航结论。
           </p>
         </div>
       </section>
@@ -350,9 +340,9 @@
         <a href="sbus.html" class="next-link"
           ><span
             class=""
-            data-zh="SBUS–RS-422 / 换一种电平，别换掉原来的数据。"
-            data-en="SBUS–RS-422 / Change the electrical interface, not the data."
-            >SBUS–RS-422 / 换一种电平，别换掉原来的数据。</span
+            data-zh="SBUS–RS-422 / 隔离透明桥与分析工具"
+            data-en="SBUS–RS-422 / Isolated bridge &amp; analysis tools"
+            >SBUS–RS-422 / 隔离透明桥与分析工具</span
           ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
             <path d="M5 12h14m-6-6 6 6-6 6" /></svg
         ></a>
@@ -362,10 +352,10 @@
       <a href="../index.html">Clark Cui / Sailiono</a>
       <p
         class=""
-        data-zh="一些项目，和做项目时的笔记。"
-        data-en="Projects, and notes from working on them."
+        data-zh="嵌入式项目、开源代码与技术记录。"
+        data-en="Embedded projects, open-source code and technical documentation."
       >
-        一些项目，和做项目时的笔记。
+        嵌入式项目、开源代码与技术记录。
       </p>
       <span class="mono">© 2026</span>
     </footer>
