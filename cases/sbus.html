@@ -6,155 +6,166 @@
     <meta name="theme-color" content="#f5f4ee" />
     <meta
       name="description"
-      content="纯硬件隔离桥、浏览器分析器和采集对比工具，共同回答内容是否透明、时序是否改变，以及测量本身的边界在哪里。"
+      content="一块 SBUS 到 RS-422 的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。"
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="SBUS–RS-422 — 转换了电平，有没有改变信号？"
+      content="SBUS–RS-422 — 换一种电平，别换掉原来的数据。"
     />
     <meta
       property="og:description"
-      content="纯硬件隔离桥、浏览器分析器和采集对比工具，共同回答内容是否透明、时序是否改变，以及测量本身的边界在哪里。"
+      content="一块 SBUS 到 RS-422 的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。"
     />
     <meta
       property="og:url"
       content="https://sailiono.github.io/cases/sbus.html"
     />
-    <title>SBUS–RS-422 — 转换了电平，有没有改变信号？</title>
+    <title>SBUS–RS-422 — 换一种电平，别换掉原来的数据。</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
     <script src="../script.js" defer></script>
   </head>
   <body
-    data-title-zh="SBUS–RS-422 — 转换了电平，有没有改变信号？"
-    data-title-en="SBUS–RS-422 — A different electrical interface. The same signal?"
+    class="case-page"
+    data-title-zh="SBUS–RS-422 — 换一种电平，别换掉原来的数据。"
+    data-title-en="SBUS–RS-422 — Change the electrical interface, not the data."
   >
     <a class="skip-link" href="#main"
-      ><span class="" data-zh="跳到主要内容" data-en="Skip to content"
-        >跳到主要内容</span
+      ><span class="" data-zh="跳到正文" data-en="Skip to content"
+        >跳到正文</span
       ></a
     >
+    <div class="reading-progress" aria-hidden="true"></div>
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="../index.html"
           ><span class="brand-mark" aria-hidden="true">cc</span
-          ><span>Clark Cui<span class="brand-sub"> / Sailiono</span></span></a
+          ><span>Clark Cui <span class="brand-sub">/ Sailiono</span></span></a
         >
+        <nav
+          id="primary-nav"
+          aria-label="主导航"
+          data-aria-zh="主导航"
+          data-aria-en="Main navigation"
+        >
+          <a href="../index.html#projects" class="nav-link"
+            ><span class="" data-zh="项目" data-en="Projects">项目</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a href="../index.html#method" class="nav-link"
+            ><span class="" data-zh="代码与笔记" data-en="Code &amp; notes"
+              >代码与笔记</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a href="../index.html#contact" class="nav-link"
+            ><span class="" data-zh="联系" data-en="Contact">联系</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+          ></a>
+        </nav>
         <div class="header-actions">
           <button
-            class="menu-toggle"
+            class="motion-toggle"
             type="button"
-            aria-expanded="false"
-            aria-controls="primary-nav"
-            data-aria-zh="打开导航菜单"
-            data-aria-en="Open navigation menu"
-            aria-label="打开导航菜单"
+            aria-pressed="true"
+            aria-label="暂停动效"
           >
-            <span class="menu-lines" aria-hidden="true"></span
-            ><span class="" data-zh="菜单" data-en="Menu">菜单</span>
-          </button>
-          <button
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="10" cy="10" r="7" />
+              <path class="pause-icon" d="M8 7v6m4-6v6" />
+              <path class="play-icon" d="m8 6 6 4-6 4Z" /></svg
+            ><span class="motion-label">动效</span></button
+          ><button
             class="language-toggle"
             type="button"
             aria-label="Switch to English"
             aria-pressed="true"
           >
             <span class="language-current">中文</span
-            ><span aria-hidden="true"> / </span
-            ><span class="language-other">EN</span>
+            ><span class="language-divider" aria-hidden="true">/</span
+            ><span class="language-other">EN</span></button
+          ><button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            aria-label="打开菜单"
+          >
+            <span class="menu-lines" aria-hidden="true"></span
+            ><span class="" data-zh="菜单" data-en="Menu">菜单</span>
           </button>
         </div>
-        <nav
-          id="primary-nav"
-          data-aria-zh="主导航"
-          data-aria-en="Primary navigation"
-          aria-label="主导航"
-        >
-          <a class="nav-link" href="../index.html#projects"
-            ><span class="" data-zh="代表案例" data-en="Selected work"
-              >代表案例</span
-            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
-          ><a class="nav-link" href="../index.html#method"
-            ><span class="" data-zh="方法工具" data-en="Methods &amp; tools"
-              >方法工具</span
-            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
-          ><a class="nav-link" href="../index.html#contact"
-            ><span class="" data-zh="关于联系" data-en="About &amp; contact"
-              >关于联系</span
-            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5 12h14m-6-6 6 6-6 6" /></svg
-          ></a>
-        </nav>
       </div>
     </header>
     <main id="main" class="case-main wrap">
-      <a class="back-link" href="../index.html#projects"
-        ><span class="" data-zh="返回代表案例" data-en="Back to selected work"
-          >返回代表案例</span
+      <a href="../index.html#projects" class="back-link"
+        ><span class="" data-zh="回到项目" data-en="Back to projects"
+          >回到项目</span
         ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
           <path d="M5 12h14m-6-6 6 6-6 6" /></svg
       ></a>
       <header class="case-header">
-        <p
-          class="eyebrow"
-          data-zh="03 / 接口与协议验证"
-          data-en="03 / Interfaces &amp; protocol verification"
-        >
-          03 / 接口与协议验证
+        <p class="eyebrow" data-zh="项目 / 03" data-en="PROJECT / 03">
+          项目 / 03
         </p>
-        <p class="case-name">SBUS–RS-422</p>
+        <p class="case-name mono">SBUS–RS-422</p>
         <h1>
           <span
             class=""
-            data-zh="转换了电平，有没有改变信号？"
-            data-en="A different electrical interface. The same signal?"
-            >转换了电平，有没有改变信号？</span
+            data-zh="换一种电平，别换掉原来的数据。"
+            data-en="Change the electrical interface, not the data."
+            >换一种电平，别换掉原来的数据。</span
           >
         </h1>
         <p
           class="case-intro"
-          data-zh="纯硬件隔离桥、浏览器分析器和采集对比工具，共同回答内容是否透明、时序是否改变，以及测量本身的边界在哪里。"
-          data-en="A hardware isolation bridge, browser analyzer and capture-comparison tools examine transparency, timing and the limits of the measurements themselves."
+          data-zh="一块 SBUS 到 RS-422 的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。"
+          data-en="An isolated SBUS-to-RS-422 bridge, with a browser analyzer and capture-comparison tools. The hardware changes the electrical interface; the tools inspect what goes in and comes out."
         >
-          纯硬件隔离桥、浏览器分析器和采集对比工具，共同回答内容是否透明、时序是否改变，以及测量本身的边界在哪里。
+          一块 SBUS 到 RS-422
+          的隔离透明桥，配套浏览器分析器和采集对比工具。硬件负责电气转换，工具用来检查输入和输出。
         </p>
-        <p class="case-tech mono">SBUS / RS-422 / Web Serial / Logic capture</p>
+        <p class="case-tech mono">SBUS · RS-422 · Web Serial · Logic capture</p>
       </header>
       <aside class="scope-banner">
-        <h2 class="" data-zh="当前范围" data-en="Current scope">当前范围</h2>
+        <h2 class="" data-zh="这次公开了什么" data-en="What is public">
+          这次公开了什么
+        </h2>
         <p
           class=""
-          data-zh="已发布原理图 PDF、上位机与验证报告。可编辑硬件源、PCB、BOM 和制造文件仍在整理，不作为完整可生产硬件包。"
-          data-en="A schematic PDF, host analyzer and verification reports are published. Editable hardware sources, PCB, BOM and manufacturing files are still being prepared."
+          data-zh="目前公开原理图 PDF、上位机和验证报告。PCB、BOM、制造文件及可编辑硬件源还没整理成完整发布包。"
+          data-en="The schematic PDF, host analyzer and verification reports are public. PCB, BOM, manufacturing files and editable hardware sources are not yet a complete release package."
         >
-          已发布原理图 PDF、上位机与验证报告。可编辑硬件源、PCB、BOM
-          和制造文件仍在整理，不作为完整可生产硬件包。
+          目前公开原理图
+          PDF、上位机和验证报告。PCB、BOM、制造文件及可编辑硬件源还没整理成完整发布包。
         </p>
       </aside>
-      <section class="case-section">
+      <section class="case-section reveal">
         <div>
-          <p class="eyebrow" data-zh="01 / 问题" data-en="01 / The problem">
-            01 / 问题
+          <p
+            class="eyebrow"
+            data-zh="01 / 从哪里开始"
+            data-en="01 / Starting point"
+          >
+            01 / 从哪里开始
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="“电脑收到了数据”，足以证明桥接没有改变信号吗？"
-              data-en="Is receiving data on a PC enough to prove that the bridge preserved the signal?"
-              >“电脑收到了数据”，足以证明桥接没有改变信号吗？</span
+              data-zh="电脑收到一帧数据，还不够。"
+              data-en="Receiving a frame on a PC is only the start."
+              >电脑收到一帧数据，还不够。</span
             >
           </h2>
           <p
             class=""
-            data-zh="仅看串口输出不足以判断透明性。需要确认极性、波特率、校验与帧结构，再将输入输出按同一测试条件对齐比较。"
-            data-en="Serial output alone does not establish transparency. Polarity, baud rate, parity and frame structure need to be established before input/output captures can be compared."
+            data-zh="极性、波特率、校验和帧结构都可能影响结果。检查内容有没有变，要对齐输入输出；检查时间有没有变，还需要同一时间轴上的采集。两件事不能混着说。"
+            data-en="Polarity, baud rate, parity and frame structure matter. Comparing content requires aligned input and output. Comparing timing requires a shared timebase. They answer different questions."
           >
-            仅看串口输出不足以判断透明性。需要确认极性、波特率、校验与帧结构，再将输入输出按同一测试条件对齐比较。
+            极性、波特率、校验和帧结构都可能影响结果。检查内容有没有变，要对齐输入输出；检查时间有没有变，还需要同一时间轴上的采集。两件事不能混着说。
           </p>
         </div>
       </section>
@@ -162,214 +173,207 @@
         <div>
           <p
             class="eyebrow"
-            data-zh="02 / 工程决策"
-            data-en="02 / Engineering decisions"
+            data-zh="02 / 我怎么做"
+            data-en="02 / Working through it"
           >
-            02 / 工程决策
+            02 / 我怎么做
           </p>
         </div>
         <div class="decision-list">
-          <article>
+          <article class="reveal">
             <span class="mono">01</span>
             <div>
               <h3>
                 <span
                   class=""
-                  data-zh="让硬件与分析器各负其责"
-                  data-en="Separate hardware and analysis responsibilities"
-                  >让硬件与分析器各负其责</span
+                  data-zh="硬件不替分析器做事"
+                  data-en="Separate the bridge from the analyzer"
+                  >硬件不替分析器做事</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="硬件负责隔离、电平与极性转换；浏览器工具负责采集、解码和一致性分析，不把 UI 重建的波形当实测。"
-                data-en="Hardware handles isolation, levels and polarity. The browser handles capture, decoding and consistency analysis; reconstructed UI waveforms are not physical measurements."
+                data-zh="隔离、电平和极性转换留在硬件里。浏览器工具做采集、解码和对比；界面重建出的波形不会当成示波器实测。"
+                data-en="Isolation, levels and polarity belong in hardware. The browser captures, decodes and compares. Its reconstructed waveforms are not oscilloscope measurements."
               >
-                硬件负责隔离、电平与极性转换；浏览器工具负责采集、解码和一致性分析，不把
-                UI 重建的波形当实测。
+                隔离、电平和极性转换留在硬件里。浏览器工具做采集、解码和对比；界面重建出的波形不会当成示波器实测。
               </p>
             </div>
           </article>
-          <article>
+          <article class="reveal">
             <span class="mono">02</span>
             <div>
               <h3>
                 <span
                   class=""
-                  data-zh="区分同步与隔离采集"
-                  data-en="Distinguish synchronized and isolated captures"
-                  >区分同步与隔离采集</span
+                  data-zh="内容和时间分开比较"
+                  data-en="Compare content and timing separately"
+                  >内容和时间分开比较</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="同一时间轴用于时序比较；分次隔离采集可以对齐数据内容，但不能直接给出传播延迟。"
-                data-en="A shared timebase supports timing comparisons. Separate isolated captures can compare content, but cannot directly measure propagation delay."
+                data-zh="同步采集可以比较时序。分次隔离采集可以对齐字节内容，但不能拿来直接算传播延迟。"
+                data-en="Synchronized captures support timing comparison. Separately isolated captures can align byte content but cannot directly measure propagation delay."
               >
-                同一时间轴用于时序比较；分次隔离采集可以对齐数据内容，但不能直接给出传播延迟。
+                同步采集可以比较时序。分次隔离采集可以对齐字节内容，但不能拿来直接算传播延迟。
               </p>
             </div>
           </article>
-          <article>
+          <article class="reveal">
             <span class="mono">03</span>
             <div>
               <h3>
                 <span
                   class=""
-                  data-zh="让限制留在结论旁边"
-                  data-en="Keep limitations next to conclusions"
-                  >让限制留在结论旁边</span
+                  data-zh="采样精度写进报告"
+                  data-en="Keep the sampling limits in the report"
+                  >采样精度写进报告</span
                 >
               </h3>
               <p
                 class=""
-                data-zh="商用对比已有公开报告；采样分辨率内未分辨出的延迟，不等于绝对零延迟，也不外推到所有线长、温度和干扰工况。"
-                data-en="A commercial comparison is published. Unresolved delay at the sample resolution is not absolute zero, nor proof across all cable lengths, temperatures and interference conditions."
+                data-zh="测量分辨率内没看出差别，不等于绝对零延迟。商用模块对比报告保留了测试条件，不推广到没测过的环境。"
+                data-en="An unresolved difference is not proof of zero delay. The commercial-module comparison keeps its test conditions alongside the results."
               >
-                商用对比已有公开报告；采样分辨率内未分辨出的延迟，不等于绝对零延迟，也不外推到所有线长、温度和干扰工况。
+                测量分辨率内没看出差别，不等于绝对零延迟。商用模块对比报告保留了测试条件，不推广到没测过的环境。
               </p>
             </div>
           </article>
         </div>
       </section>
-      <section class="case-section">
+      <section class="case-section reveal">
         <div>
           <p
             class="eyebrow"
-            data-zh="03 / 公开证据"
-            data-en="03 / Public evidence"
+            data-zh="03 / 去仓库看"
+            data-en="03 / In the repository"
           >
-            03 / 公开证据
+            03 / 去仓库看
           </p>
         </div>
         <div class="evidence-links">
           <article>
             <a
-              class="text-link"
               href="https://github.com/Sailiono/sbus-rs422-bridge"
+              class="text-link"
               target="_blank"
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="硬件、软件与使用说明"
-                data-en="Hardware, software &amp; usage"
-                >硬件、软件与使用说明</span
+                data-zh="硬件与工具"
+                data-en="Hardware &amp; tools"
+                >硬件与工具</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
             <p
               class=""
-              data-zh="公开原理图与分析工具入口。"
-              data-en="Public schematic and analysis-tool entry point."
+              data-zh="原理图 PDF、浏览器分析器和使用说明。"
+              data-en="Schematic PDF, browser analyzer and usage notes."
             >
-              公开原理图与分析工具入口。
+              原理图 PDF、浏览器分析器和使用说明。
             </p>
           </article>
           <article>
             <a
-              class="text-link"
               href="https://github.com/Sailiono/sbus-rs422-bridge/blob/main/docs/自研模块能力验证.md"
+              class="text-link"
               target="_blank"
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="能力验证报告"
-                data-en="Capability verification report"
-                >能力验证报告</span
+                data-zh="自研模块测试"
+                data-en="Bridge verification"
+                >自研模块测试</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
             <p
               class=""
-              data-zh="同步采集的透明性、帧比较与测量限制。"
-              data-en="Transparency, frame comparison and measurement limits from synchronized capture."
+              data-zh="测试条件、采集方法和结果。"
+              data-en="Conditions, capture methods and results."
             >
-              同步采集的透明性、帧比较与测量限制。
+              测试条件、采集方法和结果。
             </p>
           </article>
           <article>
             <a
-              class="text-link"
               href="https://github.com/Sailiono/sbus-rs422-bridge/blob/main/docs/商用对比验证.md"
+              class="text-link"
               target="_blank"
               rel="noopener noreferrer"
               ><span
                 class=""
-                data-zh="商用对比报告"
-                data-en="Commercial comparison report"
-                >商用对比报告</span
+                data-zh="商用模块对比"
+                data-en="Commercial-module comparison"
+                >商用模块对比</span
               ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h14m-6-6 6 6-6 6" /></svg
             ></a>
             <p
               class=""
-              data-zh="查看测试条件、分析方法与结果上下文。"
-              data-en="Read the conditions, analysis method and context of the results."
+              data-zh="在报告所列条件下做的对比。"
+              data-en="A comparison under the conditions stated in the report."
             >
-              查看测试条件、分析方法与结果上下文。
+              在报告所列条件下做的对比。
             </p>
           </article>
-          <p
-            class="scope-note"
-            data-zh="以上入口指向公开说明与记录，不表示本页面独立复测了其中的全部结论。"
-            data-en="These links point to public documentation and records; this page does not independently revalidate every result."
-          >
-            以上入口指向公开说明与记录，不表示本页面独立复测了其中的全部结论。
-          </p>
         </div>
       </section>
-      <section class="case-section">
+      <section class="case-section reveal">
         <div>
           <p
             class="eyebrow"
-            data-zh="04 / 边界与下一步"
-            data-en="04 / Limits &amp; next steps"
+            data-zh="04 / 还没覆盖的部分"
+            data-en="04 / Not covered yet"
           >
-            04 / 边界与下一步
+            04 / 还没覆盖的部分
           </p>
         </div>
         <div>
           <h2>
             <span
               class=""
-              data-zh="结论，始终有它的适用范围。"
-              data-en="Every conclusion has a scope."
-              >结论，始终有它的适用范围。</span
+              data-zh="这些记录能说明到哪。"
+              data-en="What these records can tell you."
+              >这些记录能说明到哪。</span
             >
           </h2>
           <p
             class=""
-            data-zh="报告对应特定样本与工况，不代表极端环境或全部接口模式已经通过。当前实测聚焦 SBUS 到 RS-422 单向链路。未经过航空、车规或功能安全认证。"
-            data-en="Reports cover specific samples and conditions, not every environment or interface mode. Current physical verification focuses on one-way SBUS to RS-422. No aviation, automotive or functional-safety certification is claimed."
+            data-zh="报告没有覆盖所有线长、温度和干扰条件。要复用到别的设备，先确认电气条件，再按实际场景重新检查；当前公开资料也不等于完整生产资料。"
+            data-en="The reports do not cover every cable length, temperature or interference condition. Check the electrical requirements and retest for the intended application. The public files are not a complete manufacturing package."
           >
-            报告对应特定样本与工况，不代表极端环境或全部接口模式已经通过。当前实测聚焦
-            SBUS 到 RS-422 单向链路。未经过航空、车规或功能安全认证。
+            报告没有覆盖所有线长、温度和干扰条件。要复用到别的设备，先确认电气条件，再按实际场景重新检查；当前公开资料也不等于完整生产资料。
           </p>
         </div>
       </section>
       <div class="next-case">
-        <p class="eyebrow" data-zh="继续阅读" data-en="Next case">继续阅读</p>
-        <a class="next-link" href="splicia.html"
+        <p class="eyebrow" data-zh="下一个项目" data-en="Next project">
+          下一个项目
+        </p>
+        <a href="splicia.html" class="next-link"
           ><span
             class=""
-            data-zh="从相机调试，走向模块化视觉系统。"
-            data-en="From camera bring-up toward a modular vision system."
-            >从相机调试，走向模块化视觉系统。</span
+            data-zh="Splicia / 先让相机链路跑起来。"
+            data-en="Splicia / Start with the camera path."
+            >Splicia / 先让相机链路跑起来。</span
           ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
             <path d="M5 12h14m-6-6 6 6-6 6" /></svg
         ></a>
       </div>
     </main>
     <footer class="site-footer wrap">
-      <a class="footer-name" href="../index.html">Clark Cui / Sailiono</a>
+      <a href="../index.html">Clark Cui / Sailiono</a>
       <p
         class=""
-        data-zh="从实现到验证，留下可复核的过程。"
-        data-en="From implementation to verification, with a reviewable trail."
+        data-zh="一些项目，和做项目时的笔记。"
+        data-en="Projects, and notes from working on them."
       >
-        从实现到验证，留下可复核的过程。
+        一些项目，和做项目时的笔记。
       </p>
-      <p class="copyright">© 2026</p>
+      <span class="mono">© 2026</span>
     </footer>
   </body>
 </html>
