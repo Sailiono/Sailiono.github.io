@@ -542,7 +542,7 @@ html:not(.js) .story-visual {
   flex-direction: column;
   justify-content: center;
   padding-block: 60px;
-  scroll-margin-top: 120px;
+  scroll-margin-top: var(--chapter-offset, 0px);
   position: relative;
 }
 .project-chapter + .project-chapter {
@@ -1217,7 +1217,6 @@ html[lang="en"] .scene-nav {
   }
   .project-chapter {
     min-height: 75svh;
-    scroll-margin-top: calc(28svh + 185px);
     padding: 36px 4px 45px;
     justify-content: center;
   }

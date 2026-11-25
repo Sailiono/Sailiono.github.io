@@ -136,7 +136,17 @@
     // cannot fit. Measuring also covers translated captions and browser zoom.
     const stageFits =
       stageHeight + stageTop + (mobile.matches ? 200 : 24) <= height;
-    const trigger = height * (mobile.matches ? 0.76 : 0.58);
+    const scrollPadding = parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
+    const chapterTop =
+      mobile.matches && stageFits
+        ? stageTop + stageHeight + 12
+        : Math.max(scrollPadding, Math.min(120, height * 0.4));
+    // Anchor landing and scene activation share the same measured geometry.
+    // Scroll padding and scroll margin add together in native fragment jumps.
+    const trigger = Math.max(
+      height * (mobile.matches ? 0.76 : 0.58),
+      chapterTop + 1,
+    );
     let active = 0;
     bounds.forEach((rect, index) => {
       if (rect.top <= trigger) active = index;
@@ -145,6 +155,10 @@
       ? clamp((trigger - bounds[active].top) / bounds[active].height)
       : 1;
     stage?.classList.toggle("is-unpinned", !stageFits);
+    root.style.setProperty(
+      "--chapter-offset",
+      Math.max(0, chapterTop - scrollPadding) + "px",
+    );
     root.style.setProperty(
       "--reading-progress",
       total > 0 ? clamp(scroll / total).toFixed(4) : "0",
@@ -254,4 +268,5 @@
   document.fonts?.ready.then(scheduleFrame);
   const savedLanguage = read("portfolio-language");
   applyLanguage(savedLanguage === "en" ? "en" : "zh");
+  updateFrame();
 })();
