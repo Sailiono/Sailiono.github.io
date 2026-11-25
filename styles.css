@@ -1613,6 +1613,11 @@ html[lang="en"] .home-page .hero-emphasis {
 .home-page .project-story .section-heading {
   margin-bottom: 65px;
 }
+.home-page .project-story::selection,
+.home-page .project-story ::selection {
+  color: #132119;
+  background: #d9e6c8;
+}
 .home-page .section-heading h2 {
   font-family: var(--sans);
   font-size: clamp(42px, 4.8vw, 68px);
