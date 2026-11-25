@@ -477,20 +477,18 @@
               01 / 项目
             </p>
             <h2 id="projects-title">
-              <span class="" data-zh="项目概览" data-en="Selected projects"
-                >项目概览</span
+              <span class="" data-zh="代表项目" data-en="Selected projects"
+                >代表项目</span
               >
             </h2>
           </div>
           <p
             class="section-summary"
-            data-zh="涵盖 GNSS 设备、估计算法、隔离接口与 Linux 相机。
-各项目列出实现内容、公开资料及当前进展。"
-            data-en="GNSS devices, estimation algorithms, isolated interfaces and Linux cameras.
-Each project describes its implementation, public resources and current status."
+            data-zh="四个项目分别覆盖 GNSS 设备、飞行状态估计、隔离通信接口和 Linux 相机。从系统组成到实现取舍，介绍各自的技术内容与当前进展。"
+            data-en="Four projects spanning GNSS devices, flight-state estimation, isolated interfaces and Linux cameras, with their system components, implementation decisions and current progress."
           >
-            涵盖 GNSS 设备、估计算法、隔离接口与 Linux 相机。
-            各项目列出实现内容、公开资料及当前进展。
+            四个项目分别覆盖 GNSS 设备、飞行状态估计、隔离通信接口和 Linux
+            相机。从系统组成到实现取舍，介绍各自的技术内容与当前进展。
           </p>
         </div>
         <div class="story-layout">
@@ -812,12 +810,104 @@ Each project describes its implementation, public resources and current status."
               </h3>
               <p
                 class="project-description"
-                data-zh="基于 STM32F407 与 UM982，集成隔离供电、双路 RS-422 和 USB CDC。固件负责模块配置、状态监测与故障诊断，配套 RTCM 检查及台架测试工具。"
-                data-en="An STM32F407 and UM982 base station with isolated power, dual RS-422 and USB CDC. Firmware handles module configuration, status monitoring and diagnostics, supported by RTCM inspection and bench-test tools."
+                data-zh="将 GNSS 模块集成为可配置、可诊断的 RTK 基站设备。UM982 提供定位与 RTCM 差分数据，STM32F407 负责设备控制与维护，隔离供电和通信接口完成设备级集成。"
+                data-en="A configurable, diagnosable RTK base station built around a GNSS module. The UM982 supplies positioning and RTCM correction data; the STM32F407 handles control and maintenance, with isolated power and communication interfaces completing the device integration."
               >
-                基于 STM32F407 与 UM982，集成隔离供电、双路 RS-422 和 USB
-                CDC。固件负责模块配置、状态监测与故障诊断，配套 RTCM
-                检查及台架测试工具。
+                将 GNSS 模块集成为可配置、可诊断的 RTK 基站设备。UM982
+                提供定位与 RTCM 差分数据，STM32F407
+                负责设备控制与维护，隔离供电和通信接口完成设备级集成。
+              </p>
+              <div class="project-details">
+                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
+                <ul class="project-system">
+                  <li>
+                    <strong>UM982</strong
+                    ><span
+                      data-zh="定位与差分数据"
+                      data-en="Positioning &amp; corrections"
+                      >定位与差分数据</span
+                    >
+                  </li>
+                  <li>
+                    <strong>STM32F407</strong
+                    ><span
+                      data-zh="配置与状态管理"
+                      data-en="Configuration &amp; status"
+                      >配置与状态管理</span
+                    >
+                  </li>
+                  <li>
+                    <strong>RS-422 / USB</strong
+                    ><span
+                      data-zh="数据与维护接口"
+                      data-en="Data &amp; maintenance"
+                      >数据与维护接口</span
+                    >
+                  </li>
+                </ul>
+                <h4 data-zh="实现特点" data-en="Implementation decisions">
+                  实现特点
+                </h4>
+                <dl class="project-feature-list">
+                  <div>
+                    <dt data-zh="接口分工" data-en="Separate interfaces">
+                      接口分工
+                    </dt>
+                    <dd
+                      data-zh="双路 RS-422 承载 RTCM 数据，USB CDC 提供配置与诊断入口，将外部数据链路与本地维护分开。"
+                      data-en="Dual RS-422 carries RTCM data, while USB CDC provides configuration and diagnostics, separating the external data link from local maintenance."
+                    >
+                      双路 RS-422 承载 RTCM 数据，USB CDC
+                      提供配置与诊断入口，将外部数据链路与本地维护分开。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt
+                      data-zh="数据与故障检查"
+                      data-en="Data &amp; fault checks"
+                    >
+                      数据与故障检查
+                    </dt>
+                    <dd
+                      data-zh="按消息类型和 CRC 检查 RTCM 数据流；结合 SWD 寄存器读取与串口日志，定位外设状态及复位问题。"
+                      data-en="RTCM inspection checks message types and CRCs. SWD register reads and serial logs help diagnose peripheral state and reset problems."
+                    >
+                      按消息类型和 CRC 检查 RTCM 数据流；结合 SWD
+                      寄存器读取与串口日志，定位外设状态及复位问题。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-zh="调试工作流" data-en="Debugging workflow">
+                      调试工作流
+                    </dt>
+                    <dd
+                      data-zh="将构建、烧录、测试和记录整理为 Liakia 工作流，并保留 USB CDC 复位恢复的故障分析、修改与回归记录。"
+                      data-en="Build, flashing, testing and records are organized into the Liakia workflow, with a separate USB CDC reset-recovery investigation, fix and regression record."
+                    >
+                      将构建、烧录、测试和记录整理为 Liakia 工作流，并保留 USB
+                      CDC 复位恢复的故障分析、修改与回归记录。
+                    </dd>
+                  </div>
+                </dl>
+                <div class="project-status">
+                  <strong data-zh="公开进展" data-en="Public progress"
+                    >公开进展</strong
+                  >
+                  <p
+                    data-zh="已公开硬件架构、固件、工具与台架记录；台架结论仅适用于记录所列条件，不代表 GNSS 精度认证。"
+                    data-en="Hardware architecture, firmware, tools and bench records are public. Bench conclusions apply to the recorded conditions, not GNSS accuracy certification."
+                  >
+                    已公开硬件架构、固件、工具与台架记录；台架结论仅适用于记录所列条件，不代表
+                    GNSS 精度认证。
+                  </p>
+                </div>
+              </div>
+              <p
+                class="project-reading-label"
+                data-zh="深入资料"
+                data-en="Further reading"
+              >
+                深入资料
               </p>
               <div class="chapter-links">
                 <a href="cases/dpiny.html" class="text-link"
@@ -835,13 +925,6 @@ Each project describes its implementation, public resources and current status."
                     <path d="M5 12h14m-6-6 6 6-6 6" /></svg
                 ></a>
               </div>
-              <p
-                class="scope-note"
-                data-zh="硬件架构 / 固件 / 台架记录"
-                data-en="Hardware architecture / firmware / bench records"
-              >
-                硬件架构 / 固件 / 台架记录
-              </p>
             </article>
             <article
               class="project-chapter"
@@ -868,11 +951,98 @@ Each project describes its implementation, public resources and current status."
               </h3>
               <p
                 class="project-description"
-                data-zh="采用可移植 C99 实现 Mahony、ESKF 等估计算法，以统一输入约定、确定性场景和数据回放开展主机侧验证。"
-                data-en="Portable C99 implementations of Mahony, ESKF and related estimators, with a shared input contract, deterministic scenarios and data replay for host-side validation."
+                data-zh="围绕飞行器姿态等状态的估计，提供可独立运行的 C99 算法和主机验证程序。通过相同的输入约定、固定场景与数据回放，检查不同实现及修改前后的行为。"
+                data-en="Standalone C99 algorithms and host programs for estimating attitude and related flight states. Shared input conventions, fixed scenarios and data replay support comparisons between implementations and before and after changes."
               >
-                采用可移植 C99 实现 Mahony、ESKF
-                等估计算法，以统一输入约定、确定性场景和数据回放开展主机侧验证。
+                围绕飞行器姿态等状态的估计，提供可独立运行的 C99
+                算法和主机验证程序。通过相同的输入约定、固定场景与数据回放，检查不同实现及修改前后的行为。
+              </p>
+              <div class="project-details">
+                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
+                <ul class="project-system">
+                  <li>
+                    <strong data-zh="输入约定" data-en="Input contract"
+                      >输入约定</strong
+                    ><span
+                      data-zh="单位、坐标与时间"
+                      data-en="Units, frames &amp; time"
+                      >单位、坐标与时间</span
+                    >
+                  </li>
+                  <li>
+                    <strong>Mahony / ESKF</strong
+                    ><span
+                      data-zh="可移植 C99 实现"
+                      data-en="Portable C99 estimators"
+                      >可移植 C99 实现</span
+                    >
+                  </li>
+                  <li>
+                    <strong data-zh="主机验证" data-en="Host validation"
+                      >主机验证</strong
+                    ><span
+                      data-zh="固定场景与回放"
+                      data-en="Fixed scenarios &amp; replay"
+                      >固定场景与回放</span
+                    >
+                  </li>
+                </ul>
+                <h4 data-zh="实现特点" data-en="Implementation decisions">
+                  实现特点
+                </h4>
+                <dl class="project-feature-list">
+                  <div>
+                    <dt data-zh="统一输入" data-en="Consistent inputs">
+                      统一输入
+                    </dt>
+                    <dd
+                      data-zh="统一定义单位、坐标系、时间戳与数据有效性，减少输入约定差异对算法比较的影响。"
+                      data-en="Units, coordinate frames, timestamps and data validity share one definition, reducing input-convention differences when comparing algorithms."
+                    >
+                      统一定义单位、坐标系、时间戳与数据有效性，减少输入约定差异对算法比较的影响。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-zh="可重复比较" data-en="Repeatable comparison">
+                      可重复比较
+                    </dt>
+                    <dd
+                      data-zh="使用固定输入和数据回放重复运行算法，检查修改前后的输出行为；文档保留运行方法与覆盖范围。"
+                      data-en="Fixed inputs and replay make algorithm runs repeatable, allowing output behavior to be compared before and after changes. Documentation records how to run them and what they cover."
+                    >
+                      使用固定输入和数据回放重复运行算法，检查修改前后的输出行为；文档保留运行方法与覆盖范围。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-zh="异常与回归" data-en="Faults &amp; regressions">
+                      异常与回归
+                    </dt>
+                    <dd
+                      data-zh="通过确定性故障场景和回归检查分析异常输入，分别记录已验证行为和尚未覆盖的情况。"
+                      data-en="Deterministic fault scenarios and regression checks examine abnormal inputs, distinguishing verified behavior from cases not yet covered."
+                    >
+                      通过确定性故障场景和回归检查分析异常输入，分别记录已验证行为和尚未覆盖的情况。
+                    </dd>
+                  </div>
+                </dl>
+                <div class="project-status">
+                  <strong data-zh="公开进展" data-en="Public progress"
+                    >公开进展</strong
+                  >
+                  <p
+                    data-zh="已公开算法实现与主机验证资料，不是完整飞控固件；硬件接入、传感器特性和实飞行为仍需独立验证。"
+                    data-en="Algorithm implementations and host-validation material are public, not complete flight-controller firmware. Hardware integration, sensor characteristics and flight behavior still need independent validation."
+                  >
+                    已公开算法实现与主机验证资料，不是完整飞控固件；硬件接入、传感器特性和实飞行为仍需独立验证。
+                  </p>
+                </div>
+              </div>
+              <p
+                class="project-reading-label"
+                data-zh="深入资料"
+                data-en="Further reading"
+              >
+                深入资料
               </p>
               <div class="chapter-links">
                 <a href="cases/aerakia.html" class="text-link"
@@ -893,13 +1063,6 @@ Each project describes its implementation, public resources and current status."
                     <path d="M5 12h14m-6-6 6 6-6 6" /></svg
                 ></a>
               </div>
-              <p
-                class="scope-note"
-                data-zh="公开范围：算法模块与主机侧验证，非完整飞控固件。"
-                data-en="Public scope: algorithm modules and host validation, not complete flight-controller firmware."
-              >
-                公开范围：算法模块与主机侧验证，非完整飞控固件。
-              </p>
             </article>
             <article class="project-chapter" data-scene="2" id="sbus-summary">
               <div class="chapter-kicker">
@@ -922,10 +1085,102 @@ Each project describes its implementation, public resources and current status."
               </h3>
               <p
                 class="project-description"
-                data-zh="隔离与电平转换硬件配套浏览器分析器，用于采集数据解码及输入输出对比。报告区分内容一致性与时序测量，并说明采样分辨率及适用条件。"
-                data-en="An isolated level-conversion bridge and browser analyzer for decoding captures and comparing input and output. Reports distinguish content consistency from timing measurements and state the sampling resolution and test conditions."
+                data-zh="将 SBUS 控制信号接入隔离的 RS-422 链路，完成电平与极性转换。配套浏览器分析器解码采集数据，检查转换前后的帧内容，并按采集方法分析时序。"
+                data-en="An isolated bridge connects SBUS control signals to an RS-422 link, converting electrical levels and polarity. A browser analyzer decodes captures, compares frame content before and after conversion, and analyzes timing according to the capture method."
               >
-                隔离与电平转换硬件配套浏览器分析器，用于采集数据解码及输入输出对比。报告区分内容一致性与时序测量，并说明采样分辨率及适用条件。
+                将 SBUS 控制信号接入隔离的 RS-422
+                链路，完成电平与极性转换。配套浏览器分析器解码采集数据，检查转换前后的帧内容，并按采集方法分析时序。
+              </p>
+              <div class="project-details">
+                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
+                <ul class="project-system">
+                  <li>
+                    <strong>SBUS</strong
+                    ><span data-zh="控制信号输入" data-en="Control-signal input"
+                      >控制信号输入</span
+                    >
+                  </li>
+                  <li>
+                    <strong data-zh="隔离转换" data-en="Isolated bridge"
+                      >隔离转换</strong
+                    ><span
+                      data-zh="电平与极性处理"
+                      data-en="Level &amp; polarity conversion"
+                      >电平与极性处理</span
+                    >
+                  </li>
+                  <li>
+                    <strong>RS-422</strong
+                    ><span
+                      data-zh="差分通信链路"
+                      data-en="Differential communication"
+                      >差分通信链路</span
+                    >
+                  </li>
+                </ul>
+                <h4 data-zh="实现特点" data-en="Implementation decisions">
+                  实现特点
+                </h4>
+                <dl class="project-feature-list">
+                  <div>
+                    <dt
+                      data-zh="硬件与分析分工"
+                      data-en="Hardware &amp; analysis"
+                    >
+                      硬件与分析分工
+                    </dt>
+                    <dd
+                      data-zh="硬件完成隔离、电平与极性转换；浏览器工具负责采集数据的解码、对齐和对比，分别检查电气接口与数据内容。"
+                      data-en="Hardware handles isolation, levels and polarity. Browser tools decode, align and compare captures, separating electrical conversion from content analysis."
+                    >
+                      硬件完成隔离、电平与极性转换；浏览器工具负责采集数据的解码、对齐和对比，分别检查电气接口与数据内容。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-zh="区分采集方法" data-en="Capture methods">
+                      区分采集方法
+                    </dt>
+                    <dd
+                      data-zh="同步采集用于同一时间轴上的时序比较；分次隔离采集用于字节内容对齐，不能直接用来计算传播延迟。"
+                      data-en="Synchronous captures support timing comparisons on one time axis. Separate isolated captures support byte-content alignment, not direct propagation-delay measurements."
+                    >
+                      同步采集用于同一时间轴上的时序比较；分次隔离采集用于字节内容对齐，不能直接用来计算传播延迟。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt
+                      data-zh="注明测量分辨率"
+                      data-en="Measurement resolution"
+                    >
+                      注明测量分辨率
+                    </dt>
+                    <dd
+                      data-zh="报告列出采样分辨率与测试条件。界面波形由采集数据重建，不作为示波器实测波形；低于分辨率的差异不作零延迟结论。"
+                      data-en="Reports state sampling resolution and test conditions. Displayed waveforms are reconstructed from captures, not oscilloscope measurements; sub-resolution differences are not reported as zero delay."
+                    >
+                      报告列出采样分辨率与测试条件。界面波形由采集数据重建，不作为示波器实测波形；低于分辨率的差异不作零延迟结论。
+                    </dd>
+                  </div>
+                </dl>
+                <div class="project-status">
+                  <strong data-zh="公开进展" data-en="Public progress"
+                    >公开进展</strong
+                  >
+                  <p
+                    data-zh="已公开原理图 PDF、浏览器分析器与对比报告；PCB、BOM、制造文件和可编辑硬件源尚未形成完整发布包。"
+                    data-en="Schematic PDFs, a browser analyzer and comparison reports are public. PCB, BOM, manufacturing files and editable hardware sources do not yet form a complete release package."
+                  >
+                    已公开原理图
+                    PDF、浏览器分析器与对比报告；PCB、BOM、制造文件和可编辑硬件源尚未形成完整发布包。
+                  </p>
+                </div>
+              </div>
+              <p
+                class="project-reading-label"
+                data-zh="深入资料"
+                data-en="Further reading"
+              >
+                深入资料
               </p>
               <div class="chapter-links">
                 <a href="cases/sbus.html" class="text-link"
@@ -946,13 +1201,6 @@ Each project describes its implementation, public resources and current status."
                     <path d="M5 12h14m-6-6 6 6-6 6" /></svg
                 ></a>
               </div>
-              <p
-                class="scope-note"
-                data-zh="原理图 PDF / 分析器 / 对比报告"
-                data-en="Schematic PDF / analyzer / comparison reports"
-              >
-                原理图 PDF / 分析器 / 对比报告
-              </p>
             </article>
             <article
               class="project-chapter"
@@ -979,11 +1227,95 @@ Each project describes its implementation, public resources and current status."
               </h3>
               <p
                 class="project-description"
-                data-zh="围绕 IMX296 相机，记录 Linux 平台的设备发现、媒体拓扑与 RAW 输出调试。视觉算法、运动控制和下一阶段 UI 仍处于规划或设计阶段。"
-                data-en="Linux platform and IMX296 camera bring-up, documenting device discovery, media topology and RAW output. Vision algorithms, motion control and the next UI remain in planning or design."
+                data-zh="为后续视觉处理建立 Linux 与 IMX296 相机的采集基础。围绕设备发现、媒体拓扑配置和 RAW 原始图像输出，分层检查相机、驱动、媒体管线与应用之间的链路。"
+                data-en="Linux and IMX296 camera bring-up establishes a capture foundation for later vision processing. Device discovery, media-topology configuration and RAW output are checked in layers across the camera, driver, media pipeline and application."
               >
-                围绕 IMX296 相机，记录 Linux 平台的设备发现、媒体拓扑与 RAW
-                输出调试。视觉算法、运动控制和下一阶段 UI 仍处于规划或设计阶段。
+                为后续视觉处理建立 Linux 与 IMX296
+                相机的采集基础。围绕设备发现、媒体拓扑配置和 RAW
+                原始图像输出，分层检查相机、驱动、媒体管线与应用之间的链路。
+              </p>
+              <div class="project-details">
+                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
+                <ul class="project-system">
+                  <li>
+                    <strong>Linux / IMX296</strong
+                    ><span data-zh="设备与驱动" data-en="Device &amp; driver"
+                      >设备与驱动</span
+                    >
+                  </li>
+                  <li>
+                    <strong data-zh="媒体管线" data-en="Media pipeline"
+                      >媒体管线</strong
+                    ><span
+                      data-zh="拓扑与链路配置"
+                      data-en="Topology &amp; link setup"
+                      >拓扑与链路配置</span
+                    >
+                  </li>
+                  <li>
+                    <strong>RAW</strong
+                    ><span data-zh="原始图像输出" data-en="Raw-image output"
+                      >原始图像输出</span
+                    >
+                  </li>
+                </ul>
+                <h4 data-zh="实现与规划" data-en="Implementation &amp; plans">
+                  实现与规划
+                </h4>
+                <dl class="project-feature-list">
+                  <div>
+                    <dt data-zh="采集链路调试" data-en="Capture bring-up">
+                      采集链路调试
+                    </dt>
+                    <dd
+                      data-zh="分别整理设备发现、媒体拓扑与 RAW 输出记录，区分设备、驱动及应用层问题，为后续图像处理提供输入基础。"
+                      data-en="Separate device-discovery, media-topology and RAW-output records help distinguish device, driver and application problems, establishing inputs for later image processing."
+                    >
+                      分别整理设备发现、媒体拓扑与 RAW
+                      输出记录，区分设备、驱动及应用层问题，为后续图像处理提供输入基础。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-zh="后续模块规划" data-en="Planned modules">
+                      后续模块规划
+                    </dt>
+                    <dd
+                      data-zh="下一阶段按采集、视觉、状态估计、运动控制、UI、日志与回放划分职责和依赖；这些内容目前属于架构设计。"
+                      data-en="The next-stage architecture separates capture, vision, state estimation, motion, UI, logs and replay, defining responsibilities and dependencies. These modules remain architectural plans."
+                    >
+                      下一阶段按采集、视觉、状态估计、运动控制、UI、日志与回放划分职责和依赖；这些内容目前属于架构设计。
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-zh="界面概念设计" data-en="UI concept">
+                      界面概念设计
+                    </dt>
+                    <dd
+                      data-zh="以概念稿讨论图像、状态与日志的信息组织；其中图像、曲线和数值均为占位内容，不是运行界面或测试结果。"
+                      data-en="UI concepts explore the organization of images, status and logs. Their images, curves and values are placeholders, not a running interface or test results."
+                    >
+                      以概念稿讨论图像、状态与日志的信息组织；其中图像、曲线和数值均为占位内容，不是运行界面或测试结果。
+                    </dd>
+                  </div>
+                </dl>
+                <div class="project-status is-planned">
+                  <strong data-zh="当前进展" data-en="Current progress"
+                    >当前进展</strong
+                  >
+                  <p
+                    data-zh="已记录平台与相机调试；视觉几何、双目融合、多轴运动和闭环对准尚未完成。"
+                    data-en="Platform and camera bring-up is documented. Vision geometry, stereo fusion, multi-axis motion and closed-loop alignment are not yet complete."
+                  >
+                    已记录平台与相机调试；视觉几何、双目融合、多轴运动和闭环对准尚未完成。
+                  </p>
+                </div>
+              </div>
+              <p
+                class="project-reading-label"
+                data-zh="深入资料"
+                data-en="Further reading"
+              >
+                深入资料
               </p>
               <div class="chapter-links">
                 <a href="cases/splicia.html" class="text-link"
@@ -1004,13 +1336,6 @@ Each project describes its implementation, public resources and current status."
                     <path d="M5 12h14m-6-6 6 6-6 6" /></svg
                 ></a>
               </div>
-              <p
-                class="scope-note"
-                data-zh="已记录：平台与相机调试；规划中：视觉、运动与 UI。"
-                data-en="Documented: platform and camera bring-up. Planned: vision, motion and UI."
-              >
-                已记录：平台与相机调试；规划中：视觉、运动与 UI。
-              </p>
             </article>
           </div>
         </div>

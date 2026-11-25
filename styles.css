@@ -607,6 +607,104 @@ html:not(.js) .story-visual {
   margin-top: 23px;
   max-width: 460px;
 }
+.project-details {
+  margin-top: 32px;
+  min-width: 0;
+}
+.project-details h4,
+.project-reading-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+.project-system {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 14px 0 30px;
+  border-block: 1px solid var(--line);
+}
+.project-system li {
+  min-width: 0;
+  padding: 18px 12px;
+  overflow-wrap: anywhere;
+}
+.project-system li + li {
+  border-left: 1px solid var(--line);
+}
+.project-system strong {
+  display: block;
+  font: 500 12px/1.7 var(--sans);
+  color: var(--green);
+}
+.project-system span {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.project-feature-list {
+  margin-top: 10px;
+}
+.project-feature-list > div {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  gap: 22px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.project-feature-list dt {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 2;
+  color: var(--ink);
+}
+.project-feature-list dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--muted);
+}
+.project-status {
+  border-left: 2px solid var(--green);
+  padding-left: 16px;
+  margin-top: 25px;
+}
+.project-status.is-planned {
+  border-color: var(--copper);
+}
+.project-status strong {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--green);
+}
+.project-status.is-planned strong {
+  color: var(--copper);
+}
+.project-status p {
+  font-size: 12px;
+  line-height: 2;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.project-reading-label {
+  margin-top: 30px;
+}
+.project-reading-label + .chapter-links {
+  margin-top: 12px;
+}
+@media (max-width: 860px) {
+  .project-feature-list > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding-block: 18px;
+  }
+  .project-system li {
+    padding: 14px 9px;
+  }
+}
 .source-section {
   background: var(--wash);
   border-block: 1px solid var(--line);
