@@ -1,19 +1,123 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#07111f">
-    <title>Page not found — Clark Cui</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <meta name="description" content="返回 Clark Cui 的工程案例集。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="页面未找到 — Clark Cui" />
+    <meta property="og:description" content="返回 Clark Cui 的工程案例集。" />
+    <meta property="og:url" content="https://sailiono.github.io/" />
+    <title>页面未找到 — Clark Cui</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/script.js" defer></script>
   </head>
-  <body>
-    <main class="contact-section" style="margin-top: 10vh">
-      <p class="section-index">404 / NOT FOUND</p>
-      <h1 style="font-size: clamp(48px, 10vw, 96px)">Signal lost.</h1>
-      <p>The requested page does not exist. 返回首页继续查看作品集。</p>
-      <a class="button button-primary" href="/">Return home</a>
+  <body
+    data-title-zh="页面未找到 — Clark Cui"
+    data-title-en="Page not found — Clark Cui"
+  >
+    <a class="skip-link" href="#main"
+      ><span class="" data-zh="跳到主要内容" data-en="Skip to content"
+        >跳到主要内容</span
+      ></a
+    >
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/index.html"
+          ><span class="brand-mark" aria-hidden="true">cc</span
+          ><span>Clark Cui<span class="brand-sub"> / Sailiono</span></span></a
+        >
+        <div class="header-actions">
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            data-aria-zh="打开导航菜单"
+            data-aria-en="Open navigation menu"
+            aria-label="打开导航菜单"
+          >
+            <span class="menu-lines" aria-hidden="true"></span
+            ><span class="" data-zh="菜单" data-en="Menu">菜单</span>
+          </button>
+          <button
+            class="language-toggle"
+            type="button"
+            aria-label="Switch to English"
+            aria-pressed="true"
+          >
+            <span class="language-current">中文</span
+            ><span aria-hidden="true"> / </span
+            ><span class="language-other">EN</span>
+          </button>
+        </div>
+        <nav
+          id="primary-nav"
+          data-aria-zh="主导航"
+          data-aria-en="Primary navigation"
+          aria-label="主导航"
+        >
+          <a class="nav-link" href="/index.html#work"
+            ><span class="" data-zh="代表案例" data-en="Selected work"
+              >代表案例</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a class="nav-link" href="/index.html#method"
+            ><span class="" data-zh="方法工具" data-en="Methods &amp; tools"
+              >方法工具</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a class="nav-link" href="/index.html#about"
+            ><span class="" data-zh="关于联系" data-en="About &amp; contact"
+              >关于联系</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+          ></a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="error-page wrap">
+      <p
+        class="eyebrow"
+        data-zh="404 / 页面未找到"
+        data-en="404 / Page not found"
+      >
+        404 / 页面未找到
+      </p>
+      <h1>
+        <span
+          class=""
+          data-zh="这条路径还没有作品。"
+          data-en="No work at this address."
+          >这条路径还没有作品。</span
+        >
+      </h1>
+      <p
+        class=""
+        data-zh="你可以返回首页，继续阅读工程案例。"
+        data-en="Head back to the portfolio to explore the engineering case studies."
+      >
+        你可以返回首页，继续阅读工程案例。
+      </p>
+      <a class="button button-primary" href="/index.html"
+        ><span class="" data-zh="返回作品集" data-en="Back to the portfolio"
+          >返回作品集</span
+        ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+      ></a>
     </main>
+    <footer class="site-footer wrap">
+      <a class="footer-name" href="/index.html">Clark Cui / Sailiono</a>
+      <p
+        class=""
+        data-zh="从实现到验证，留下可复核的过程。"
+        data-en="From implementation to verification, with a reviewable trail."
+      >
+        从实现到验证，留下可复核的过程。
+      </p>
+      <p class="copyright">© 2026</p>
+    </footer>
   </body>
 </html>
