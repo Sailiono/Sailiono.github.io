@@ -176,6 +176,10 @@
         ? (clamp(scroll / heroHeight) * 1.8).toFixed(2) + "deg"
         : "0deg",
     );
+    root.style.setProperty(
+      "--hero-progress",
+      motionEnabled() ? clamp(scroll / (heroHeight * 0.8)).toFixed(4) : "0",
+    );
     stage?.style.setProperty(
       "--scene-progress",
       motionEnabled() ? progress.toFixed(4) : "1",

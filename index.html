@@ -149,96 +149,311 @@
         </div>
         <figure class="hero-figure">
           <div class="figure-top">
-            <span class="mono">DPINY / 01</span
-            ><span class="" data-zh="设备结构示意" data-en="Device architecture"
+            <span class="mono">DPINY / 01</span>
+            <span data-zh="设备结构示意" data-en="Device architecture"
               >设备结构示意</span
             >
           </div>
           <div class="hero-board">
             <svg
-              class="project-diagram"
-              viewBox="0 0 640 470"
+              class="hero-assembly"
+              viewBox="0 0 960 820"
               fill="none"
               aria-hidden="true"
             >
-              <g class="board-shadow">
-                <rect
-                  x="80"
-                  y="65"
-                  width="480"
-                  height="330"
-                  rx="20"
-                  fill="#294d3e"
-                />
-                <path d="M95 90h450M95 370h450" stroke="#a9c5ad" opacity=".3" />
-                <g fill="#e9e6d6">
-                  <circle cx="102" cy="88" r="5" />
-                  <circle cx="538" cy="88" r="5" />
-                  <circle cx="102" cy="372" r="5" />
-                  <circle cx="538" cy="372" r="5" />
-                </g>
-                <g stroke="#719581" stroke-width="2">
-                  <path
-                    d="M145 165h68v-25h62m-130 25v145h130m60-130v75m50 55h70v-140h38m-38 140v38h38"
+              <defs>
+                <linearGradient
+                  id="pcb-surface"
+                  x1="0"
+                  y1="0"
+                  x2="620"
+                  y2="460"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#50745a" />
+                  <stop offset=".55" stop-color="#264d3b" />
+                  <stop offset="1" stop-color="#173b2c" />
+                </linearGradient>
+                <linearGradient
+                  id="shield-surface"
+                  x1="280"
+                  y1="170"
+                  x2="490"
+                  y2="330"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#f0efdf" />
+                  <stop offset=".45" stop-color="#b9c4ad" />
+                  <stop offset="1" stop-color="#7e9282" />
+                </linearGradient>
+                <linearGradient id="port-surface" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="#f5d9a2" />
+                  <stop offset="1" stop-color="#b48347" />
+                </linearGradient>
+                <filter
+                  id="assembly-shadow"
+                  x="-40%"
+                  y="-60%"
+                  width="180%"
+                  height="240%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="26"
+                    stdDeviation="22"
+                    flood-color="#183526"
+                    flood-opacity=".22"
                   />
-                  <path d="M335 125v-25h118" />
-                </g>
-                <g class="flow-line" stroke="#d5b57a" stroke-width="3">
-                  <path d="M145 165h68v-25h62" />
-                  <path d="M145 165v145h130" />
-                  <path d="M335 180v75" />
-                  <path d="M385 310h70v-140h38m-38 140v38h38" />
-                </g>
+                </filter>
+              </defs>
+              <g class="hero-orbits" stroke="#abb7a0" stroke-width="1">
+                <ellipse
+                  cx="480"
+                  cy="425"
+                  rx="450"
+                  ry="265"
+                  transform="rotate(-17 480 425)"
+                />
+                <ellipse
+                  cx="480"
+                  cy="425"
+                  rx="393"
+                  ry="220"
+                  transform="rotate(-17 480 425)"
+                  stroke-dasharray="2 12"
+                />
                 <path
-                  class="progress-draw"
-                  pathLength="1"
-                  d="M145 165h68v-25h62m60 40v75m50 55h70v-140h38m-38 140v38h38"
-                  stroke="#f4e2b4"
-                  stroke-width="4"
+                  d="M25 425h910M480 115v620"
+                  stroke-dasharray="4 12"
+                  opacity=".6"
                 />
-                <g fill="#18382d" stroke="#9ebba3">
-                  <rect x="275" y="110" width="120" height="70" rx="3" />
-                  <rect x="275" y="255" width="110" height="95" rx="3" />
-                </g>
-                <g fill="#ddc798">
-                  <rect x="115" y="143" width="45" height="44" rx="2" />
-                  <rect x="493" y="145" width="40" height="50" rx="2" />
-                  <rect x="493" y="325" width="40" height="48" rx="2" />
-                  <rect x="450" y="91" width="58" height="22" rx="2" />
-                </g>
-                <g stroke="#cfddc8" stroke-width="3">
+                <circle cx="881" cy="279" r="5" fill="#a16e3d" stroke="none" />
+                <circle cx="109" cy="602" r="4" fill="#a16e3d" stroke="none" />
+              </g>
+              <g class="assembly-schematic">
+                <g
+                  transform="matrix(.85 .35 -.75 .52 395 170)"
+                  stroke="#8b9f82"
+                >
+                  <rect
+                    x="10"
+                    y="10"
+                    width="600"
+                    height="450"
+                    rx="20"
+                    stroke-dasharray="6 9"
+                  />
                   <path
-                    d="M290 100v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10M290 180v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10"
+                    d="M40 90h520M40 170h520M40 250h520M40 330h520M110 35v400M210 35v400M310 35v400M410 35v400M510 35v400"
+                    opacity=".32"
+                  />
+                  <path
+                    d="M85 310h135V150h155v110h150M190 95h120v70h170"
+                    stroke="#a16e3d"
                   />
                 </g>
-                <g class="svg-label" fill="#e8efdc" text-anchor="middle">
-                  <text x="335" y="143">STM32F407</text>
-                  <text x="335" y="163" font-size="10">FIRMWARE</text>
-                  <text x="330" y="297">UM982</text>
-                  <text x="330" y="320" font-size="11">GNSS / RTCM</text>
-                </g>
-                <g class="svg-label" fill="#244333">
-                  <text x="115" y="211" fill="#e8efdc">24 V</text>
-                  <text x="466" y="219" fill="#e8efdc">RS-422 / A</text>
-                  <text x="466" y="310" fill="#e8efdc">RS-422 / B</text>
-                  <text x="450" y="80" fill="#e8efdc">USB / DEBUG</text>
-                </g>
-                <circle
-                  class="board-led"
-                  cx="240"
-                  cy="348"
-                  r="5"
-                  fill="#dabb7c"
-                />
               </g>
-              <text class="svg-label" x="80" y="435" fill="currentColor">
-                01 / POWER → FIRMWARE → INTERFACES
-              </text>
+              <g class="assembly-base" filter="url(#assembly-shadow)">
+                <g transform="matrix(.85 .35 -.75 .52 395 170)">
+                  <rect
+                    x="10"
+                    y="24"
+                    width="600"
+                    height="450"
+                    rx="20"
+                    fill="#142f22"
+                    stroke="#233f2b"
+                    stroke-width="3"
+                  />
+                  <rect
+                    x="10"
+                    y="10"
+                    width="600"
+                    height="450"
+                    rx="20"
+                    fill="url(#pcb-surface)"
+                    stroke="#78947a"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="28"
+                    y="28"
+                    width="564"
+                    height="414"
+                    rx="10"
+                    stroke="#90ab83"
+                    stroke-opacity=".45"
+                  />
+                  <g fill="#d3b477" stroke="#162f23" stroke-width="5">
+                    <circle cx="44" cy="44" r="12" />
+                    <circle cx="576" cy="44" r="12" />
+                    <circle cx="44" cy="426" r="12" />
+                    <circle cx="576" cy="426" r="12" />
+                  </g>
+                  <g stroke="#6b926f" stroke-width="2">
+                    <path
+                      d="M80 300h90V145h95m-185 160v70h220V255m-85-50v30h290V105m-105 65h130v180H300m20 80h200V220"
+                    />
+                    <path
+                      d="M60 100h35v160h70m-85 60h60v80h330m-35-300v-35H280v70m-5 200v60h160v-60"
+                    />
+                    <path
+                      d="M250 80h150m-150 8h150m-150 8h150M65 220h45m-45 8h45m-45 8h45"
+                    />
+                  </g>
+                  <g class="flow-line" stroke="#dfbe7d" stroke-width="3">
+                    <path d="M80 300h90V145h95" />
+                    <path d="M215 205v30h290V105" />
+                    <path d="M400 170h130v180H300" />
+                  </g>
+                  <g fill="#9aaf87">
+                    <circle cx="170" cy="235" r="4" />
+                    <circle cx="530" cy="170" r="4" />
+                    <circle cx="300" cy="350" r="4" />
+                    <circle cx="505" cy="105" r="4" />
+                  </g>
+                  <g fill="#172f22" stroke="#8fa486">
+                    <rect x="72" y="103" width="30" height="50" />
+                    <rect x="72" y="169" width="30" height="20" />
+                    <rect x="235" y="360" width="45" height="20" />
+                    <rect x="345" y="363" width="45" height="20" />
+                    <rect x="454" y="350" width="37" height="26" />
+                    <rect x="458" y="390" width="33" height="16" />
+                  </g>
+                  <g fill="#e5d8ae">
+                    <path
+                      d="M150 112h12v8h-12zm0 18h12v8h-12zm0 18h12v8h-12zm0 18h12v8h-12zM266 112h12v8h-12zm0 18h12v8h-12zm0 18h12v8h-12zm0 18h12v8h-12z"
+                    />
+                    <rect x="117" y="367" width="50" height="18" />
+                    <rect x="117" y="395" width="50" height="10" />
+                  </g>
+                  <g class="svg-label" fill="#c4d0af" font-size="11">
+                    <text x="325" y="65">DPINY / RTK BASE STATION</text>
+                    <text x="323" y="417">POWER / CONTROL / RTCM</text>
+                    <text x="63" y="413">ISOLATED</text>
+                  </g>
+                  <circle
+                    class="board-led"
+                    cx="210"
+                    cy="395"
+                    r="5"
+                    fill="#f6cc77"
+                  />
+                </g>
+              </g>
+              <g class="assembly-components">
+                <g transform="matrix(.85 .35 -.75 .52 395 170)">
+                  <rect
+                    x="165"
+                    y="100"
+                    width="101"
+                    height="106"
+                    rx="5"
+                    fill="#11291e"
+                  />
+                  <rect
+                    x="165"
+                    y="88"
+                    width="101"
+                    height="106"
+                    rx="5"
+                    fill="#1b3025"
+                    stroke="#9aa88e"
+                  />
+                  <path d="M179 105h73v73h-73z" stroke="#5c7360" />
+                  <g
+                    class="svg-label"
+                    fill="#e1e7cc"
+                    text-anchor="middle"
+                    font-size="10"
+                  >
+                    <text x="215" y="136">STM32F407</text>
+                    <text x="215" y="157">CORTEX-M4</text>
+                  </g>
+                  <rect
+                    x="300"
+                    y="185"
+                    width="192"
+                    height="160"
+                    rx="7"
+                    fill="#586d5e"
+                    stroke="#a4b09a"
+                  />
+                  <rect
+                    x="300"
+                    y="166"
+                    width="192"
+                    height="160"
+                    rx="7"
+                    fill="url(#shield-surface)"
+                    stroke="#e4e5cf"
+                    stroke-width="2"
+                  />
+                  <rect
+                    x="314"
+                    y="180"
+                    width="164"
+                    height="132"
+                    rx="4"
+                    stroke="#70856e"
+                  />
+                  <g class="svg-label" fill="#304c38" text-anchor="middle">
+                    <text x="396" y="230" font-size="26">UM982</text>
+                    <text x="396" y="254" font-size="11">GNSS / RTCM</text>
+                    <text x="396" y="289" font-size="9">
+                      HIGH PRECISION POSITIONING
+                    </text>
+                  </g>
+                  <g
+                    fill="url(#port-surface)"
+                    stroke="#947044"
+                    stroke-width="2"
+                  >
+                    <rect x="15" y="266" width="98" height="66" rx="4" />
+                    <rect x="528" y="88" width="72" height="74" rx="4" />
+                    <rect x="528" y="189" width="72" height="74" rx="4" />
+                    <rect x="440" y="14" width="76" height="42" rx="3" />
+                  </g>
+                  <g fill="#1f3728">
+                    <rect x="14" y="278" width="16" height="42" />
+                    <rect x="579" y="103" width="20" height="42" />
+                    <rect x="579" y="204" width="20" height="42" />
+                    <rect x="453" y="14" width="49" height="13" />
+                  </g>
+                  <g stroke="#f2deb0" stroke-width="3">
+                    <path
+                      d="M545 100v50m12-50v50M545 201v50m12-50v50M42 280h54m-54 13h54m-54 13h54"
+                    />
+                  </g>
+                </g>
+              </g>
+              <g class="assembly-callouts" stroke="#829578" stroke-width="1">
+                <path d="M130 180h120l190 115" />
+                <path d="M680 137h110v130l-215 100" />
+                <path d="M95 545h110l40-130" />
+                <path d="M657 588h160v-125l-61-56" />
+                <g
+                  class="svg-label"
+                  fill="#38503a"
+                  stroke="none"
+                  font-size="12"
+                >
+                  <text x="130" y="163">STM32F407</text>
+                  <text x="680" y="120">UM982 / GNSS</text>
+                  <text x="95" y="571">ISOLATED POWER</text>
+                  <text x="657" y="614">DUAL RS-422</text>
+                </g>
+                <g fill="#a16e3d" stroke="none">
+                  <circle cx="440" cy="295" r="3" />
+                  <circle cx="575" cy="367" r="3" />
+                  <circle cx="245" cy="415" r="3" />
+                  <circle cx="756" cy="407" r="3" />
+                </g>
+              </g>
             </svg>
           </div>
           <figcaption>
             <span
-              class=""
               data-zh="dpiny 简化结构图，非实物照片。"
               data-en="Simplified dpiny architecture, not a hardware photograph."
               >dpiny 简化结构图，非实物照片。</span
