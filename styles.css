@@ -2157,11 +2157,27 @@ html[lang="en"] .home-page .project-chapter h3 {
   overflow-wrap: anywhere;
   font: 10px/1.9 var(--mono);
 }
+.replay-chart {
+  container: replay / inline-size;
+}
 .replay-chart img,
 .schematic-preview img {
   display: block;
   width: 100%;
   height: auto;
+}
+/* Use the readable compact drawing by default, including without container
+   query support. A desktop viewport can still have a narrow evidence column. */
+.replay-chart .chart-wide {
+  display: none;
+}
+@container replay (min-width: 600px) {
+  .replay-chart .chart-wide {
+    display: block;
+  }
+  .replay-chart .chart-compact {
+    display: none;
+  }
 }
 html[lang^="zh"] .media-en,
 html[lang="en"] .media-zh {
