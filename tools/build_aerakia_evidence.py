@@ -22,10 +22,11 @@ def quaternion_error(row, algorithm):
     return math.degrees(2 * math.acos(min(1.0, dot)))
 
 
-def render_chart(series, language):
+def render_chart(series, language, compact=False):
     zh = language == "zh"
-    width, height = 760, 430
-    left, top, plot_width, plot_height = 62, 70, 670, 290
+    width, height = (360, 310) if compact else (760, 430)
+    left, top = (42, 70) if compact else (62, 70)
+    plot_width, plot_height = width - left - 18, height - top - 70
     maximum = math.ceil(max(row[1] for row in series) / 10) * 10
     x = lambda value: left + value / 20 * plot_width
     y = lambda value: top + plot_height - value / maximum * plot_height
@@ -33,18 +34,18 @@ def render_chart(series, language):
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
            f'<title id="title">{title}</title>',
            '<desc id="desc">Geodesic attitude error from 2000 synthetic samples replayed through the native C algorithms. The magnetic bias starts at 6.66 seconds.</desc>',
-           '<rect width="760" height="430" fill="#f3f5ed"/>',
-           '<g font-family="Arial, Noto Sans CJK SC, sans-serif" fill="#4c5d47" font-size="14">',
-           f'<text x="{left}" y="29">{"姿态偏差（度）· 越低越接近参考值" if zh else "Attitude error (degrees) · lower is closer to reference"}</text>',
+           f'<rect width="{width}" height="{height}" fill="#f3f5ed"/>',
+           '<g font-family="Arial, Noto Sans CJK SC, sans-serif" fill="#4c5d47" font-size="16">',
+           f'<text x="{left}" y="29">{("姿态偏差（度）" if zh else "Attitude error (degrees)") if compact else ("姿态偏差（度）· 越低越接近参考值" if zh else "Attitude error (degrees) · lower is closer to reference")}</text>',
            f'<rect x="{x(6.66):.2f}" y="{top}" width="{x(20)-x(6.66):.2f}" height="{plot_height}" fill="#e8e6da"/>']
     for tick in range(0, maximum + 1, 10):
         svg.extend([f'<path d="M{left} {y(tick):.2f}h{plot_width}" stroke="#d0d7c8"/>',
                     f'<text x="{left-14}" y="{y(tick)+5:.2f}" text-anchor="end">{tick}</text>'])
     for tick in range(0, 21, 5):
-        svg.append(f'<text x="{x(tick):.2f}" y="389" text-anchor="middle">{tick}</text>')
+        svg.append(f'<text x="{x(tick):.2f}" y="{height-41}" text-anchor="middle">{tick}</text>')
     svg.extend([f'<path d="M{x(6.66):.2f} {top}v{plot_height}" stroke="#827b63" stroke-dasharray="4 4"/>',
-                f'<text x="{x(6.66)+10:.2f}" y="56">{"此处加入磁场偏置" if zh else "Magnetic bias begins"}</text>',
-                f'<text x="{left+plot_width}" y="419" text-anchor="end">{"回放时间（秒）" if zh else "Replay time (seconds)"}</text>', '</g>'])
+                f'<text x="{x(6.66)+10:.2f}" y="56">{("加入干扰" if zh else "Bias begins") if compact else ("此处加入磁场偏置" if zh else "Magnetic bias begins")}</text>',
+                f'<text x="{left+plot_width}" y="{height-11}" text-anchor="end">{"回放时间（秒）" if zh else "Replay time (seconds)"}</text>', '</g>'])
     # Render every point: the near-zero robust curve is not replaced by a flat line.
     for index, color, dash in ((1, "#a65f3d", ""), (2, "#2c6347", ' stroke-dasharray="7 4"')):
         points = " ".join(f"{x(row[0]):.2f},{y(row[index]):.2f}" for row in series)
@@ -76,6 +77,7 @@ def main():
             raise ValueError(f"Chart and reported metric disagree for {name}")
     for language in ("zh", "en"):
         (output / f"aerakia-mag-bias-{language}.svg").write_text(render_chart(series, language))
+        (output / f"aerakia-mag-bias-mobile-{language}.svg").write_text(render_chart(series, language, compact=True))
     with (output / "aerakia-mag-bias-series.csv").open("w", newline="") as target:
         writer = csv.writer(target)
         writer.writerow(["time_s", "mahony_standard_attitude_error_deg", "mahony_robust_attitude_error_deg"])
