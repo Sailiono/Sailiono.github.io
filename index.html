@@ -677,18 +677,19 @@
                 </svg>
               </div>
             </div>
-            <nav
+            <div
               class="scene-nav"
+              role="group"
               aria-label="项目示意"
               data-aria-zh="项目示意"
               data-aria-en="Project illustrations"
             >
-              <a href="#dpiny-summary" data-scene-link="0" aria-current="step"
-                ><span class="mono">01</span>dpiny</a
-              ><a href="#aerakia-summary" data-scene-link="1"
-                ><span class="mono">02</span>Aerakia</a
-              >
-            </nav>
+              <button type="button" data-scene-link="0" aria-pressed="true">
+                <span class="mono">01</span>dpiny</button
+              ><button type="button" data-scene-link="1" aria-pressed="false">
+                <span class="mono">02</span>Aerakia
+              </button>
+            </div>
             <div class="chapter-progress" aria-hidden="true"><i></i></div>
             <figcaption>
               <span

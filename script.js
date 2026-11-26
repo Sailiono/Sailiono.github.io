@@ -119,6 +119,14 @@
   const workflowSteps = [...document.querySelectorAll(".workflow-line li")];
   let framePending = false;
   let currentScene = -1;
+  let selectedScene = null;
+  // Illustration controls do not navigate away from an unpinned workbench.
+  sceneLinks.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      selectedScene = index;
+      scheduleFrame();
+    });
+  });
   const clamp = (value) => Math.max(0, Math.min(1, value));
   function updateFrame() {
     framePending = false;
@@ -153,6 +161,7 @@
     bounds.forEach((rect, index) => {
       if (rect.top <= trigger) active = index;
     });
+    if (selectedScene !== null) active = selectedScene;
     const progress = bounds.length
       ? clamp((trigger - bounds[active].top) / bounds[active].height)
       : 1;
@@ -194,8 +203,7 @@
         scene.classList.toggle("is-active", i === active),
       );
       sceneLinks.forEach((item, i) => {
-        if (i === active) item.setAttribute("aria-current", "step");
-        else item.removeAttribute("aria-current");
+        item.setAttribute("aria-pressed", String(i === active));
       });
       if (count)
         count.textContent =
@@ -269,8 +277,12 @@
     updateMotionUI();
     scheduleFrame();
   });
-  window.addEventListener("scroll", scheduleFrame, { passive: true });
-  window.addEventListener("resize", scheduleFrame, { passive: true });
+  const followReading = () => {
+    selectedScene = null;
+    scheduleFrame();
+  };
+  window.addEventListener("scroll", followReading, { passive: true });
+  window.addEventListener("resize", followReading, { passive: true });
   window.addEventListener("load", scheduleFrame, { once: true });
   if (stage && "ResizeObserver" in window) {
     new ResizeObserver(scheduleFrame).observe(stage);

@@ -496,13 +496,17 @@ html:not(.js) .story-visual {
   visibility: visible;
   transform: none;
 }
+html:not(.js) .scene-nav {
+  display: none;
+}
 .scene-nav {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   padding: 0 18px;
   gap: 12px;
 }
-.scene-nav a {
+.scene-nav button {
+  text-align: left;
   font-size: 10px;
   line-height: 1.5;
   padding: 13px 0 15px;
@@ -510,12 +514,12 @@ html:not(.js) .story-visual {
   color: var(--muted);
   white-space: nowrap;
 }
-.scene-nav a > span {
+.scene-nav button > span {
   display: block;
   font-size: 9px;
   margin-bottom: 4px;
 }
-.scene-nav a[aria-current="step"] {
+.scene-nav button[aria-pressed="true"] {
   border-color: var(--copper);
   color: var(--ink);
 }
@@ -1293,11 +1297,11 @@ html[lang="en"] .scene-nav {
     padding-inline: 14px;
     gap: 16px;
   }
-  .scene-nav a {
+  .scene-nav button {
     font-size: 10px;
     padding-block: 8px;
   }
-  .scene-nav a > span {
+  .scene-nav button > span {
     display: none;
   }
   .story-visual figcaption {
@@ -1517,7 +1521,7 @@ html[lang="en"] .scene-nav {
   .scene-nav {
     gap: 8px;
   }
-  .scene-nav a {
+  .scene-nav button {
     font-size: 9px;
   }
   .story-visual figcaption {
@@ -1975,7 +1979,7 @@ html[lang="en"] .home-page .project-chapter h3 {
   .home-page .scene-nav {
     gap: 8px;
   }
-  .home-page .scene-nav a {
+  .home-page .scene-nav button {
     font-size: 9px;
   }
   .home-page .project-chapter h3,
@@ -2392,7 +2396,7 @@ html[lang="en"] .media-zh {
 .home-page .story-stage {
   margin-block: 20px;
 }
-.home-page .story-visual .scene-nav a {
+.home-page .story-visual .scene-nav button {
   font-size: 15px;
   padding-block: 16px;
 }
@@ -2448,7 +2452,7 @@ html[lang="en"] .media-zh {
   .home-page .story-stage {
     margin-block: 0;
   }
-  .home-page .story-visual .scene-nav a {
+  .home-page .story-visual .scene-nav button {
     font-size: 12px;
     padding-block: 9px;
   }
