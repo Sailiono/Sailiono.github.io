@@ -119,11 +119,12 @@
   const workflowSteps = [...document.querySelectorAll(".workflow-line li")];
   let framePending = false;
   let currentScene = -1;
+  let readingScene = 0;
   let selectedScene = null;
   // Illustration controls do not navigate away from an unpinned workbench.
   sceneLinks.forEach((button, index) => {
     button.addEventListener("click", () => {
-      selectedScene = index;
+      selectedScene = { index, readingScene };
       scheduleFrame();
     });
   });
@@ -161,7 +162,22 @@
     bounds.forEach((rect, index) => {
       if (rect.top <= trigger) active = index;
     });
-    if (selectedScene !== null) active = selectedScene;
+    // Keep a manual choice while the reader pans across a tall illustration.
+    // Resume automatic scenes on a new chapter or after leaving the figure.
+    readingScene = active;
+    if (selectedScene !== null) {
+      const figure = stage?.getBoundingClientRect();
+      if (
+        active !== selectedScene.readingScene ||
+        !figure ||
+        figure.bottom <= scrollPadding ||
+        figure.top >= height
+      ) {
+        selectedScene = null;
+      } else {
+        active = selectedScene.index;
+      }
+    }
     const progress = bounds.length
       ? clamp((trigger - bounds[active].top) / bounds[active].height)
       : 1;
@@ -277,12 +293,15 @@
     updateMotionUI();
     scheduleFrame();
   });
-  const followReading = () => {
-    selectedScene = null;
-    scheduleFrame();
-  };
-  window.addEventListener("scroll", followReading, { passive: true });
-  window.addEventListener("resize", followReading, { passive: true });
+  window.addEventListener("scroll", scheduleFrame, { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      selectedScene = null;
+      scheduleFrame();
+    },
+    { passive: true },
+  );
   window.addEventListener("load", scheduleFrame, { once: true });
   if (stage && "ResizeObserver" in window) {
     new ResizeObserver(scheduleFrame).observe(stage);
