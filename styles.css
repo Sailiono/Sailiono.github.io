@@ -2004,6 +2004,14 @@ html:not(.motion-on) .home-page .visual-scene {
 
 /* Evidence-led cases: a plain-language lead and real material share the page.
    Large conceptual diagrams remain available, but are not a reading obstacle. */
+@media (min-width: 861px) {
+  .home-page .hero-copy {
+    width: 43%;
+  }
+  .home-page .hero-figure {
+    width: 58%;
+  }
+}
 .home-page .story-layout {
   display: block;
 }
