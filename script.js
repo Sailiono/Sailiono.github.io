@@ -119,6 +119,21 @@
   const workflowSteps = [...document.querySelectorAll(".workflow-line li")];
   let framePending = false;
   let currentScene = -1;
+  const illustrationPanel = document.querySelector(".illustration-details");
+  let selectedIllustration = null;
+  // The engineering records are primary; optional diagrams have manual selection.
+  sceneLinks.forEach((link, index) => {
+    link.addEventListener("click", (event) => {
+      if (!illustrationPanel?.open) return;
+      event.preventDefault();
+      selectedIllustration = index;
+      scheduleFrame();
+    });
+  });
+  illustrationPanel?.addEventListener("toggle", () => {
+    if (!illustrationPanel.open) selectedIllustration = null;
+    scheduleFrame();
+  });
   const clamp = (value) => Math.max(0, Math.min(1, value));
   function updateFrame() {
     framePending = false;
@@ -135,6 +150,8 @@
     // Leave room to read below a mobile illustration; never pin a panel that
     // cannot fit. Measuring also covers translated captions and browser zoom.
     const stageFits =
+      stage &&
+      getComputedStyle(stage).position === "sticky" &&
       stageHeight + stageTop + (mobile.matches ? 200 : 24) <= height;
     const scrollPadding =
       parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
@@ -152,6 +169,9 @@
     bounds.forEach((rect, index) => {
       if (rect.top <= trigger) active = index;
     });
+    if (illustrationPanel?.open && selectedIllustration !== null) {
+      active = selectedIllustration;
+    }
     const progress = bounds.length
       ? clamp((trigger - bounds[active].top) / bounds[active].height)
       : 1;

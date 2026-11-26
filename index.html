@@ -103,22 +103,24 @@
             CLARK CUI / 嵌入式开发
           </p>
           <h1 id="hero-title">
-            <span class="" data-zh="嵌入式系统开发" data-en="Embedded systems"
-              >嵌入式系统开发</span
+            <span
+              class=""
+              data-zh="从硬件到软件"
+              data-en="From hardware to software"
+              >从硬件到软件</span
             ><span
               class="hero-emphasis"
-              data-zh="与算法验证"
-              data-en="&amp; estimator validation"
-              >与算法验证</span
+              data-zh="让设备完成实际工作"
+              data-en="Making devices work"
+              >让设备完成实际工作</span
             >
           </h1>
           <p
             class="hero-summary"
-            data-zh="主要从事 STM32 固件开发、设备接口集成及 Linux 相机调试，同时开展飞行估计算法的主机侧验证。本站整理相关项目的实现、调试记录与公开代码。"
-            data-en="My work covers STM32 firmware, device-interface integration, Linux camera bring-up and host-side validation of flight-estimation algorithms. This site presents the implementations, technical records and public code."
+            data-zh="我的工作围绕设备如何运行、通信与获取数据展开：从定位基站和信号接口，到飞行状态估计与相机平台。这里先介绍每个项目解决的问题，再展示实际代码、回放结果和调试记录。"
+            data-en="I work on how devices run, communicate and acquire data: positioning stations, signal interfaces, orientation estimation and camera platforms. Each project starts with its purpose, followed by actual code, replay results and engineering records."
           >
-            主要从事 STM32 固件开发、设备接口集成及 Linux
-            相机调试，同时开展飞行估计算法的主机侧验证。本站整理相关项目的实现、调试记录与公开代码。
+            我的工作围绕设备如何运行、通信与获取数据展开：从定位基站和信号接口，到飞行状态估计与相机平台。这里先介绍每个项目解决的问题，再展示实际代码、回放结果和调试记录。
           </p>
           <div class="hero-actions">
             <a href="#projects" class="button button-primary"
@@ -484,424 +486,363 @@
           </div>
           <p
             class="section-summary"
-            data-zh="四个项目分别覆盖 GNSS 设备、飞行状态估计、隔离通信接口和 Linux 相机。从系统组成到实现取舍，介绍各自的技术内容与当前进展。"
-            data-en="Four projects spanning GNSS devices, flight-state estimation, isolated interfaces and Linux cameras, with their system components, implementation decisions and current progress."
+            data-zh="定位数据如何送到其他设备，受干扰时如何判断朝向，不同接口如何互通，相机如何输出图像。四个项目分别处理这些问题；用途、具体工作和现有成果都在本页。"
+            data-en="How positioning data reaches other devices, how orientation is estimated under disturbance, how interfaces connect, and how a camera supplies images. These four projects address those questions, with their purpose, work and current results on this page."
           >
-            四个项目分别覆盖 GNSS 设备、飞行状态估计、隔离通信接口和 Linux
-            相机。从系统组成到实现取舍，介绍各自的技术内容与当前进展。
+            定位数据如何送到其他设备，受干扰时如何判断朝向，不同接口如何互通，相机如何输出图像。四个项目分别处理这些问题；用途、具体工作和现有成果都在本页。
           </p>
         </div>
+        <nav
+          class="project-jump"
+          aria-label="选择项目"
+          data-aria-zh="选择项目"
+          data-aria-en="Choose a project"
+        >
+          <a href="#dpiny-summary"
+            ><span data-zh="01 定位设备" data-en="01 Positioning device"
+              >01 定位设备</span
+            ></a
+          ><a href="#aerakia-summary"
+            ><span data-zh="02 飞行状态估计" data-en="02 Orientation estimation"
+              >02 飞行状态估计</span
+            ></a
+          ><a href="#sbus-summary"
+            ><span data-zh="03 接口互通" data-en="03 Interface bridge"
+              >03 接口互通</span
+            ></a
+          ><a href="#splicia-summary"
+            ><span data-zh="04 相机平台" data-en="04 Camera platform"
+              >04 相机平台</span
+            ></a
+          >
+        </nav>
         <div class="story-layout">
-          <figure class="story-visual">
-            <div class="stage-top">
-              <span class="mono">WORKBENCH / SCROLL STUDIES</span
-              ><span class="stage-count mono" aria-hidden="true">01 — 04</span>
-            </div>
-            <div class="story-stage" aria-hidden="true">
-              <div class="visual-scene is-active" data-scene-visual="0">
-                <svg
-                  class="project-diagram"
-                  viewBox="0 0 640 470"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <g class="board-shadow">
-                    <rect
-                      x="80"
-                      y="65"
-                      width="480"
-                      height="330"
-                      rx="20"
-                      fill="#294d3e"
-                    />
-                    <path
-                      d="M95 90h450M95 370h450"
-                      stroke="#a9c5ad"
-                      opacity=".3"
-                    />
-                    <g fill="#e9e6d6">
-                      <circle cx="102" cy="88" r="5" />
-                      <circle cx="538" cy="88" r="5" />
-                      <circle cx="102" cy="372" r="5" />
-                      <circle cx="538" cy="372" r="5" />
-                    </g>
-                    <g stroke="#719581" stroke-width="2">
-                      <path
-                        d="M145 165h68v-25h62m-130 25v145h130m60-130v75m50 55h70v-140h38m-38 140v38h38"
-                      />
-                      <path d="M335 125v-25h118" />
-                    </g>
-                    <g class="flow-line" stroke="#d5b57a" stroke-width="3">
-                      <path d="M145 165h68v-25h62" />
-                      <path d="M145 165v145h130" />
-                      <path d="M335 180v75" />
-                      <path d="M385 310h70v-140h38m-38 140v38h38" />
-                    </g>
-                    <path
-                      class="progress-draw"
-                      pathLength="1"
-                      d="M145 165h68v-25h62m60 40v75m50 55h70v-140h38m-38 140v38h38"
-                      stroke="#f4e2b4"
-                      stroke-width="4"
-                    />
-                    <g fill="#18382d" stroke="#9ebba3">
-                      <rect x="275" y="110" width="120" height="70" rx="3" />
-                      <rect x="275" y="255" width="110" height="95" rx="3" />
-                    </g>
-                    <g fill="#ddc798">
-                      <rect x="115" y="143" width="45" height="44" rx="2" />
-                      <rect x="493" y="145" width="40" height="50" rx="2" />
-                      <rect x="493" y="325" width="40" height="48" rx="2" />
-                      <rect x="450" y="91" width="58" height="22" rx="2" />
-                    </g>
-                    <g stroke="#cfddc8" stroke-width="3">
-                      <path
-                        d="M290 100v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10M290 180v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10"
-                      />
-                    </g>
-                    <g class="svg-label" fill="#e8efdc" text-anchor="middle">
-                      <text x="335" y="143">STM32F407</text>
-                      <text x="335" y="163" font-size="10">FIRMWARE</text>
-                      <text x="330" y="297">UM982</text>
-                      <text x="330" y="320" font-size="11">GNSS / RTCM</text>
-                    </g>
-                    <g class="svg-label" fill="#244333">
-                      <text x="115" y="211" fill="#e8efdc">24 V</text>
-                      <text x="466" y="219" fill="#e8efdc">RS-422 / A</text>
-                      <text x="466" y="310" fill="#e8efdc">RS-422 / B</text>
-                      <text x="450" y="80" fill="#e8efdc">USB / DEBUG</text>
-                    </g>
-                    <circle
-                      class="board-led"
-                      cx="240"
-                      cy="348"
-                      r="5"
-                      fill="#dabb7c"
-                    />
-                  </g>
-                  <text class="svg-label" x="80" y="435" fill="currentColor">
-                    01 / POWER → FIRMWARE → INTERFACES
-                  </text>
-                </svg>
-              </div>
-              <div class="visual-scene" data-scene-visual="1">
-                <svg
-                  class="project-diagram"
-                  viewBox="0 0 640 470"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <g stroke="#adb9a7">
-                    <path
-                      d="M110 350h420M150 100v290M110 300h420M110 250h420M110 200h420M110 150h420"
-                      opacity=".5"
-                    />
-                    <path d="M320 94v280M180 234h280" stroke-dasharray="4 8" />
-                  </g>
-                  <circle cx="320" cy="234" r="108" stroke="#809a81" />
-                  <circle
-                    cx="320"
-                    cy="234"
-                    r="78"
-                    stroke="#b9c5af"
-                    stroke-dasharray="2 8"
-                  />
-                  <g class="replay-arm" stroke="#32583f" stroke-width="2">
-                    <path d="M230 234h180M320 144v180" />
-                    <path
-                      d="m320 168 13 26h-26Z"
-                      fill="#b17b49"
-                      stroke="none"
-                    />
-                    <path
-                      d="m260 255 60-50 60 50-60-16Z"
-                      fill="#47664d"
-                      fill-opacity=".12"
-                    />
-                  </g>
-                  <circle cx="320" cy="234" r="5" fill="#b17b49" />
-                  <path
-                    d="M140 360c40-65 80 40 120-5s80-50 120-10 80-40 120-9"
-                    stroke="#9dae99"
-                    stroke-width="2"
-                  />
-                  <path
-                    class="progress-draw"
-                    pathLength="1"
-                    d="M140 360c40-65 80 40 120-5s80-50 120-10 80-40 120-9"
-                    stroke="#b17b49"
-                    stroke-width="3"
-                  />
-                  <g class="replay-cursor">
-                    <path d="M140 105v285" stroke="#b17b49" opacity=".7" />
-                    <rect
-                      x="129"
-                      y="382"
-                      width="22"
-                      height="5"
-                      fill="#b17b49"
-                    />
-                  </g>
-                  <g class="svg-label" fill="currentColor">
-                    <text x="82" y="73">SAME INPUT / DIFFERENT ESTIMATORS</text>
-                    <text x="177" y="425">CSV</text>
-                    <text x="288" y="425">MAHONY</text>
-                    <text x="421" y="425">ESKF</text>
-                  </g>
-                </svg>
-              </div>
-              <div class="visual-scene" data-scene-visual="2">
-                <svg
-                  class="project-diagram"
-                  viewBox="0 0 640 470"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <g stroke="#b8c3b0" stroke-width="1">
-                    <path
-                      d="M80 140h480M80 195h480M80 275h480M80 330h480"
-                      stroke-dasharray="3 7"
-                    />
-                  </g>
-                  <rect
-                    x="285"
-                    y="95"
-                    width="70"
-                    height="285"
-                    rx="35"
-                    fill="#e1e6d9"
-                  />
-                  <path
-                    d="M320 110v255"
-                    stroke="#9daa93"
-                    stroke-dasharray="3 6"
-                  />
-                  <path
-                    class="signal-wave"
-                    d="M80 195h28v-55h24v55h48v-55h24v55h24v-55h48v55h24v-55h24v55h48v-55h48v55h24v-55h24v55h48v-55h24v55h44"
-                    stroke="#375c44"
-                    stroke-width="3"
-                  />
-                  <path
-                    class="signal-wave"
-                    d="M80 330h28v-55h24v55h48v-55h24v55h24v-55h48v55h24v-55h24v55h48v-55h48v55h24v-55h24v55h48v-55h24v55h44"
-                    stroke="#b17b49"
-                    stroke-width="3"
-                  />
-                  <g class="replay-cursor">
-                    <path d="M80 95v285" stroke="#b17b49" />
-                    <circle cx="80" cy="95" r="4" fill="#b17b49" />
-                  </g>
-                  <g class="svg-label" fill="currentColor">
-                    <text x="80" y="76">SBUS / IN</text>
-                    <text x="80" y="252">RS-422 / OUT</text>
-                    <text x="80" y="425">ISOLATION + LEVEL CONVERSION</text>
-                  </g>
-                </svg>
-              </div>
-              <div class="visual-scene" data-scene-visual="3">
-                <svg
-                  class="project-diagram"
-                  viewBox="0 0 640 470"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M130 90h-35v35m415-35h35v35M130 365h-35v-35m415 35h35v-35"
-                    stroke="#385e43"
-                    stroke-width="2"
-                  />
-                  <rect
-                    x="145"
-                    y="100"
-                    width="350"
-                    height="250"
-                    fill="#e4e8dd"
-                    stroke="#8ea488"
-                  />
-                  <g stroke="#b8c4ac" opacity=".7">
-                    <path
-                      d="M145 150h350m-350 50h350m-350 50h350m-350 50h350m-300-200v250m50-250v250m50-250v250m50-250v250m50-250v250m50-250v250"
-                    />
-                  </g>
-                  <circle
-                    cx="320"
-                    cy="225"
-                    r="72"
-                    fill="#d1dac8"
-                    stroke="#829a7b"
-                  />
-                  <circle cx="320" cy="225" r="46" fill="#536f4d" />
-                  <circle cx="320" cy="225" r="22" fill="#294c38" />
-                  <path d="M284 225h72m-36-36v72" stroke="#ddc18d" />
-                  <g class="camera-scan">
-                    <path d="M145 100h350" stroke="#b17b49" stroke-width="2" />
-                    <rect
-                      x="145"
-                      y="100"
-                      width="350"
-                      height="30"
-                      fill="#c9a16b"
-                      fill-opacity=".08"
-                    />
-                  </g>
-                  <path
-                    d="M165 315h310"
-                    stroke="#b17b49"
-                    stroke-dasharray="4 8"
-                  />
-                  <g class="svg-label" fill="currentColor">
-                    <text x="95" y="68">LINUX / IMX296 / RAW</text>
-                    <text x="95" y="418">CAMERA BRING-UP</text>
-                    <text x="415" y="418" fill="#b17b49">IN PROGRESS</text>
-                  </g>
-                </svg>
-              </div>
-            </div>
-            <nav
-              class="scene-nav"
-              aria-label="项目示意"
-              data-aria-zh="项目示意"
-              data-aria-en="Project illustrations"
-            >
-              <a href="#dpiny-summary" data-scene-link="0" aria-current="step"
-                ><span class="mono">01</span>dpiny</a
-              ><a href="#aerakia-summary" data-scene-link="1"
-                ><span class="mono">02</span>Aerakia</a
-              ><a href="#sbus-summary" data-scene-link="2"
-                ><span class="mono">03</span>SBUS–RS-422</a
-              ><a href="#splicia-summary" data-scene-link="3"
-                ><span class="mono">04</span>Splicia</a
-              >
-            </nav>
-            <div class="chapter-progress" aria-hidden="true"><i></i></div>
-            <figcaption>
-              <span
-                class=""
-                data-zh="项目原理示意；动画不代表实测信号或性能结果。"
-                data-en="Conceptual project illustrations; animations do not represent measured signals or performance."
-                >项目原理示意；动画不代表实测信号或性能结果。</span
-              >
-            </figcaption>
-          </figure>
           <div class="chapter-list">
             <article
               class="project-chapter is-active"
               data-scene="0"
               id="dpiny-summary"
             >
-              <div class="chapter-kicker">
-                <span class="chapter-number mono">01</span
-                ><span
-                  class=""
-                  data-zh="GNSS / RTK 基站"
-                  data-en="GNSS / RTK base station"
-                  >GNSS / RTK 基站</span
+              <div class="project-lead">
+                <div class="chapter-kicker">
+                  <span class="chapter-number mono">01</span
+                  ><span
+                    class=""
+                    data-zh="GNSS / RTK 基站"
+                    data-en="GNSS / RTK base station"
+                    >GNSS / RTK 基站</span
+                  >
+                </div>
+                <p class="project-name">dpiny</p>
+                <h3
+                  data-zh="把定位模块做成可维护的基站设备"
+                  data-en="Making a positioning module into a maintainable base station"
                 >
-              </div>
-              <p class="project-name">dpiny</p>
-              <h3>
-                <span
-                  class=""
-                  data-zh="RTK 基站硬件与固件"
-                  data-en="RTK base-station hardware &amp; firmware"
-                  >RTK 基站硬件与固件</span
+                  把定位模块做成可维护的基站设备
+                </h3>
+                <p
+                  class="project-description"
+                  data-zh="基站向其他定位设备发送参考数据，供它们修正定位结果。dpiny 围绕这一用途整合供电、双路输出和维护软件；除了发送数据，还要能够配置、诊断和从重启中恢复。"
+                  data-en="A base station sends reference data that other positioning devices use to correct their results. dpiny integrates power, dual outputs and maintenance software for that purpose, making the device configurable and diagnosable as well as able to transmit data and recover after reset."
                 >
-              </h3>
-              <p
-                class="project-description"
-                data-zh="将 GNSS 模块集成为可配置、可诊断的 RTK 基站设备。UM982 提供定位与 RTCM 差分数据，STM32F407 负责设备控制与维护，隔离供电和通信接口完成设备级集成。"
-                data-en="A configurable, diagnosable RTK base station built around a GNSS module. The UM982 supplies positioning and RTCM correction data; the STM32F407 handles control and maintenance, with isolated power and communication interfaces completing the device integration."
-              >
-                将 GNSS 模块集成为可配置、可诊断的 RTK 基站设备。UM982
-                提供定位与 RTCM 差分数据，STM32F407
-                负责设备控制与维护，隔离供电和通信接口完成设备级集成。
-              </p>
-              <div class="project-details">
-                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
-                <ul class="project-system" role="list">
-                  <li>
-                    <strong>UM982</strong
-                    ><span
-                      data-zh="定位与差分数据"
-                      data-en="Positioning &amp; corrections"
-                      >定位与差分数据</span
-                    >
-                  </li>
-                  <li>
-                    <strong>STM32F407</strong
-                    ><span
-                      data-zh="配置与状态管理"
-                      data-en="Configuration &amp; status"
-                      >配置与状态管理</span
-                    >
-                  </li>
-                  <li>
-                    <strong>RS-422 / USB</strong
-                    ><span
-                      data-zh="数据与维护接口"
-                      data-en="Data &amp; maintenance"
-                      >数据与维护接口</span
-                    >
-                  </li>
-                </ul>
-                <h4 data-zh="实现特点" data-en="Implementation decisions">
-                  实现特点
-                </h4>
-                <dl class="project-feature-list">
+                  基站向其他定位设备发送参考数据，供它们修正定位结果。dpiny
+                  围绕这一用途整合供电、双路输出和维护软件；除了发送数据，还要能够配置、诊断和从重启中恢复。
+                </p>
+                <dl class="case-decisions">
                   <div>
-                    <dt data-zh="接口分工" data-en="Separate interfaces">
-                      接口分工
-                    </dt>
+                    <dt data-zh="关键难点" data-en="Challenge">关键难点</dt>
                     <dd
-                      data-zh="双路 RS-422 承载 RTCM 数据，USB CDC 提供配置与诊断入口，将外部数据链路与本地维护分开。"
-                      data-en="Dual RS-422 carries RTCM data, while USB CDC provides configuration and diagnostics, separating the external data link from local maintenance."
+                      data-zh="设备重启后，电脑上仍可能显示端口，但配置指令没有回应。"
+                      data-en="After a reset, the computer may still show a port even though configuration commands receive no response."
                     >
-                      双路 RS-422 承载 RTCM 数据，USB CDC
-                      提供配置与诊断入口，将外部数据链路与本地维护分开。
+                      设备重启后，电脑上仍可能显示端口，但配置指令没有回应。
                     </dd>
                   </div>
                   <div>
-                    <dt
-                      data-zh="数据与故障检查"
-                      data-en="Data &amp; fault checks"
-                    >
-                      数据与故障检查
-                    </dt>
+                    <dt data-zh="具体处理" data-en="Approach">具体处理</dt>
                     <dd
-                      data-zh="按消息类型和 CRC 检查 RTCM 数据流；结合 SWD 寄存器读取与串口日志，定位外设状态及复位问题。"
-                      data-en="RTCM inspection checks message types and CRCs. SWD register reads and serial logs help diagnose peripheral state and reset problems."
+                      data-zh="把重启前后能否响应纳入自动检查，并与构建、烧录和输出数据校验一起回归。"
+                      data-en="Check responses before and after reset, alongside build, flash and output-data integrity checks."
                     >
-                      按消息类型和 CRC 检查 RTCM 数据流；结合 SWD
-                      寄存器读取与串口日志，定位外设状态及复位问题。
-                    </dd>
-                  </div>
-                  <div>
-                    <dt data-zh="调试工作流" data-en="Debugging workflow">
-                      调试工作流
-                    </dt>
-                    <dd
-                      data-zh="将构建、烧录、测试和记录整理为 Liakia 工作流，并保留 USB CDC 复位恢复的故障分析、修改与回归记录。"
-                      data-en="Build, flashing, testing and records are organized into the Liakia workflow, with a separate USB CDC reset-recovery investigation, fix and regression record."
-                    >
-                      将构建、烧录、测试和记录整理为 Liakia 工作流，并保留 USB
-                      CDC 复位恢复的故障分析、修改与回归记录。
+                      把重启前后能否响应纳入自动检查，并与构建、烧录和输出数据校验一起回归。
                     </dd>
                   </div>
                 </dl>
-                <div class="project-status">
-                  <strong data-zh="公开进展" data-en="Public progress"
-                    >公开进展</strong
-                  >
-                  <p
-                    data-zh="已公开硬件架构、固件、工具与台架记录；台架结论仅适用于记录所列条件，不代表 GNSS 精度认证。"
-                    data-en="Hardware architecture, firmware, tools and bench records are public. Bench conclusions apply to the recorded conditions, not GNSS accuracy certification."
-                  >
-                    已公开硬件架构、固件、工具与台架记录；台架结论仅适用于记录所列条件，不代表
-                    GNSS 精度认证。
-                  </p>
-                </div>
+                <p
+                  class="case-boundary"
+                  data-zh="已公开固件、工具与历史台架记录；这里展示记录复核，不是本次硬件复测。"
+                  data-en="Firmware, tools and historical bench records are public. This is a review of those records, not a new hardware test."
+                >
+                  已公开固件、工具与历史台架记录；这里展示记录复核，不是本次硬件复测。
+                </p>
               </div>
+              <figure class="project-evidence">
+                <div class="evidence-heading">
+                  <p
+                    class="evidence-label"
+                    data-zh="真实材料 / 历史台架记录"
+                    data-en="Evidence / historical bench record"
+                  >
+                    真实材料 / 历史台架记录
+                  </p>
+                  <h4
+                    data-zh="重启之后，维护通道能否恢复？"
+                    data-en="Does the maintenance connection recover after reset?"
+                  >
+                    重启之后，维护通道能否恢复？
+                  </h4>
+                </div>
+                <ol class="bench-checks" role="list">
+                  <li>
+                    <span class="mono">01</span>
+                    <div>
+                      <strong data-zh="构建与烧录" data-en="Build &amp; flash"
+                        >构建与烧录</strong
+                      >
+                      <p
+                        data-zh="固件构建、写入与校验通过"
+                        data-en="Firmware built, flashed and verified"
+                      >
+                        固件构建、写入与校验通过
+                      </p>
+                    </div>
+                    <span class="record-pass">PASS</span>
+                  </li>
+                  <li>
+                    <span class="mono">02</span>
+                    <div>
+                      <strong
+                        data-zh="重启前可配置"
+                        data-en="Responds before reset"
+                        >重启前可配置</strong
+                      >
+                      <p
+                        data-zh="配置终端响应版本查询"
+                        data-en="The configuration shell answers a version query"
+                      >
+                        配置终端响应版本查询
+                      </p>
+                    </div>
+                    <span class="record-pass">PASS</span>
+                  </li>
+                  <li>
+                    <span class="mono">03</span>
+                    <div>
+                      <strong
+                        data-zh="重启后恢复"
+                        data-en="Recovers after reset"
+                        >重启后恢复</strong
+                      >
+                      <p
+                        data-zh="再次查询仍获得版本信息"
+                        data-en="The version query responds again after reset"
+                      >
+                        再次查询仍获得版本信息
+                      </p>
+                    </div>
+                    <span class="record-pass">PASS</span>
+                  </li>
+                  <li>
+                    <span class="mono">04</span>
+                    <div>
+                      <strong data-zh="输出数据校验" data-en="Output integrity"
+                        >输出数据校验</strong
+                      >
+                      <p
+                        data-zh="6 秒采集：28 帧通过校验，0 帧失败"
+                        data-en="6-second capture: 28 CRC-valid frames, 0 CRC failures"
+                      >
+                        6 秒采集：28 帧通过校验，0 帧失败
+                      </p>
+                    </div>
+                    <span class="record-pass">PASS</span>
+                  </li>
+                </ol>
+                <div class="record-excerpt">
+                  <p
+                    data-zh="公开日志摘录 · 非实时终端"
+                    data-en="Public log excerpt · not a live terminal"
+                  >
+                    公开日志摘录 · 非实时终端
+                  </p>
+                  <pre><code>PASS: USB CDC shell responded (before software reset)
+&gt;&gt; reset
+PASS: USB CDC shell responded (after software reset)
+PASS: USB CDC recovered after software reset</code></pre>
+                </div>
+                <figcaption>
+                  <span
+                    data-zh="2026-05-20 公开台架记录。参考固件 eb47ff1；结论限于这一轮记录和采集条件，不代表长期稳定性或定位精度认证。"
+                    data-en="Public bench record from 2026-05-20, reference firmware eb47ff1. Results apply only to this run and its conditions, not long-term reliability or positioning certification."
+                    >2026-05-20 公开台架记录。参考固件
+                    eb47ff1；结论限于这一轮记录和采集条件，不代表长期稳定性或定位精度认证。</span
+                  >
+                </figcaption>
+              </figure>
+              <details class="technical-notes">
+                <summary>
+                  <span
+                    data-zh="实现细节、测试条件与原始资料"
+                    data-en="Implementation, test conditions and source material"
+                    >实现细节、测试条件与原始资料</span
+                  >
+                </summary>
+                <div class="technical-content">
+                  <div class="project-details">
+                    <h4 data-zh="系统组成" data-en="System components">
+                      系统组成
+                    </h4>
+                    <ul class="project-system" role="list">
+                      <li>
+                        <strong>UM982</strong
+                        ><span
+                          data-zh="定位与差分数据"
+                          data-en="Positioning &amp; corrections"
+                          >定位与差分数据</span
+                        >
+                      </li>
+                      <li>
+                        <strong>STM32F407</strong
+                        ><span
+                          data-zh="配置与状态管理"
+                          data-en="Configuration &amp; status"
+                          >配置与状态管理</span
+                        >
+                      </li>
+                      <li>
+                        <strong>RS-422 / USB</strong
+                        ><span
+                          data-zh="数据与维护接口"
+                          data-en="Data &amp; maintenance"
+                          >数据与维护接口</span
+                        >
+                      </li>
+                    </ul>
+                    <h4 data-zh="实现特点" data-en="Implementation decisions">
+                      实现特点
+                    </h4>
+                    <dl class="project-feature-list">
+                      <div>
+                        <dt data-zh="接口分工" data-en="Separate interfaces">
+                          接口分工
+                        </dt>
+                        <dd
+                          data-zh="双路 RS-422 承载 RTCM 数据，USB CDC 提供配置与诊断入口，将外部数据链路与本地维护分开。"
+                          data-en="Dual RS-422 carries RTCM data, while USB CDC provides configuration and diagnostics, separating the external data link from local maintenance."
+                        >
+                          双路 RS-422 承载 RTCM 数据，USB CDC
+                          提供配置与诊断入口，将外部数据链路与本地维护分开。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt
+                          data-zh="数据与故障检查"
+                          data-en="Data &amp; fault checks"
+                        >
+                          数据与故障检查
+                        </dt>
+                        <dd
+                          data-zh="按消息类型和 CRC 检查 RTCM 数据流；结合 SWD 寄存器读取与串口日志，定位外设状态及复位问题。"
+                          data-en="RTCM inspection checks message types and CRCs. SWD register reads and serial logs help diagnose peripheral state and reset problems."
+                        >
+                          按消息类型和 CRC 检查 RTCM 数据流；结合 SWD
+                          寄存器读取与串口日志，定位外设状态及复位问题。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-zh="调试工作流" data-en="Debugging workflow">
+                          调试工作流
+                        </dt>
+                        <dd
+                          data-zh="将构建、烧录、测试和记录整理为 Liakia 工作流，并保留 USB CDC 复位恢复的故障分析、修改与回归记录。"
+                          data-en="Build, flashing, testing and records are organized into the Liakia workflow, with a separate USB CDC reset-recovery investigation, fix and regression record."
+                        >
+                          将构建、烧录、测试和记录整理为 Liakia 工作流，并保留
+                          USB CDC 复位恢复的故障分析、修改与回归记录。
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="project-status">
+                      <strong data-zh="公开进展" data-en="Public progress"
+                        >公开进展</strong
+                      >
+                      <p
+                        data-zh="已公开硬件架构、固件、工具与台架记录；台架结论仅适用于记录所列条件，不代表 GNSS 精度认证。"
+                        data-en="Hardware architecture, firmware, tools and bench records are public. Bench conclusions apply to the recorded conditions, not GNSS accuracy certification."
+                      >
+                        已公开硬件架构、固件、工具与台架记录；台架结论仅适用于记录所列条件，不代表
+                        GNSS 精度认证。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="source-extract">
+                    <h4
+                      data-zh="固件中的任务边界"
+                      data-en="Task boundaries in the published firmware"
+                    >
+                      固件中的任务边界
+                    </h4>
+                    <p
+                      data-zh="下面摘自当前公开快照，与上面的历史台架版本分开引用。"
+                      data-en="This excerpt is from the current public snapshot, cited separately from the historical bench version."
+                    >
+                      下面摘自当前公开快照，与上面的历史台架版本分开引用。
+                    </p>
+                    <pre><code>Core/Src/
+  freertos.c     # task scheduling
+  gnss.c         # GNSS control
+  passthrough.c  # streaming data
+  shell.c        # maintenance commands
+  config.c       # persistent configuration
+  iwdg.c         # watchdog
+USB_DEVICE/      # USB CDC integration
+tools/           # bench and diagnostic utilities</code></pre>
+                    <pre><code>// freertos.c / StartDefaultTask (excerpt)
+IWDG_Notify(IWDG_CLIENT_DEFAULT);
+IWDG_Notify(IWDG_CLIENT_GNSS);
+GNSS_Process();
+IWDG_Manager_CheckAndFeed();
+osDelay(50);</code></pre>
+                    <div class="evidence-links">
+                      <a
+                        href="https://github.com/Sailiono/dpiny-rtk-base-station/blob/c80caad91b5db59d12d549df4bc500c654b0ac41/Core/Src/freertos.c#L130-L149"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span data-zh="固件原文" data-en="Firmware source"
+                          >固件原文</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/liakia-ai-embedded-workflow/blob/89e5ea2ea3f7353fa35bc8c0e9d9a2ad661f06fa/case-studies/04-usb-cdc-reset-recovery.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="故障、检查步骤与完整案例"
+                          data-en="Incident, check steps and full case"
+                          >故障、检查步骤与完整案例</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/liakia-ai-embedded-workflow/blob/89e5ea2ea3f7353fa35bc8c0e9d9a2ad661f06fa/evidence/realrun-redacted-2026-05-20/07_usb_cdc_reset.log"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="重启恢复原始日志"
+                          data-en="Original reset-recovery log"
+                          >重启恢复原始日志</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/liakia-ai-embedded-workflow/blob/89e5ea2ea3f7353fa35bc8c0e9d9a2ad661f06fa/evidence/realrun-redacted-2026-05-20/06_rtcm_parse.log"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="数据校验原始日志"
+                          data-en="Original integrity-check log"
+                          >数据校验原始日志</span
+                        ></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </details>
               <p
                 class="project-reading-label"
                 data-zh="深入资料"
@@ -931,112 +872,304 @@
               data-scene="1"
               id="aerakia-summary"
             >
-              <div class="chapter-kicker">
-                <span class="chapter-number mono">02</span
-                ><span
-                  class=""
-                  data-zh="飞行估计算法"
-                  data-en="Flight-estimation algorithms"
-                  >飞行估计算法</span
+              <div class="project-lead">
+                <div class="chapter-kicker">
+                  <span class="chapter-number mono">02</span
+                  ><span
+                    class=""
+                    data-zh="飞行估计算法"
+                    data-en="Flight-estimation algorithms"
+                    >飞行估计算法</span
+                  >
+                </div>
+                <p class="project-name">Aerakia</p>
+                <h3
+                  data-zh="传感器受到干扰时，仍要判断朝向与倾斜"
+                  data-en="Estimating orientation when sensors are disturbed"
                 >
-              </div>
-              <p class="project-name">Aerakia</p>
-              <h3>
-                <span
-                  class=""
-                  data-zh="飞行估计算法与主机验证"
-                  data-en="Flight estimation &amp; host validation"
-                  >飞行估计算法与主机验证</span
+                  传感器受到干扰时，仍要判断朝向与倾斜
+                </h3>
+                <p
+                  class="project-description"
+                  data-zh="飞行器需要从传感器读数判断自身的朝向和倾斜，但读数也会受干扰。Aerakia 研究如何融合这些读数，并用相同的运动和干扰输入比较算法表现，让差异能够被重新运行和检查。"
+                  data-en="An aircraft estimates its orientation from sensor readings, which can also be disturbed. Aerakia combines these readings and compares algorithms using identical motion and disturbance inputs, so their differences can be rerun and inspected."
                 >
-              </h3>
-              <p
-                class="project-description"
-                data-zh="围绕飞行器姿态等状态的估计，提供可独立运行的 C99 算法和主机验证程序。通过相同的输入约定、固定场景与数据回放，检查不同实现及修改前后的行为。"
-                data-en="Standalone C99 algorithms and host programs for estimating attitude and related flight states. Shared input conventions, fixed scenarios and data replay support comparisons between implementations and before and after changes."
-              >
-                围绕飞行器姿态等状态的估计，提供可独立运行的 C99
-                算法和主机验证程序。通过相同的输入约定、固定场景与数据回放，检查不同实现及修改前后的行为。
-              </p>
-              <div class="project-details">
-                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
-                <ul class="project-system" role="list">
-                  <li>
-                    <strong data-zh="输入约定" data-en="Input contract"
-                      >输入约定</strong
-                    ><span
-                      data-zh="单位、坐标与时间"
-                      data-en="Units, frames &amp; time"
-                      >单位、坐标与时间</span
-                    >
-                  </li>
-                  <li>
-                    <strong>Mahony / ESKF</strong
-                    ><span
-                      data-zh="可移植 C99 实现"
-                      data-en="Portable C99 estimators"
-                      >可移植 C99 实现</span
-                    >
-                  </li>
-                  <li>
-                    <strong data-zh="主机验证" data-en="Host validation"
-                      >主机验证</strong
-                    ><span
-                      data-zh="固定场景与回放"
-                      data-en="Fixed scenarios &amp; replay"
-                      >固定场景与回放</span
-                    >
-                  </li>
-                </ul>
-                <h4 data-zh="实现特点" data-en="Implementation decisions">
-                  实现特点
-                </h4>
-                <dl class="project-feature-list">
+                  飞行器需要从传感器读数判断自身的朝向和倾斜，但读数也会受干扰。Aerakia
+                  研究如何融合这些读数，并用相同的运动和干扰输入比较算法表现，让差异能够被重新运行和检查。
+                </p>
+                <dl class="case-decisions">
                   <div>
-                    <dt data-zh="统一输入" data-en="Consistent inputs">
-                      统一输入
-                    </dt>
+                    <dt data-zh="关键难点" data-en="Challenge">关键难点</dt>
                     <dd
-                      data-zh="统一定义单位、坐标系、时间戳与数据有效性，减少输入约定差异对算法比较的影响。"
-                      data-en="Units, coordinate frames, timestamps and data validity share one definition, reducing input-convention differences when comparing algorithms."
+                      data-zh="一条平滑的曲线不等于正确；磁场变化可能把估计方向持续拉偏。"
+                      data-en="A smooth curve can still be wrong: magnetic disturbances can pull the estimated direction away from the reference."
                     >
-                      统一定义单位、坐标系、时间戳与数据有效性，减少输入约定差异对算法比较的影响。
+                      一条平滑的曲线不等于正确；磁场变化可能把估计方向持续拉偏。
                     </dd>
                   </div>
                   <div>
-                    <dt data-zh="可重复比较" data-en="Repeatable comparison">
-                      可重复比较
-                    </dt>
+                    <dt data-zh="具体处理" data-en="Approach">具体处理</dt>
                     <dd
-                      data-zh="使用固定输入和数据回放重复运行算法，检查修改前后的输出行为；文档保留运行方法与覆盖范围。"
-                      data-en="Fixed inputs and replay make algorithm runs repeatable, allowing output behavior to be compared before and after changes. Documentation records how to run them and what they cover."
+                      data-zh="保留标准配置作对照，用同一组输入检查抗干扰处理的收益与代价。"
+                      data-en="Keep a standard configuration as a baseline and use identical inputs to inspect the benefits and trade-offs of disturbance handling."
                     >
-                      使用固定输入和数据回放重复运行算法，检查修改前后的输出行为；文档保留运行方法与覆盖范围。
-                    </dd>
-                  </div>
-                  <div>
-                    <dt data-zh="异常与回归" data-en="Faults &amp; regressions">
-                      异常与回归
-                    </dt>
-                    <dd
-                      data-zh="通过确定性故障场景和回归检查分析异常输入，分别记录已验证行为和尚未覆盖的情况。"
-                      data-en="Deterministic fault scenarios and regression checks examine abnormal inputs, distinguishing verified behavior from cases not yet covered."
-                    >
-                      通过确定性故障场景和回归检查分析异常输入，分别记录已验证行为和尚未覆盖的情况。
+                      保留标准配置作对照，用同一组输入检查抗干扰处理的收益与代价。
                     </dd>
                   </div>
                 </dl>
-                <div class="project-status">
-                  <strong data-zh="公开进展" data-en="Public progress"
-                    >公开进展</strong
-                  >
-                  <p
-                    data-zh="已公开算法实现与主机验证资料，不是完整飞控固件；硬件接入、传感器特性和实飞行为仍需独立验证。"
-                    data-en="Algorithm implementations and host-validation material are public, not complete flight-controller firmware. Hardware integration, sensor characteristics and flight behavior still need independent validation."
-                  >
-                    已公开算法实现与主机验证资料，不是完整飞控固件；硬件接入、传感器特性和实飞行为仍需独立验证。
-                  </p>
-                </div>
+                <p
+                  class="case-boundary"
+                  data-zh="公开范围是算法与电脑端验证，不是完整飞控；下图来自实际运行的合成回放，并非实飞。"
+                  data-en="The public scope is algorithms and host-side validation, not a complete flight controller. The chart is an executed synthetic replay, not a flight test."
+                >
+                  公开范围是算法与电脑端验证，不是完整飞控；下图来自实际运行的合成回放，并非实飞。
+                </p>
               </div>
+              <figure class="project-evidence">
+                <div class="evidence-heading">
+                  <p
+                    class="evidence-label"
+                    data-zh="真实材料 / 公开 C 算法实际回放"
+                    data-en="Evidence / executed public C algorithm replay"
+                  >
+                    真实材料 / 公开 C 算法实际回放
+                  </p>
+                  <h4
+                    data-zh="同样的干扰，两种不同的响应"
+                    data-en="The same disturbance, two different responses"
+                  >
+                    同样的干扰，两种不同的响应
+                  </h4>
+                </div>
+                <div class="replay-chart">
+                  <img
+                    class="media-zh"
+                    src="assets/evidence/aerakia-mag-bias-zh.svg"
+                    width="760"
+                    height="430"
+                    loading="lazy"
+                    alt="公开 C 算法实际回放：6.66 秒加入磁场偏置后，标准配置的姿态偏差上升，抗干扰配置保持接近参考值。"
+                  /><img
+                    class="media-en"
+                    src="assets/evidence/aerakia-mag-bias-en.svg"
+                    width="760"
+                    height="430"
+                    loading="lazy"
+                    alt="Actual native C replay: after a magnetic bias at 6.66 seconds, standard-configuration attitude error rises while the robust configuration stays near the reference."
+                  />
+                </div>
+                <div class="chart-legend">
+                  <span
+                    class="legend-standard"
+                    data-zh="标准配置"
+                    data-en="Standard configuration"
+                    >标准配置</span
+                  ><span
+                    class="legend-robust"
+                    data-zh="抗干扰配置"
+                    data-en="Robust configuration"
+                    >抗干扰配置</span
+                  >
+                </div>
+                <div class="result-pair">
+                  <div>
+                    <strong>27.1650°</strong
+                    ><span
+                      data-zh="标准配置 · 姿态误差"
+                      data-en="Standard · attitude RMSE"
+                      >标准配置 · 姿态误差</span
+                    >
+                  </div>
+                  <div>
+                    <strong>0.2854°</strong
+                    ><span
+                      data-zh="抗干扰配置 · 姿态误差"
+                      data-en="Robust · attitude RMSE"
+                      >抗干扰配置 · 姿态误差</span
+                    >
+                  </div>
+                </div>
+                <p
+                  class="evidence-fineprint"
+                  data-zh="数值为该合成场景的整体姿态误差 RMSE，越低越好；不是飞行精度或可靠性结论。"
+                  data-en="Values are overall attitude RMSE for this synthetic scenario; lower is better. They do not establish flight accuracy or reliability."
+                >
+                  数值为该合成场景的整体姿态误差
+                  RMSE，越低越好；不是飞行精度或可靠性结论。
+                </p>
+                <figcaption>
+                  <span
+                    data-zh="本次从公开代码运行 20 秒、100 Hz、固定随机种子 7 的场景。6.66 秒开始加入持续磁场偏置；图中全部采样点来自 C 程序输出，未做平滑拟合。"
+                    data-en="Executed from public code: a 20-second scenario at 100 Hz with seed 7. Persistent magnetic bias starts at 6.66 seconds. Every chart point comes from the C runner, with no smoothing or fitted values."
+                    >本次从公开代码运行 20 秒、100 Hz、固定随机种子 7
+                    的场景。6.66 秒开始加入持续磁场偏置；图中全部采样点来自 C
+                    程序输出，未做平滑拟合。</span
+                  >
+                </figcaption>
+              </figure>
+              <details class="technical-notes">
+                <summary>
+                  <span
+                    data-zh="实现细节、测试条件与原始资料"
+                    data-en="Implementation, test conditions and source material"
+                    >实现细节、测试条件与原始资料</span
+                  >
+                </summary>
+                <div class="technical-content">
+                  <div class="project-details">
+                    <h4 data-zh="系统组成" data-en="System components">
+                      系统组成
+                    </h4>
+                    <ul class="project-system" role="list">
+                      <li>
+                        <strong data-zh="输入约定" data-en="Input contract"
+                          >输入约定</strong
+                        ><span
+                          data-zh="单位、坐标与时间"
+                          data-en="Units, frames &amp; time"
+                          >单位、坐标与时间</span
+                        >
+                      </li>
+                      <li>
+                        <strong>Mahony / ESKF</strong
+                        ><span
+                          data-zh="可移植 C99 实现"
+                          data-en="Portable C99 estimators"
+                          >可移植 C99 实现</span
+                        >
+                      </li>
+                      <li>
+                        <strong data-zh="主机验证" data-en="Host validation"
+                          >主机验证</strong
+                        ><span
+                          data-zh="固定场景与回放"
+                          data-en="Fixed scenarios &amp; replay"
+                          >固定场景与回放</span
+                        >
+                      </li>
+                    </ul>
+                    <h4 data-zh="实现特点" data-en="Implementation decisions">
+                      实现特点
+                    </h4>
+                    <dl class="project-feature-list">
+                      <div>
+                        <dt data-zh="统一输入" data-en="Consistent inputs">
+                          统一输入
+                        </dt>
+                        <dd
+                          data-zh="统一定义单位、坐标系、时间戳与数据有效性，减少输入约定差异对算法比较的影响。"
+                          data-en="Units, coordinate frames, timestamps and data validity share one definition, reducing input-convention differences when comparing algorithms."
+                        >
+                          统一定义单位、坐标系、时间戳与数据有效性，减少输入约定差异对算法比较的影响。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt
+                          data-zh="可重复比较"
+                          data-en="Repeatable comparison"
+                        >
+                          可重复比较
+                        </dt>
+                        <dd
+                          data-zh="使用固定输入和数据回放重复运行算法，检查修改前后的输出行为；文档保留运行方法与覆盖范围。"
+                          data-en="Fixed inputs and replay make algorithm runs repeatable, allowing output behavior to be compared before and after changes. Documentation records how to run them and what they cover."
+                        >
+                          使用固定输入和数据回放重复运行算法，检查修改前后的输出行为；文档保留运行方法与覆盖范围。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt
+                          data-zh="异常与回归"
+                          data-en="Faults &amp; regressions"
+                        >
+                          异常与回归
+                        </dt>
+                        <dd
+                          data-zh="通过确定性故障场景和回归检查分析异常输入，分别记录已验证行为和尚未覆盖的情况。"
+                          data-en="Deterministic fault scenarios and regression checks examine abnormal inputs, distinguishing verified behavior from cases not yet covered."
+                        >
+                          通过确定性故障场景和回归检查分析异常输入，分别记录已验证行为和尚未覆盖的情况。
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="project-status">
+                      <strong data-zh="公开进展" data-en="Public progress"
+                        >公开进展</strong
+                      >
+                      <p
+                        data-zh="已公开算法实现与主机验证资料，不是完整飞控固件；硬件接入、传感器特性和实飞行为仍需独立验证。"
+                        data-en="Algorithm implementations and host-validation material are public, not complete flight-controller firmware. Hardware integration, sensor characteristics and flight behavior still need independent validation."
+                      >
+                        已公开算法实现与主机验证资料，不是完整飞控固件；硬件接入、传感器特性和实飞行为仍需独立验证。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="source-extract">
+                    <h4
+                      data-zh="回放条件与可复现材料"
+                      data-en="Replay conditions and reproducible evidence"
+                    >
+                      回放条件与可复现材料
+                    </h4>
+                    <p
+                      data-zh="图中对比 Mahony standard 与 Mahony robust；偏置为磁场 X +50 μT、Y +25 μT。输入为确定性合成数据；本次不是多次随机试验或硬件测试。普通运动场景的标准配置误差为 0.1476°，抗干扰配置为 0.1547°，并非所有场景均更优。"
+                      data-en="The chart compares Mahony standard and Mahony robust with magnetic bias X +50 μT, Y +25 μT. Inputs are deterministic synthetic data, not repeated randomized trials or hardware measurements. In clean motion, standard RMSE is 0.1476° and robust RMSE is 0.1547°: the robust configuration does not win every scenario."
+                    >
+                      图中对比 Mahony standard 与 Mahony robust；偏置为磁场 X
+                      +50 μT、Y +25
+                      μT。输入为确定性合成数据；本次不是多次随机试验或硬件测试。普通运动场景的标准配置误差为
+                      0.1476°，抗干扰配置为 0.1547°，并非所有场景均更优。
+                    </p>
+                    <pre><code>cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+ctest --test-dir build --output-on-failure
+python validation/run_suite.py \
+  --runner build/aerakia_validation_runner \
+  --out-dir build/validation</code></pre>
+                    <div class="evidence-links">
+                      <a
+                        href="assets/evidence/aerakia-mag-bias-series.csv"
+                        download
+                        ><span
+                          data-zh="图表完整数据 CSV"
+                          data-en="Full chart series CSV"
+                          >图表完整数据 CSV</span
+                        ></a
+                      ><a href="assets/evidence/aerakia-suite-summary.json"
+                        ><span
+                          data-zh="六组场景指标 JSON"
+                          data-en="Six-scenario metrics JSON"
+                          >六组场景指标 JSON</span
+                        ></a
+                      ><a href="assets/evidence/aerakia-provenance.json"
+                        ><span
+                          data-zh="代码版本、参数与数据哈希"
+                          data-en="Source revision, parameters and data hashes"
+                          >代码版本、参数与数据哈希</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/aerakia-flight-algorithms/blob/8dfbe9d6e2843c31ce47d670247a3a9207ec3ca7/validation/run_suite.py"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="场景运行脚本"
+                          data-en="Scenario runner source"
+                          >场景运行脚本</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/aerakia-flight-algorithms/blob/8dfbe9d6e2843c31ce47d670247a3a9207ec3ca7/validation/analyze_results.py"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="指标计算方法"
+                          data-en="Metric calculation source"
+                          >指标计算方法</span
+                        ></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </details>
               <p
                 class="project-reading-label"
                 data-zh="深入资料"
@@ -1065,116 +1198,267 @@
               </div>
             </article>
             <article class="project-chapter" data-scene="2" id="sbus-summary">
-              <div class="chapter-kicker">
-                <span class="chapter-number mono">03</span
-                ><span
-                  class=""
-                  data-zh="隔离接口 / 数据分析"
-                  data-en="Isolated interfaces / data analysis"
-                  >隔离接口 / 数据分析</span
+              <div class="project-lead">
+                <div class="chapter-kicker">
+                  <span class="chapter-number mono">03</span
+                  ><span
+                    class=""
+                    data-zh="隔离接口 / 数据分析"
+                    data-en="Isolated interfaces / data analysis"
+                    >隔离接口 / 数据分析</span
+                  >
+                </div>
+                <p class="project-name">SBUS–RS-422</p>
+                <h3
+                  data-zh="转换通信接口，不改动控制数据"
+                  data-en="Change the interface, preserve the control data"
                 >
-              </div>
-              <p class="project-name">SBUS–RS-422</p>
-              <h3>
-                <span
-                  class=""
-                  data-zh="SBUS–RS-422 隔离透明桥"
-                  data-en="Isolated SBUS–RS-422 bridge"
-                  >SBUS–RS-422 隔离透明桥</span
+                  转换通信接口，不改动控制数据
+                </h3>
+                <p
+                  class="project-description"
+                  data-zh="接收机和下游设备不一定使用同一种电气接口。这个桥接模块把遥控信号转换到隔离的差分链路，目标是让控制数据保持原样；配套分析器用于检查输入和输出是否一致。"
+                  data-en="A receiver and the next device may use different electrical interfaces. This bridge carries remote-control data onto an isolated differential link without intentionally changing its content. A companion analyzer checks input against output."
                 >
-              </h3>
-              <p
-                class="project-description"
-                data-zh="将 SBUS 控制信号接入隔离的 RS-422 链路，完成电平与极性转换。配套浏览器分析器解码采集数据，检查转换前后的帧内容，并按采集方法分析时序。"
-                data-en="An isolated bridge connects SBUS control signals to an RS-422 link, converting electrical levels and polarity. A browser analyzer decodes captures, compares frame content before and after conversion, and analyzes timing according to the capture method."
-              >
-                将 SBUS 控制信号接入隔离的 RS-422
-                链路，完成电平与极性转换。配套浏览器分析器解码采集数据，检查转换前后的帧内容，并按采集方法分析时序。
-              </p>
-              <div class="project-details">
-                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
-                <ul class="project-system" role="list">
-                  <li>
-                    <strong>SBUS</strong
-                    ><span data-zh="控制信号输入" data-en="Control-signal input"
-                      >控制信号输入</span
-                    >
-                  </li>
-                  <li>
-                    <strong data-zh="隔离转换" data-en="Isolated bridge"
-                      >隔离转换</strong
-                    ><span
-                      data-zh="电平与极性处理"
-                      data-en="Level &amp; polarity conversion"
-                      >电平与极性处理</span
-                    >
-                  </li>
-                  <li>
-                    <strong>RS-422</strong
-                    ><span
-                      data-zh="差分通信链路"
-                      data-en="Differential communication"
-                      >差分通信链路</span
-                    >
-                  </li>
-                </ul>
-                <h4 data-zh="实现特点" data-en="Implementation decisions">
-                  实现特点
-                </h4>
-                <dl class="project-feature-list">
+                  接收机和下游设备不一定使用同一种电气接口。这个桥接模块把遥控信号转换到隔离的差分链路，目标是让控制数据保持原样；配套分析器用于检查输入和输出是否一致。
+                </p>
+                <dl class="case-decisions">
                   <div>
-                    <dt
-                      data-zh="硬件与分析分工"
-                      data-en="Hardware &amp; analysis"
-                    >
-                      硬件与分析分工
-                    </dt>
+                    <dt data-zh="关键难点" data-en="Challenge">关键难点</dt>
                     <dd
-                      data-zh="硬件完成隔离、电平与极性转换；浏览器工具负责采集数据的解码、对齐和对比，分别检查电气接口与数据内容。"
-                      data-en="Hardware handles isolation, levels and polarity. Browser tools decode, align and compare captures, separating electrical conversion from content analysis."
+                      data-zh="输出端有波形，不等于控制数据正确；信号转换和内容检查是两件事。"
+                      data-en="A waveform at the output does not prove the control data is correct. Electrical conversion and data verification are separate questions."
                     >
-                      硬件完成隔离、电平与极性转换；浏览器工具负责采集数据的解码、对齐和对比，分别检查电气接口与数据内容。
+                      输出端有波形，不等于控制数据正确；信号转换和内容检查是两件事。
                     </dd>
                   </div>
                   <div>
-                    <dt data-zh="区分采集方法" data-en="Capture methods">
-                      区分采集方法
-                    </dt>
+                    <dt data-zh="具体处理" data-en="Approach">具体处理</dt>
                     <dd
-                      data-zh="同步采集用于同一时间轴上的时序比较；分次隔离采集用于字节内容对齐，不能直接用来计算传播延迟。"
-                      data-en="Synchronous captures support timing comparisons on one time axis. Separate isolated captures support byte-content alignment, not direct propagation-delay measurements."
+                      data-zh="用硬件完成接口转换，另用浏览器工具逐帧对比；不把采样分辨率以下的延迟写成测量结论。"
+                      data-en="Perform the interface conversion in hardware and compare frames with a browser tool. Do not claim a measured delay below the capture resolution."
                     >
-                      同步采集用于同一时间轴上的时序比较；分次隔离采集用于字节内容对齐，不能直接用来计算传播延迟。
-                    </dd>
-                  </div>
-                  <div>
-                    <dt
-                      data-zh="注明测量分辨率"
-                      data-en="Measurement resolution"
-                    >
-                      注明测量分辨率
-                    </dt>
-                    <dd
-                      data-zh="报告列出采样分辨率与测试条件。界面波形由采集数据重建，不作为示波器实测波形；低于分辨率的差异不作零延迟结论。"
-                      data-en="Reports state sampling resolution and test conditions. Displayed waveforms are reconstructed from captures, not oscilloscope measurements; sub-resolution differences are not reported as zero delay."
-                    >
-                      报告列出采样分辨率与测试条件。界面波形由采集数据重建，不作为示波器实测波形；低于分辨率的差异不作零延迟结论。
+                      用硬件完成接口转换，另用浏览器工具逐帧对比；不把采样分辨率以下的延迟写成测量结论。
                     </dd>
                   </div>
                 </dl>
-                <div class="project-status">
-                  <strong data-zh="公开进展" data-en="Public progress"
-                    >公开进展</strong
-                  >
-                  <p
-                    data-zh="已公开原理图 PDF、浏览器分析器与对比报告；PCB、BOM、制造文件和可编辑硬件源尚未形成完整发布包。"
-                    data-en="Schematic PDFs, a browser analyzer and comparison reports are public. PCB, BOM, manufacturing files and editable hardware sources do not yet form a complete release package."
-                  >
-                    已公开原理图
-                    PDF、浏览器分析器与对比报告；PCB、BOM、制造文件和可编辑硬件源尚未形成完整发布包。
-                  </p>
-                </div>
+                <p
+                  class="case-boundary"
+                  data-zh="已公开原理图和分析工具；可编辑设计、PCB 与制造文件仍在整理，不是完整生产包。"
+                  data-en="The schematic and analyzer are public. Editable design, PCB and manufacturing files remain in preparation; this is not a complete production package."
+                >
+                  已公开原理图和分析工具；可编辑设计、PCB
+                  与制造文件仍在整理，不是完整生产包。
+                </p>
               </div>
+              <figure class="project-evidence">
+                <div class="evidence-heading">
+                  <p
+                    class="evidence-label"
+                    data-zh="真实材料 / 已公开电路原理图"
+                    data-en="Evidence / published circuit schematic"
+                  >
+                    真实材料 / 已公开电路原理图
+                  </p>
+                  <h4
+                    data-zh="接口转换背后的实际电路"
+                    data-en="The actual circuit behind the interface bridge"
+                  >
+                    接口转换背后的实际电路
+                  </h4>
+                </div>
+                <a
+                  class="schematic-preview"
+                  href="https://github.com/Sailiono/sbus-rs422-bridge/blob/f98ddfd2cb413b0e2ed9b61a25fca8df07546557/hardware/sbus-rs422-bridge-schematic.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><img
+                    src="assets/evidence/sbus-schematic.png"
+                    width="1516"
+                    height="1071"
+                    loading="lazy"
+                    alt="SBUS 隔离透明桥公开电路原理图，包含供电、逻辑反向、隔离收发器与差分接口。"
+                    data-alt-zh="SBUS 隔离透明桥公开电路原理图，包含供电、逻辑反向、隔离收发器与差分接口。"
+                    data-alt-en="Published SBUS bridge circuit schematic: power, logic inversion, isolated transceiver and differential interfaces."
+                  /><span
+                    data-zh="打开完整原理图 PDF ↗"
+                    data-en="Open full schematic PDF ↗"
+                    >打开完整原理图 PDF ↗</span
+                  ></a
+                >
+                <div class="evidence-footnote">
+                  <p
+                    data-zh="电路图用于说明硬件实现，不是实物照片或测量波形。"
+                    data-en="The schematic shows the hardware design, not a hardware photograph or measured waveform."
+                  >
+                    电路图用于说明硬件实现，不是实物照片或测量波形。
+                  </p>
+                  <p
+                    data-zh="原图 © 2026 Clark Cui and project contributors · CERN-OHL-P-2.0；本页仅缩放展示。"
+                    data-en="Original © 2026 Clark Cui and project contributors · CERN-OHL-P-2.0; displayed here as a scaled rendering."
+                  >
+                    原图 © 2026 Clark Cui and project contributors ·
+                    CERN-OHL-P-2.0；本页仅缩放展示。
+                  </p>
+                  <a href="assets/evidence/sbus-hardware-LICENSE.txt"
+                    ><span data-zh="硬件许可证" data-en="Hardware license"
+                      >硬件许可证</span
+                    ></a
+                  >
+                </div>
+                <figcaption>
+                  <span
+                    data-zh="供电、信号反向、隔离收发与差分接口来自公开 PDF。验证报告限定固定供电、短线、室温等条件，不能外推为所有工况下的性能。"
+                    data-en="Power, inversion, isolated transceiver and differential interfaces are shown from the published PDF. The verification report uses fixed supply, short cables and room temperature; it does not establish performance under every condition."
+                    >供电、信号反向、隔离收发与差分接口来自公开
+                    PDF。验证报告限定固定供电、短线、室温等条件，不能外推为所有工况下的性能。</span
+                  >
+                </figcaption>
+              </figure>
+              <details class="technical-notes">
+                <summary>
+                  <span
+                    data-zh="实现细节、测试条件与原始资料"
+                    data-en="Implementation, test conditions and source material"
+                    >实现细节、测试条件与原始资料</span
+                  >
+                </summary>
+                <div class="technical-content">
+                  <div class="project-details">
+                    <h4 data-zh="系统组成" data-en="System components">
+                      系统组成
+                    </h4>
+                    <ul class="project-system" role="list">
+                      <li>
+                        <strong>SBUS</strong
+                        ><span
+                          data-zh="控制信号输入"
+                          data-en="Control-signal input"
+                          >控制信号输入</span
+                        >
+                      </li>
+                      <li>
+                        <strong data-zh="隔离转换" data-en="Isolated bridge"
+                          >隔离转换</strong
+                        ><span
+                          data-zh="电平与极性处理"
+                          data-en="Level &amp; polarity conversion"
+                          >电平与极性处理</span
+                        >
+                      </li>
+                      <li>
+                        <strong>RS-422</strong
+                        ><span
+                          data-zh="差分通信链路"
+                          data-en="Differential communication"
+                          >差分通信链路</span
+                        >
+                      </li>
+                    </ul>
+                    <h4 data-zh="实现特点" data-en="Implementation decisions">
+                      实现特点
+                    </h4>
+                    <dl class="project-feature-list">
+                      <div>
+                        <dt
+                          data-zh="硬件与分析分工"
+                          data-en="Hardware &amp; analysis"
+                        >
+                          硬件与分析分工
+                        </dt>
+                        <dd
+                          data-zh="硬件完成隔离、电平与极性转换；浏览器工具负责采集数据的解码、对齐和对比，分别检查电气接口与数据内容。"
+                          data-en="Hardware handles isolation, levels and polarity. Browser tools decode, align and compare captures, separating electrical conversion from content analysis."
+                        >
+                          硬件完成隔离、电平与极性转换；浏览器工具负责采集数据的解码、对齐和对比，分别检查电气接口与数据内容。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-zh="区分采集方法" data-en="Capture methods">
+                          区分采集方法
+                        </dt>
+                        <dd
+                          data-zh="同步采集用于同一时间轴上的时序比较；分次隔离采集用于字节内容对齐，不能直接用来计算传播延迟。"
+                          data-en="Synchronous captures support timing comparisons on one time axis. Separate isolated captures support byte-content alignment, not direct propagation-delay measurements."
+                        >
+                          同步采集用于同一时间轴上的时序比较；分次隔离采集用于字节内容对齐，不能直接用来计算传播延迟。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt
+                          data-zh="注明测量分辨率"
+                          data-en="Measurement resolution"
+                        >
+                          注明测量分辨率
+                        </dt>
+                        <dd
+                          data-zh="报告列出采样分辨率与测试条件。界面波形由采集数据重建，不作为示波器实测波形；低于分辨率的差异不作零延迟结论。"
+                          data-en="Reports state sampling resolution and test conditions. Displayed waveforms are reconstructed from captures, not oscilloscope measurements; sub-resolution differences are not reported as zero delay."
+                        >
+                          报告列出采样分辨率与测试条件。界面波形由采集数据重建，不作为示波器实测波形；低于分辨率的差异不作零延迟结论。
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="project-status">
+                      <strong data-zh="公开进展" data-en="Public progress"
+                        >公开进展</strong
+                      >
+                      <p
+                        data-zh="已公开原理图 PDF、浏览器分析器与对比报告；PCB、BOM、制造文件和可编辑硬件源尚未形成完整发布包。"
+                        data-en="Schematic PDFs, a browser analyzer and comparison reports are public. PCB, BOM, manufacturing files and editable hardware sources do not yet form a complete release package."
+                      >
+                        已公开原理图
+                        PDF、浏览器分析器与对比报告；PCB、BOM、制造文件和可编辑硬件源尚未形成完整发布包。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="source-extract">
+                    <h4
+                      data-zh="设计边界与分析方法"
+                      data-en="Design boundary and analysis method"
+                    >
+                      设计边界与分析方法
+                    </h4>
+                    <p
+                      data-zh="已验收的是标准反向 SBUS 输入到 RS-422 输出；发送与双向能力只是硬件预留。报告中的样本计数不能替代原始采集复核，本页不把零延迟或绝对零抖动作为产品指标。"
+                      data-en="The accepted path is inverted SBUS input to RS-422 output. Transmit and bidirectional capabilities are hardware provisions only. Published sample counts are not a substitute for reviewing raw captures; no zero-delay or absolute zero-jitter product specification is claimed here."
+                    >
+                      已验收的是标准反向 SBUS 输入到 RS-422
+                      输出；发送与双向能力只是硬件预留。报告中的样本计数不能替代原始采集复核，本页不把零延迟或绝对零抖动作为产品指标。
+                    </p>
+                    <div class="evidence-links">
+                      <a
+                        href="https://github.com/Sailiono/sbus-rs422-bridge/blob/f98ddfd2cb413b0e2ed9b61a25fca8df07546557/hardware/README.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="硬件版本与验证范围"
+                          data-en="Hardware revision and verified scope"
+                          >硬件版本与验证范围</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/sbus-rs422-bridge/blob/f98ddfd2cb413b0e2ed9b61a25fca8df07546557/docs/自研模块能力验证.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="验证报告及测量局限"
+                          data-en="Verification report and measurement limits"
+                          >验证报告及测量局限</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/sbus-rs422-bridge/blob/f98ddfd2cb413b0e2ed9b61a25fca8df07546557/src/logic-capture.js"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="采集解析与解码代码"
+                          data-en="Capture parsing and decoder source"
+                          >采集解析与解码代码</span
+                        ></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </details>
               <p
                 class="project-reading-label"
                 data-zh="深入资料"
@@ -1207,109 +1491,293 @@
               data-scene="3"
               id="splicia-summary"
             >
-              <div class="chapter-kicker">
-                <span class="chapter-number mono">04</span
-                ><span
-                  class=""
-                  data-zh="Linux 相机 / 在研"
-                  data-en="Linux cameras / in progress"
-                  >Linux 相机 / 在研</span
+              <div class="project-lead">
+                <div class="chapter-kicker">
+                  <span class="chapter-number mono">04</span
+                  ><span
+                    class=""
+                    data-zh="Linux 相机 / 在研"
+                    data-en="Linux cameras / in progress"
+                    >Linux 相机 / 在研</span
+                  >
+                </div>
+                <p class="project-name">Splicia</p>
+                <h3
+                  data-zh="让相机数据进入可继续开发的采集链路"
+                  data-en="Bring camera data into a usable capture pipeline"
                 >
-              </div>
-              <p class="project-name">Splicia</p>
-              <h3>
-                <span
-                  class=""
-                  data-zh="Linux 相机平台调试"
-                  data-en="Linux camera-platform bring-up"
-                  >Linux 相机平台调试</span
+                  让相机数据进入可继续开发的采集链路
+                </h3>
+                <p
+                  class="project-description"
+                  data-zh="显微视觉平台先要拿到可用的图像，才谈得上测量和自动对准。Splicia 当前的工作集中在 Linux 平台与相机链路调试；后续的视觉、运动控制和操作界面按独立模块规划。"
+                  data-en="A microscopic-vision platform needs usable images before measurement and automatic alignment can begin. Current Splicia work centers on Linux and camera bring-up, with vision, motion control and UI planned as separate modules."
                 >
-              </h3>
-              <p
-                class="project-description"
-                data-zh="为后续视觉处理建立 Linux 与 IMX296 相机的采集基础。围绕设备发现、媒体拓扑配置和 RAW 原始图像输出，分层检查相机、驱动、媒体管线与应用之间的链路。"
-                data-en="Linux and IMX296 camera bring-up establishes a capture foundation for later vision processing. Device discovery, media-topology configuration and RAW output are checked in layers across the camera, driver, media pipeline and application."
-              >
-                为后续视觉处理建立 Linux 与 IMX296
-                相机的采集基础。围绕设备发现、媒体拓扑配置和 RAW
-                原始图像输出，分层检查相机、驱动、媒体管线与应用之间的链路。
-              </p>
-              <div class="project-details">
-                <h4 data-zh="系统组成" data-en="System components">系统组成</h4>
-                <ul class="project-system" role="list">
-                  <li>
-                    <strong>Linux / IMX296</strong
-                    ><span data-zh="设备与驱动" data-en="Device &amp; driver"
-                      >设备与驱动</span
-                    >
-                  </li>
-                  <li>
-                    <strong data-zh="媒体管线" data-en="Media pipeline"
-                      >媒体管线</strong
-                    ><span
-                      data-zh="拓扑与链路配置"
-                      data-en="Topology &amp; link setup"
-                      >拓扑与链路配置</span
-                    >
-                  </li>
-                  <li>
-                    <strong>RAW</strong
-                    ><span data-zh="原始图像输出" data-en="Raw-image output"
-                      >原始图像输出</span
-                    >
-                  </li>
-                </ul>
-                <h4 data-zh="实现与规划" data-en="Implementation &amp; plans">
-                  实现与规划
-                </h4>
-                <dl class="project-feature-list">
+                  显微视觉平台先要拿到可用的图像，才谈得上测量和自动对准。Splicia
+                  当前的工作集中在 Linux
+                  平台与相机链路调试；后续的视觉、运动控制和操作界面按独立模块规划。
+                </p>
+                <dl class="case-decisions">
                   <div>
-                    <dt data-zh="采集链路调试" data-en="Capture bring-up">
-                      采集链路调试
-                    </dt>
+                    <dt data-zh="关键难点" data-en="Challenge">关键难点</dt>
                     <dd
-                      data-zh="分别整理设备发现、媒体拓扑与 RAW 输出记录，区分设备、驱动及应用层问题，为后续图像处理提供输入基础。"
-                      data-en="Separate device-discovery, media-topology and RAW-output records help distinguish device, driver and application problems, establishing inputs for later image processing."
+                      data-zh="相机被系统发现，并不意味着后续软件已经拿到正确图像。"
+                      data-en="A camera being discovered by the system does not mean the next application has usable images."
                     >
-                      分别整理设备发现、媒体拓扑与 RAW
-                      输出记录，区分设备、驱动及应用层问题，为后续图像处理提供输入基础。
+                      相机被系统发现，并不意味着后续软件已经拿到正确图像。
                     </dd>
                   </div>
                   <div>
-                    <dt data-zh="后续模块规划" data-en="Planned modules">
-                      后续模块规划
-                    </dt>
+                    <dt data-zh="具体处理" data-en="Approach">具体处理</dt>
                     <dd
-                      data-zh="下一阶段按采集、视觉、状态估计、运动控制、UI、日志与回放划分职责和依赖；这些内容目前属于架构设计。"
-                      data-en="The next-stage architecture separates capture, vision, state estimation, motion, UI, logs and replay, defining responsibilities and dependencies. These modules remain architectural plans."
+                      data-zh="逐层区分设备识别、驱动、图像链路与应用问题，并把已完成的调试和下一阶段设计分开陈述。"
+                      data-en="Separate device discovery, driver, media-pipeline and application faults, and distinguish completed bring-up from the next-phase design."
                     >
-                      下一阶段按采集、视觉、状态估计、运动控制、UI、日志与回放划分职责和依赖；这些内容目前属于架构设计。
-                    </dd>
-                  </div>
-                  <div>
-                    <dt data-zh="界面概念设计" data-en="UI concept">
-                      界面概念设计
-                    </dt>
-                    <dd
-                      data-zh="以概念稿讨论图像、状态与日志的信息组织；其中图像、曲线和数值均为占位内容，不是运行界面或测试结果。"
-                      data-en="UI concepts explore the organization of images, status and logs. Their images, curves and values are placeholders, not a running interface or test results."
-                    >
-                      以概念稿讨论图像、状态与日志的信息组织；其中图像、曲线和数值均为占位内容，不是运行界面或测试结果。
+                      逐层区分设备识别、驱动、图像链路与应用问题，并把已完成的调试和下一阶段设计分开陈述。
                     </dd>
                   </div>
                 </dl>
-                <div class="project-status is-planned">
-                  <strong data-zh="当前进展" data-en="Current progress"
-                    >当前进展</strong
-                  >
-                  <p
-                    data-zh="已记录平台与相机调试；视觉几何、双目融合、多轴运动和闭环对准尚未完成。"
-                    data-en="Platform and camera bring-up is documented. Vision geometry, stereo fusion, multi-axis motion and closed-loop alignment are not yet complete."
-                  >
-                    已记录平台与相机调试；视觉几何、双目融合、多轴运动和闭环对准尚未完成。
-                  </p>
-                </div>
+                <p
+                  class="case-boundary"
+                  data-zh="已完成平台与相机链路调试；视觉算法、运动闭环与量化性能尚未完成或验证。"
+                  data-en="Platform and camera bring-up are documented as completed. Vision algorithms, closed-loop motion and quantitative performance are not completed or validated."
+                >
+                  已完成平台与相机链路调试；视觉算法、运动闭环与量化性能尚未完成或验证。
+                </p>
               </div>
+              <figure class="project-evidence">
+                <div class="evidence-heading">
+                  <p
+                    class="evidence-label"
+                    data-zh="真实材料 / 公开工程范围清单"
+                    data-en="Evidence / documented engineering scope"
+                  >
+                    真实材料 / 公开工程范围清单
+                  </p>
+                  <h4
+                    data-zh="已经做到哪里，下一步是什么"
+                    data-en="What is done, and what comes next"
+                  >
+                    已经做到哪里，下一步是什么
+                  </h4>
+                </div>
+                <div class="scope-ledger">
+                  <div>
+                    <p
+                      class="scope-label"
+                      data-zh="已完成 / 公开说明"
+                      data-en="Completed / documented"
+                    >
+                      已完成 / 公开说明
+                    </p>
+                    <strong
+                      data-zh="Linux 相机平台调试"
+                      data-en="Linux camera bring-up"
+                      >Linux 相机平台调试</strong
+                    >
+                    <p
+                      data-zh="设备识别、成像链路和原始图像输出的诊断。"
+                      data-en="Camera discovery, media topology and RAW-output diagnostics."
+                    >
+                      设备识别、成像链路和原始图像输出的诊断。
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      class="scope-label"
+                      data-zh="已设计 / 未验收"
+                      data-en="Designed / not validated"
+                    >
+                      已设计 / 未验收
+                    </p>
+                    <strong
+                      data-zh="下一阶段的软件边界"
+                      data-en="Next-phase software boundaries"
+                      >下一阶段的软件边界</strong
+                    >
+                    <p
+                      data-zh="将采集、视觉、运动、界面与记录分开设计。"
+                      data-en="Separate responsibilities for capture, vision, motion, UI and records."
+                    >
+                      将采集、视觉、运动、界面与记录分开设计。
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      class="scope-label"
+                      data-zh="计划中 / 未实现"
+                      data-en="Planned / not implemented"
+                    >
+                      计划中 / 未实现
+                    </p>
+                    <strong
+                      data-zh="视觉判断与自动对准"
+                      data-en="Vision and automatic alignment"
+                      >视觉判断与自动对准</strong
+                    >
+                    <p
+                      data-zh="图像测量、运动闭环与性能指标仍待实现和验证。"
+                      data-en="Measurement, closed-loop motion and quantitative results remain unimplemented and unvalidated."
+                    >
+                      图像测量、运动闭环与性能指标仍待实现和验证。
+                    </p>
+                  </div>
+                </div>
+                <p
+                  class="evidence-fineprint"
+                  data-zh="公开仓库没有原始生产图像或现场日志；不以概念界面代替运行证据。"
+                  data-en="The public repository contains no production captures or site-specific logs. A UI concept is not used as evidence of a running product."
+                >
+                  公开仓库没有原始生产图像或现场日志；不以概念界面代替运行证据。
+                </p>
+                <figcaption>
+                  <span
+                    data-zh="依据公开仓库 README 与验证计划整理。这里只展示可公开核实的工程边界，不展示客户图像、私有日志或虚构的运行界面。"
+                    data-en="Compiled from the public README and validation plan. Only the publicly documented scope is shown; no customer images, private logs or fictional running UI are presented."
+                    >依据公开仓库 README
+                    与验证计划整理。这里只展示可公开核实的工程边界，不展示客户图像、私有日志或虚构的运行界面。</span
+                  >
+                </figcaption>
+              </figure>
+              <details class="technical-notes">
+                <summary>
+                  <span
+                    data-zh="实现细节、测试条件与原始资料"
+                    data-en="Implementation, test conditions and source material"
+                    >实现细节、测试条件与原始资料</span
+                  >
+                </summary>
+                <div class="technical-content">
+                  <div class="project-details">
+                    <h4 data-zh="系统组成" data-en="System components">
+                      系统组成
+                    </h4>
+                    <ul class="project-system" role="list">
+                      <li>
+                        <strong>Linux / IMX296</strong
+                        ><span
+                          data-zh="设备与驱动"
+                          data-en="Device &amp; driver"
+                          >设备与驱动</span
+                        >
+                      </li>
+                      <li>
+                        <strong data-zh="媒体管线" data-en="Media pipeline"
+                          >媒体管线</strong
+                        ><span
+                          data-zh="拓扑与链路配置"
+                          data-en="Topology &amp; link setup"
+                          >拓扑与链路配置</span
+                        >
+                      </li>
+                      <li>
+                        <strong>RAW</strong
+                        ><span data-zh="原始图像输出" data-en="Raw-image output"
+                          >原始图像输出</span
+                        >
+                      </li>
+                    </ul>
+                    <h4
+                      data-zh="实现与规划"
+                      data-en="Implementation &amp; plans"
+                    >
+                      实现与规划
+                    </h4>
+                    <dl class="project-feature-list">
+                      <div>
+                        <dt data-zh="采集链路调试" data-en="Capture bring-up">
+                          采集链路调试
+                        </dt>
+                        <dd
+                          data-zh="分别整理设备发现、媒体拓扑与 RAW 输出记录，区分设备、驱动及应用层问题，为后续图像处理提供输入基础。"
+                          data-en="Separate device-discovery, media-topology and RAW-output records help distinguish device, driver and application problems, establishing inputs for later image processing."
+                        >
+                          分别整理设备发现、媒体拓扑与 RAW
+                          输出记录，区分设备、驱动及应用层问题，为后续图像处理提供输入基础。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-zh="后续模块规划" data-en="Planned modules">
+                          后续模块规划
+                        </dt>
+                        <dd
+                          data-zh="下一阶段按采集、视觉、状态估计、运动控制、UI、日志与回放划分职责和依赖；这些内容目前属于架构设计。"
+                          data-en="The next-stage architecture separates capture, vision, state estimation, motion, UI, logs and replay, defining responsibilities and dependencies. These modules remain architectural plans."
+                        >
+                          下一阶段按采集、视觉、状态估计、运动控制、UI、日志与回放划分职责和依赖；这些内容目前属于架构设计。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt data-zh="界面概念设计" data-en="UI concept">
+                          界面概念设计
+                        </dt>
+                        <dd
+                          data-zh="以概念稿讨论图像、状态与日志的信息组织；其中图像、曲线和数值均为占位内容，不是运行界面或测试结果。"
+                          data-en="UI concepts explore the organization of images, status and logs. Their images, curves and values are placeholders, not a running interface or test results."
+                        >
+                          以概念稿讨论图像、状态与日志的信息组织；其中图像、曲线和数值均为占位内容，不是运行界面或测试结果。
+                        </dd>
+                      </div>
+                    </dl>
+                    <div class="project-status is-planned">
+                      <strong data-zh="当前进展" data-en="Current progress"
+                        >当前进展</strong
+                      >
+                      <p
+                        data-zh="已记录平台与相机调试；视觉几何、双目融合、多轴运动和闭环对准尚未完成。"
+                        data-en="Platform and camera bring-up is documented. Vision geometry, stereo fusion, multi-axis motion and closed-loop alignment are not yet complete."
+                      >
+                        已记录平台与相机调试；视觉几何、双目融合、多轴运动和闭环对准尚未完成。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="source-extract">
+                    <h4
+                      data-zh="公开资料与后续验证要求"
+                      data-en="Public material and future verification requirements"
+                    >
+                      公开资料与后续验证要求
+                    </h4>
+                    <p
+                      data-zh="公开资料记录 IMX296 设备发现、媒体拓扑、RAW 输出诊断，以及驱动、图像处理与应用之间的故障边界。双视角测量、运动闭环和确定性回放包仍属于下一阶段，不当作本阶段成果。"
+                      data-en="The public material documents IMX296 discovery, media topology, RAW-output diagnostics and fault boundaries between drivers, image processing and applications. Dual-view measurement, closed-loop motion and deterministic replay packages remain next-phase work."
+                    >
+                      公开资料记录 IMX296 设备发现、媒体拓扑、RAW
+                      输出诊断，以及驱动、图像处理与应用之间的故障边界。双视角测量、运动闭环和确定性回放包仍属于下一阶段，不当作本阶段成果。
+                    </p>
+                    <div class="evidence-links">
+                      <a
+                        href="https://github.com/Sailiono/splicia-vision-platform/blob/01a7f06b876f01eab1803cef5d508e5dea014c8a/README.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="原始范围清单"
+                          data-en="Original scope table"
+                          >原始范围清单</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/splicia-vision-platform/blob/01a7f06b876f01eab1803cef5d508e5dea014c8a/docs/architecture.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="下一阶段架构（设计中）"
+                          data-en="Next-phase architecture (design)"
+                          >下一阶段架构（设计中）</span
+                        ></a
+                      ><a
+                        href="https://github.com/Sailiono/splicia-vision-platform/blob/01a7f06b876f01eab1803cef5d508e5dea014c8a/docs/validation.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><span
+                          data-zh="验证要求（计划）"
+                          data-en="Verification contract (planned)"
+                          >验证要求（计划）</span
+                        ></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </details>
               <p
                 class="project-reading-label"
                 data-zh="深入资料"
@@ -1338,6 +1806,318 @@
               </div>
             </article>
           </div>
+          <details class="illustration-details" id="system-illustrations">
+            <summary>
+              <span
+                data-zh="系统原理动效（可选技术阅读）"
+                data-en="System illustrations (optional technical reading)"
+                >系统原理动效（可选技术阅读）</span
+              >
+            </summary>
+            <figure class="story-visual">
+              <div class="stage-top">
+                <span class="mono">WORKBENCH / SCROLL STUDIES</span
+                ><span class="stage-count mono" aria-hidden="true"
+                  >01 — 04</span
+                >
+              </div>
+              <div class="story-stage" aria-hidden="true">
+                <div class="visual-scene is-active" data-scene-visual="0">
+                  <svg
+                    class="project-diagram"
+                    viewBox="0 0 640 470"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <g class="board-shadow">
+                      <rect
+                        x="80"
+                        y="65"
+                        width="480"
+                        height="330"
+                        rx="20"
+                        fill="#294d3e"
+                      />
+                      <path
+                        d="M95 90h450M95 370h450"
+                        stroke="#a9c5ad"
+                        opacity=".3"
+                      />
+                      <g fill="#e9e6d6">
+                        <circle cx="102" cy="88" r="5" />
+                        <circle cx="538" cy="88" r="5" />
+                        <circle cx="102" cy="372" r="5" />
+                        <circle cx="538" cy="372" r="5" />
+                      </g>
+                      <g stroke="#719581" stroke-width="2">
+                        <path
+                          d="M145 165h68v-25h62m-130 25v145h130m60-130v75m50 55h70v-140h38m-38 140v38h38"
+                        />
+                        <path d="M335 125v-25h118" />
+                      </g>
+                      <g class="flow-line" stroke="#d5b57a" stroke-width="3">
+                        <path d="M145 165h68v-25h62" />
+                        <path d="M145 165v145h130" />
+                        <path d="M335 180v75" />
+                        <path d="M385 310h70v-140h38m-38 140v38h38" />
+                      </g>
+                      <path
+                        class="progress-draw"
+                        pathLength="1"
+                        d="M145 165h68v-25h62m60 40v75m50 55h70v-140h38m-38 140v38h38"
+                        stroke="#f4e2b4"
+                        stroke-width="4"
+                      />
+                      <g fill="#18382d" stroke="#9ebba3">
+                        <rect x="275" y="110" width="120" height="70" rx="3" />
+                        <rect x="275" y="255" width="110" height="95" rx="3" />
+                      </g>
+                      <g fill="#ddc798">
+                        <rect x="115" y="143" width="45" height="44" rx="2" />
+                        <rect x="493" y="145" width="40" height="50" rx="2" />
+                        <rect x="493" y="325" width="40" height="48" rx="2" />
+                        <rect x="450" y="91" width="58" height="22" rx="2" />
+                      </g>
+                      <g stroke="#cfddc8" stroke-width="3">
+                        <path
+                          d="M290 100v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10M290 180v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10m15-10v10"
+                        />
+                      </g>
+                      <g class="svg-label" fill="#e8efdc" text-anchor="middle">
+                        <text x="335" y="143">STM32F407</text>
+                        <text x="335" y="163" font-size="10">FIRMWARE</text>
+                        <text x="330" y="297">UM982</text>
+                        <text x="330" y="320" font-size="11">GNSS / RTCM</text>
+                      </g>
+                      <g class="svg-label" fill="#244333">
+                        <text x="115" y="211" fill="#e8efdc">24 V</text>
+                        <text x="466" y="219" fill="#e8efdc">RS-422 / A</text>
+                        <text x="466" y="310" fill="#e8efdc">RS-422 / B</text>
+                        <text x="450" y="80" fill="#e8efdc">USB / DEBUG</text>
+                      </g>
+                      <circle
+                        class="board-led"
+                        cx="240"
+                        cy="348"
+                        r="5"
+                        fill="#dabb7c"
+                      />
+                    </g>
+                    <text class="svg-label" x="80" y="435" fill="currentColor">
+                      01 / POWER → FIRMWARE → INTERFACES
+                    </text>
+                  </svg>
+                </div>
+                <div class="visual-scene" data-scene-visual="1">
+                  <svg
+                    class="project-diagram"
+                    viewBox="0 0 640 470"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <g stroke="#adb9a7">
+                      <path
+                        d="M110 350h420M150 100v290M110 300h420M110 250h420M110 200h420M110 150h420"
+                        opacity=".5"
+                      />
+                      <path
+                        d="M320 94v280M180 234h280"
+                        stroke-dasharray="4 8"
+                      />
+                    </g>
+                    <circle cx="320" cy="234" r="108" stroke="#809a81" />
+                    <circle
+                      cx="320"
+                      cy="234"
+                      r="78"
+                      stroke="#b9c5af"
+                      stroke-dasharray="2 8"
+                    />
+                    <g class="replay-arm" stroke="#32583f" stroke-width="2">
+                      <path d="M230 234h180M320 144v180" />
+                      <path
+                        d="m320 168 13 26h-26Z"
+                        fill="#b17b49"
+                        stroke="none"
+                      />
+                      <path
+                        d="m260 255 60-50 60 50-60-16Z"
+                        fill="#47664d"
+                        fill-opacity=".12"
+                      />
+                    </g>
+                    <circle cx="320" cy="234" r="5" fill="#b17b49" />
+                    <path
+                      d="M140 360c40-65 80 40 120-5s80-50 120-10 80-40 120-9"
+                      stroke="#9dae99"
+                      stroke-width="2"
+                    />
+                    <path
+                      class="progress-draw"
+                      pathLength="1"
+                      d="M140 360c40-65 80 40 120-5s80-50 120-10 80-40 120-9"
+                      stroke="#b17b49"
+                      stroke-width="3"
+                    />
+                    <g class="replay-cursor">
+                      <path d="M140 105v285" stroke="#b17b49" opacity=".7" />
+                      <rect
+                        x="129"
+                        y="382"
+                        width="22"
+                        height="5"
+                        fill="#b17b49"
+                      />
+                    </g>
+                    <g class="svg-label" fill="currentColor">
+                      <text x="82" y="73">
+                        SAME INPUT / DIFFERENT ESTIMATORS
+                      </text>
+                      <text x="177" y="425">CSV</text>
+                      <text x="288" y="425">MAHONY</text>
+                      <text x="421" y="425">ESKF</text>
+                    </g>
+                  </svg>
+                </div>
+                <div class="visual-scene" data-scene-visual="2">
+                  <svg
+                    class="project-diagram"
+                    viewBox="0 0 640 470"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <g stroke="#b8c3b0" stroke-width="1">
+                      <path
+                        d="M80 140h480M80 195h480M80 275h480M80 330h480"
+                        stroke-dasharray="3 7"
+                      />
+                    </g>
+                    <rect
+                      x="285"
+                      y="95"
+                      width="70"
+                      height="285"
+                      rx="35"
+                      fill="#e1e6d9"
+                    />
+                    <path
+                      d="M320 110v255"
+                      stroke="#9daa93"
+                      stroke-dasharray="3 6"
+                    />
+                    <path
+                      class="signal-wave"
+                      d="M80 195h28v-55h24v55h48v-55h24v55h24v-55h48v55h24v-55h24v55h48v-55h48v55h24v-55h24v55h48v-55h24v55h44"
+                      stroke="#375c44"
+                      stroke-width="3"
+                    />
+                    <path
+                      class="signal-wave"
+                      d="M80 330h28v-55h24v55h48v-55h24v55h24v-55h48v55h24v-55h24v55h48v-55h48v55h24v-55h24v55h48v-55h24v55h44"
+                      stroke="#b17b49"
+                      stroke-width="3"
+                    />
+                    <g class="replay-cursor">
+                      <path d="M80 95v285" stroke="#b17b49" />
+                      <circle cx="80" cy="95" r="4" fill="#b17b49" />
+                    </g>
+                    <g class="svg-label" fill="currentColor">
+                      <text x="80" y="76">SBUS / IN</text>
+                      <text x="80" y="252">RS-422 / OUT</text>
+                      <text x="80" y="425">ISOLATION + LEVEL CONVERSION</text>
+                    </g>
+                  </svg>
+                </div>
+                <div class="visual-scene" data-scene-visual="3">
+                  <svg
+                    class="project-diagram"
+                    viewBox="0 0 640 470"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M130 90h-35v35m415-35h35v35M130 365h-35v-35m415 35h35v-35"
+                      stroke="#385e43"
+                      stroke-width="2"
+                    />
+                    <rect
+                      x="145"
+                      y="100"
+                      width="350"
+                      height="250"
+                      fill="#e4e8dd"
+                      stroke="#8ea488"
+                    />
+                    <g stroke="#b8c4ac" opacity=".7">
+                      <path
+                        d="M145 150h350m-350 50h350m-350 50h350m-350 50h350m-300-200v250m50-250v250m50-250v250m50-250v250m50-250v250m50-250v250"
+                      />
+                    </g>
+                    <circle
+                      cx="320"
+                      cy="225"
+                      r="72"
+                      fill="#d1dac8"
+                      stroke="#829a7b"
+                    />
+                    <circle cx="320" cy="225" r="46" fill="#536f4d" />
+                    <circle cx="320" cy="225" r="22" fill="#294c38" />
+                    <path d="M284 225h72m-36-36v72" stroke="#ddc18d" />
+                    <g class="camera-scan">
+                      <path
+                        d="M145 100h350"
+                        stroke="#b17b49"
+                        stroke-width="2"
+                      />
+                      <rect
+                        x="145"
+                        y="100"
+                        width="350"
+                        height="30"
+                        fill="#c9a16b"
+                        fill-opacity=".08"
+                      />
+                    </g>
+                    <path
+                      d="M165 315h310"
+                      stroke="#b17b49"
+                      stroke-dasharray="4 8"
+                    />
+                    <g class="svg-label" fill="currentColor">
+                      <text x="95" y="68">LINUX / IMX296 / RAW</text>
+                      <text x="95" y="418">CAMERA BRING-UP</text>
+                      <text x="415" y="418" fill="#b17b49">IN PROGRESS</text>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <nav
+                class="scene-nav"
+                aria-label="项目示意"
+                data-aria-zh="项目示意"
+                data-aria-en="Project illustrations"
+              >
+                <a href="#dpiny-summary" data-scene-link="0" aria-current="step"
+                  ><span class="mono">01</span>dpiny</a
+                ><a href="#aerakia-summary" data-scene-link="1"
+                  ><span class="mono">02</span>Aerakia</a
+                ><a href="#sbus-summary" data-scene-link="2"
+                  ><span class="mono">03</span>SBUS–RS-422</a
+                ><a href="#splicia-summary" data-scene-link="3"
+                  ><span class="mono">04</span>Splicia</a
+                >
+              </nav>
+              <div class="chapter-progress" aria-hidden="true"><i></i></div>
+              <figcaption>
+                <span
+                  class=""
+                  data-zh="项目原理示意；动画不代表实测信号或性能结果。"
+                  data-en="Conceptual project illustrations; animations do not represent measured signals or performance."
+                  >项目原理示意；动画不代表实测信号或性能结果。</span
+                >
+              </figcaption>
+            </figure>
+          </details>
         </div>
       </section>
       <section
