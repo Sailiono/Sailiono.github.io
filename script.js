@@ -119,21 +119,6 @@
   const workflowSteps = [...document.querySelectorAll(".workflow-line li")];
   let framePending = false;
   let currentScene = -1;
-  const illustrationPanel = document.querySelector(".illustration-details");
-  let selectedIllustration = null;
-  // The engineering records are primary; optional diagrams have manual selection.
-  sceneLinks.forEach((link, index) => {
-    link.addEventListener("click", (event) => {
-      if (!illustrationPanel?.open) return;
-      event.preventDefault();
-      selectedIllustration = index;
-      scheduleFrame();
-    });
-  });
-  illustrationPanel?.addEventListener("toggle", () => {
-    if (!illustrationPanel.open) selectedIllustration = null;
-    scheduleFrame();
-  });
   const clamp = (value) => Math.max(0, Math.min(1, value));
   function updateFrame() {
     framePending = false;
@@ -149,10 +134,9 @@
       : 0;
     // Leave room to read below a mobile illustration; never pin a panel that
     // cannot fit. Measuring also covers translated captions and browser zoom.
+    // Measure independently of is-unpinned so a larger viewport can pin again.
     const stageFits =
-      stage &&
-      getComputedStyle(stage).position === "sticky" &&
-      stageHeight + stageTop + (mobile.matches ? 200 : 24) <= height;
+      stage && stageHeight + stageTop + (mobile.matches ? 200 : 24) <= height;
     const scrollPadding =
       parseFloat(getComputedStyle(root).scrollPaddingTop) || 0;
     const chapterTop =
@@ -169,9 +153,6 @@
     bounds.forEach((rect, index) => {
       if (rect.top <= trigger) active = index;
     });
-    if (illustrationPanel?.open && selectedIllustration !== null) {
-      active = selectedIllustration;
-    }
     const progress = bounds.length
       ? clamp((trigger - bounds[active].top) / bounds[active].height)
       : 1;
@@ -216,7 +197,11 @@
         if (i === active) item.setAttribute("aria-current", "step");
         else item.removeAttribute("aria-current");
       });
-      if (count) count.textContent = "0" + (active + 1) + " — 04";
+      if (count)
+        count.textContent =
+          String(active + 1).padStart(2, "0") +
+          " — " +
+          String(chapters.length).padStart(2, "0");
     }
     if (workflowBounds) {
       const completed = motionEnabled()

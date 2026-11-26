@@ -34,20 +34,20 @@ def render_chart(series, language, compact=False):
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
            f'<title id="title">{title}</title>',
            '<desc id="desc">Geodesic attitude error from 2000 synthetic samples replayed through the native C algorithms. The magnetic bias starts at 6.66 seconds.</desc>',
-           f'<rect width="{width}" height="{height}" fill="#f3f5ed"/>',
-           '<g font-family="Arial, Noto Sans CJK SC, sans-serif" fill="#4c5d47" font-size="16">',
+           f'<rect width="{width}" height="{height}" fill="#132119"/>',
+           '<g font-family="Arial, Noto Sans CJK SC, sans-serif" fill="#b6c5ac" font-size="16">',
            f'<text x="{left}" y="29">{("姿态偏差（度）" if zh else "Attitude error (degrees)") if compact else ("姿态偏差（度）· 越低越接近参考值" if zh else "Attitude error (degrees) · lower is closer to reference")}</text>',
-           f'<rect x="{x(6.66):.2f}" y="{top}" width="{x(20)-x(6.66):.2f}" height="{plot_height}" fill="#e8e6da"/>']
+           f'<rect x="{x(6.66):.2f}" y="{top}" width="{x(20)-x(6.66):.2f}" height="{plot_height}" fill="#293023"/>']
     for tick in range(0, maximum + 1, 10):
-        svg.extend([f'<path d="M{left} {y(tick):.2f}h{plot_width}" stroke="#d0d7c8"/>',
+        svg.extend([f'<path d="M{left} {y(tick):.2f}h{plot_width}" stroke="#3b4e39"/>',
                     f'<text x="{left-14}" y="{y(tick)+5:.2f}" text-anchor="end">{tick}</text>'])
     for tick in range(0, 21, 5):
         svg.append(f'<text x="{x(tick):.2f}" y="{height-41}" text-anchor="middle">{tick}</text>')
-    svg.extend([f'<path d="M{x(6.66):.2f} {top}v{plot_height}" stroke="#827b63" stroke-dasharray="4 4"/>',
+    svg.extend([f'<path d="M{x(6.66):.2f} {top}v{plot_height}" stroke="#a9b099" stroke-dasharray="4 4"/>',
                 f'<text x="{x(6.66)+10:.2f}" y="56">{("加入干扰" if zh else "Bias begins") if compact else ("此处加入磁场偏置" if zh else "Magnetic bias begins")}</text>',
                 f'<text x="{left+plot_width}" y="{height-11}" text-anchor="end">{"回放时间（秒）" if zh else "Replay time (seconds)"}</text>', '</g>'])
     # Render every point: the near-zero robust curve is not replaced by a flat line.
-    for index, color, dash in ((1, "#a65f3d", ""), (2, "#2c6347", ' stroke-dasharray="7 4"')):
+    for index, color, dash in ((1, "#e0ac80", ""), (2, "#c5dcb2", ' stroke-dasharray="7 4"')):
         points = " ".join(f"{x(row[0]):.2f},{y(row[index]):.2f}" for row in series)
         svg.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="2.7" stroke-linejoin="round"{dash}/>')
     svg.append('</svg>\n')
