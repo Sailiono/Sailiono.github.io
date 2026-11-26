@@ -1625,6 +1625,8 @@ html:not(.motion-on) .reveal {
   border: 0;
   background: none;
   overflow: visible;
+  /* Contain the rotating cover horizontally without making a scroll container. */
+  overflow-x: clip;
   transform: none;
 }
 .home-page .hero-figure .figure-top {
