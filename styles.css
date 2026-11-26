@@ -2295,6 +2295,8 @@ html[lang="en"] .media-zh {
 .source-extract pre {
   max-width: 100%;
   overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   padding: 20px;
   margin-top: 20px;
   border: 1px solid var(--line);
