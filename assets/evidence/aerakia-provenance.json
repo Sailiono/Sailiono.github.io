@@ -1,0 +1,27 @@
+{
+  "repository": "https://github.com/Sailiono/aerakia-flight-algorithms",
+  "source_commit": "8dfbe9d6e2843c31ce47d670247a3a9207ec3ca7",
+  "reference_kind": "deterministic synthetic inputs, not flight or hardware results",
+  "scenario": "mag_bias",
+  "duration_s": 20,
+  "rate_hz": 100,
+  "seed": 7,
+  "bias_start_s": 6.66,
+  "magnetic_bias_ut": {
+    "x": 50,
+    "y": 25
+  },
+  "samples": 2000,
+  "chart_metric": "Quaternion geodesic attitude error, degrees, computed from every output sample",
+  "metric_check": "Chart-series RMSE matches the analyzer within 0.00001 degrees",
+  "input_sha256": "8b26a6342f48fabd58ffaf5ff24b5bcce38dae126ca41fc5d49a32fa781a242a",
+  "native_result_sha256": "a20b97a643feda08e17d5698944ed9d58e54086597ffb19006c8ad95f7b62658",
+  "commands": [
+    "git checkout 8dfbe9d6e2843c31ce47d670247a3a9207ec3ca7",
+    "cmake -S . -B build -DCMAKE_BUILD_TYPE=Release",
+    "cmake --build build",
+    "ctest --test-dir build --output-on-failure",
+    "python validation/run_suite.py --runner build/aerakia_validation_runner --out-dir build/validation"
+  ],
+  "limitations": "One deterministic run per scenario. No field reliability, flight safety or certification claim. Cold-start summary metrics exclude the initial alignment interval, as documented upstream."
+}

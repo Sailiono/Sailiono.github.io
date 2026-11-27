@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>A — 黑场展览 / Sailiono</title>
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="stylesheet" href="a.css" />
+    <script src="shared.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#overview">跳到项目介绍</a>
+    <header>
+      <a class="brand" href="#top">S<span>↗</span></a
+      ><span class="header-note">SAILIONO<br />独立工程作品 / 2026</span>
+      <nav aria-label="主导航">
+        <a href="#overview">项目介绍</a><a href="b.html">方案 B ↗</a
+        ><button hidden data-motion type="button" aria-pressed="false">
+          暂停动效
+        </button>
+      </nav>
+      <span class="direction">方向 A / 黑场展览</span>
+    </header>
+    <nav class="chapter-rail" aria-label="项目章节">
+      <a data-project-link href="#top">01<span>DPINY</span></a
+      ><a data-project-link href="#aerakia">02<span>AERAKIA</span></a
+      ><a data-project-link href="#research">03<span>研究中</span></a>
+    </nav>
+    <main>
+      <section id="top" class="cover" data-scroll data-index>
+        <div class="cover-sticky">
+          <div class="cover-coordinate mono">
+            01 — DEVICE / RTK BASE STATION
+          </div>
+          <h1>dpiny<span aria-hidden="true">01</span></h1>
+          <figure class="artifact">
+            <img
+              src="assets/device.svg"
+              width="1100"
+              height="820"
+              alt="dpiny 的供电、定位和维护三个抽象层级示意"
+            />
+            <figcaption>
+              系统原理分层示意<br />非实物照片 / 非电路设计
+            </figcaption>
+          </figure>
+          <div class="cover-copy">
+            <p class="eyebrow">双路供电 · 卫星定位 · 固件维护</p>
+            <h2>一台可维护的<br />RTK 基准站。</h2>
+            <p>将供电、定位模块和设备维护整合在同一套嵌入式系统中。</p>
+          </div>
+          <a class="scroll-cue" href="#overview"
+            ><span>向下展开项目</span><b aria-hidden="true">↓</b></a
+          ><span class="cover-side mono"
+            >POWER / POSITIONING / MAINTENANCE</span
+          >
+        </div>
+      </section>
+      <section id="overview" class="case-overview space">
+        <div class="section-kicker">
+          <span>01 / DPINY</span><span>设备实现与台架记录</span>
+        </div>
+        <div class="statement">
+          <h2>设备能输出数据，<br />还要能被维护。</h2>
+          <p>
+            dpiny 是面向固定部署的 RTK 基准站项目。工作不仅是接通 GNSS
+            模块，还包括供电隔离、数据转发、配置管理，以及复位后的维护入口恢复。
+          </p>
+        </div>
+        <div class="system-strip">
+          <div><b>24 V</b><span>双路输入与隔离供电</span></div>
+          <i>→</i>
+          <div><b>UM982</b><span>GNSS / RTK 定位模块</span></div>
+          <i>→</i>
+          <div><b>STM32</b><span>固件、接口与维护</span></div>
+        </div>
+        <div class="evidence-grid">
+          <div>
+            <span class="tag">历史台架检查 / 公开记录</span>
+            <h3>复位之后，<br />维护通道仍能恢复。</h3>
+            <p>
+              公开材料记录了构建、烧录、USB CDC 复位恢复和 RTCM
+              帧检查。它们是已有台架记录，不是本次硬件复测或长期可靠性结论。
+            </p>
+          </div>
+          <div class="bench">
+            <span class="mono">BENCH RECORD / RTCM 3.x</span>
+            <div class="bench-number">28<span>CRC OK</span></div>
+            <div class="bench-bottom">
+              <span>0 CRC BAD</span><span>6 s / 2520 bytes</span>
+            </div>
+            <a href="../cases/dpiny.html">阅读完整案例 ↗</a>
+          </div>
+        </div>
+        <details>
+          <summary>固件怎样组织？ <span>+</span></summary>
+          <div class="detail-content">
+            <p>
+              FreeRTOS 组织 GNSS 处理、USB
+              CDC、配置与看门狗；工具目录提供构建、烧录、RTCM
+              检查和寄存器读取入口。
+            </p>
+            <pre>
+Core/          GNSS · Shell · Configuration · Watchdog
+USB_DEVICE/    USB CDC
+Drivers/       STM32 HAL / CMSIS
+tools/         Build · Flash · RTCM · Bench checks</pre
+            >
+            <a href="https://github.com/Sailiono/dpiny-rtk-base-station"
+              >查看公开固件与记录 ↗</a
+            >
+          </div>
+        </details>
+      </section>
+      <section id="aerakia" class="algorithm" data-scroll data-index>
+        <div class="algorithm-title">
+          <div class="section-kicker">
+            <span>02 / AERAKIA</span><span>算法实现与主机验证</span>
+          </div>
+          <div class="orbit-art" aria-hidden="true">
+            <i></i><i></i><i></i><b>+</b>
+          </div>
+          <p class="eyebrow">ATTITUDE ESTIMATION</p>
+          <h2>干扰出现时，<br /><em>朝向如何判断？</em></h2>
+          <p>
+            姿态算法将传感器读数转换成设备朝向。Aerakia
+            关注磁场干扰、异常输入与数据中断时的估计响应。
+          </p>
+          <div class="algorithm-word" aria-hidden="true">aerakia</div>
+        </div>
+        <div class="space replay">
+          <div class="section-kicker">
+            <span>实际公开 C 算法回放</span
+            ><span>MAGNETIC BIAS / 20 s / 100 Hz</span>
+          </div>
+          <div class="replay-heading">
+            <h3>同样的磁场偏置，<br />两种不同的响应。</h3>
+            <p>
+              6.66 秒起加入磁场偏置。曲线保留 2000
+              个实际输出样本，没有手工拟合或更换数据。
+            </p>
+          </div>
+          <figure>
+            <picture
+              ><source
+                media="(max-width:600px)"
+                srcset="assets/replay-a-compact.svg"
+                width="360"
+                height="320" />
+              <img
+                src="assets/replay-a.svg"
+                width="1000"
+                height="440"
+                loading="lazy"
+                alt="实际合成回放：磁偏置后标准配置误差上升，抗干扰配置接近参考值"
+            /></picture>
+            <figcaption>
+              <span class="standard">— 标准配置</span
+              ><span class="robust">┄ 抗干扰配置</span
+              ><span>合成输入回放，不是实飞。</span>
+            </figcaption>
+          </figure>
+          <div class="results">
+            <div>
+              <span>标准配置 / 整体姿态 RMSE</span
+              ><strong>27.1650<small>°</small></strong>
+            </div>
+            <span class="result-arrow" aria-hidden="true">→</span>
+            <div>
+              <span>抗干扰配置 / 整体姿态 RMSE</span
+              ><strong>0.2854<small>°</small></strong>
+            </div>
+          </div>
+          <p class="fineprint">
+            这些数值只说明该确定性合成场景下的算法响应，不构成飞行精度、安全或可靠性结论。公开范围为算法层与主机验证，不是完整飞控。
+          </p>
+          <div class="link-row">
+            <a href="../assets/evidence/aerakia-mag-bias-series.csv" download
+              >2000 点 CSV ↓</a
+            ><a href="../assets/evidence/aerakia-suite-summary.json"
+              >六场景指标 ↗</a
+            ><a href="https://github.com/Sailiono/aerakia-flight-algorithms"
+              >算法仓库 ↗</a
+            >
+          </div>
+          <details>
+            <summary>回放条件与公开边界 <span>+</span></summary>
+            <div class="detail-content">
+              <p>
+                场景长 20 秒，采样率 100 Hz，种子 7；约 6.66 秒起加入 X 方向 +50
+                μT、Y 方向 +25 μT
+                的磁场偏置。验证材料另包含正常运动、磁尖峰、航向突变、倾斜冷启动与导航中断场景。
+              </p>
+              <a href="../assets/evidence/aerakia-provenance.json"
+                >查看来源与参数 ↗</a
+              ><a href="../cases/aerakia.html">完整算法案例 ↗</a>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section id="research" class="research space" data-index>
+        <div class="section-kicker">
+          <span>03 / SPLICIA</span><span>独立在研项目</span>
+        </div>
+        <div class="research-layout">
+          <div class="vision-art" aria-hidden="true">
+            <i></i><i></i><b>×</b><span>VISION / MOTION</span>
+          </div>
+          <div>
+            <p class="eyebrow">MICROSCOPIC VISION PLATFORM</p>
+            <h2>从显微图像，<br />走向精密对准。</h2>
+            <p>
+              Splicia 探索成像、视觉估计与运动控制之间的协作。当前已完成 Linux
+              平台调试与相机链路排查，模块边界仍在设计，闭环对准尚未实现。
+            </p>
+            <details>
+              <summary>已完成与未实现范围 <span>+</span></summary>
+              <div class="detail-content">
+                <p>
+                  已完成：IMX296 相机发现、media 拓扑与 RAW
+                  输出排查。设计中：采集、视觉、估计、运动、UI、日志和回放边界。未实现：光纤几何提取、标定双视图融合、闭环对准与量化性能验证。
+                </p>
+              </div>
+            </details>
+            <a
+              class="underlined"
+              href="https://github.com/Sailiono/splicia-vision-platform"
+              >查看在研仓库 ↗</a
+            >
+          </div>
+        </div>
+      </section>
+      <footer class="space">
+        <p>SAILIONO</p>
+        <div>
+          <span>嵌入式系统 / 算法 / 视觉研究</span
+          ><a href="https://github.com/Sailiono">GITHUB ↗</a
+          ><a href="b.html">对比方案 B ↗</a>
+        </div>
+        <small
+          >方向 A ·
+          视觉方案预览。未合并、未上线；图形为原理示意，公开范围以项目材料为准。</small
+        >
+      </footer>
+    </main>
+  </body>
+</html>

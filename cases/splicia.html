@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <meta
+      name="description"
+      content="Linux 与 IMX296 相机调试记录，涵盖设备发现、媒体拓扑与 RAW 输出，并区分后续视觉、运动和 UI 规划。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Splicia — Linux 相机平台调试" />
+    <meta
+      property="og:description"
+      content="Linux 与 IMX296 相机调试记录，涵盖设备发现、媒体拓扑与 RAW 输出，并区分后续视觉、运动和 UI 规划。"
+    />
+    <meta
+      property="og:url"
+      content="https://sailiono.github.io/cases/splicia.html"
+    />
+    <title>Splicia — Linux 相机平台调试</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../script.js" defer></script>
+  </head>
+  <body
+    class="case-page"
+    data-title-zh="Splicia — Linux 相机平台调试"
+    data-title-en="Splicia — Linux camera-platform bring-up"
+  >
+    <a class="skip-link" href="#main"
+      ><span class="" data-zh="跳到正文" data-en="Skip to content"
+        >跳到正文</span
+      ></a
+    >
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html"
+          ><span class="brand-mark" aria-hidden="true">cc</span
+          ><span>Clark Cui <span class="brand-sub">/ Sailiono</span></span></a
+        >
+        <nav
+          id="primary-nav"
+          aria-label="主导航"
+          data-aria-zh="主导航"
+          data-aria-en="Main navigation"
+        >
+          <a href="../index.html#projects" class="nav-link"
+            ><span class="" data-zh="项目" data-en="Projects">项目</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a href="../index.html#method" class="nav-link"
+            ><span class="" data-zh="开源与文档" data-en="Source &amp; docs"
+              >开源与文档</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a href="../index.html#contact" class="nav-link"
+            ><span class="" data-zh="联系" data-en="Contact">联系</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+          ></a>
+        </nav>
+        <div class="header-actions">
+          <button
+            class="motion-toggle"
+            type="button"
+            aria-pressed="true"
+            aria-label="暂停动效"
+          >
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="10" cy="10" r="7" />
+              <path class="pause-icon" d="M8 7v6m4-6v6" />
+              <path class="play-icon" d="m8 6 6 4-6 4Z" /></svg
+            ><span class="motion-label">动效</span></button
+          ><button
+            class="language-toggle"
+            type="button"
+            aria-label="Switch to English"
+            aria-pressed="true"
+          >
+            <span class="language-current">中文</span
+            ><span class="language-divider" aria-hidden="true">/</span
+            ><span class="language-other">EN</span></button
+          ><button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            aria-label="打开菜单"
+          >
+            <span class="menu-lines" aria-hidden="true"></span
+            ><span class="" data-zh="菜单" data-en="Menu">菜单</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="case-main wrap">
+      <a href="../index.html#projects" class="back-link"
+        ><span class="" data-zh="返回项目概览" data-en="Back to projects"
+          >返回项目概览</span
+        ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+      ></a>
+      <header class="case-header">
+        <p class="eyebrow" data-zh="项目 / 04" data-en="PROJECT / 04">
+          项目 / 04
+        </p>
+        <p class="case-name mono">Splicia</p>
+        <h1>
+          <span
+            class=""
+            data-zh="Linux 相机平台调试"
+            data-en="Linux camera-platform bring-up"
+            >Linux 相机平台调试</span
+          >
+        </h1>
+        <p
+          class="case-intro"
+          data-zh="Linux 与 IMX296 相机调试记录，涉及设备发现、媒体拓扑和 RAW 输出。当前工作集中于平台与采集链路，后续视觉、运动及界面模块另行规划。"
+          data-en="Linux and IMX296 camera bring-up records covering device discovery, media topology and RAW output. Current work focuses on the platform and capture path; vision, motion and UI modules are planned separately."
+        >
+          Linux 与 IMX296 相机调试记录，涉及设备发现、媒体拓扑和 RAW
+          输出。当前工作集中于平台与采集链路，后续视觉、运动及界面模块另行规划。
+        </p>
+        <p class="case-tech mono">
+          Embedded Linux · IMX296 · Media topology · RAW
+        </p>
+      </header>
+      <aside class="scope-banner">
+        <h2 class="" data-zh="公开内容" data-en="Public scope">公开内容</h2>
+        <p
+          class=""
+          data-zh="已公开平台与相机调试记录。第二阶段架构和 UI 处于设计阶段，视觉算法、运动控制及闭环系统尚未完成。"
+          data-en="Platform and camera bring-up records are public. Phase 2 architecture and UI remain designs; vision algorithms, motion control and closed-loop operation are not completed features."
+        >
+          已公开平台与相机调试记录。第二阶段架构和 UI
+          处于设计阶段，视觉算法、运动控制及闭环系统尚未完成。
+        </p>
+      </aside>
+      <section class="case-section reveal">
+        <div>
+          <p class="eyebrow" data-zh="01 / 项目背景" data-en="01 / Context">
+            01 / 项目背景
+          </p>
+        </div>
+        <div>
+          <h2>
+            <span
+              class=""
+              data-zh="相机采集链路的分层诊断"
+              data-en="Layered diagnosis of the camera path"
+              >相机采集链路的分层诊断</span
+            >
+          </h2>
+          <p
+            class=""
+            data-zh="相机输出涉及设备、驱动、媒体管线和应用等环节。当前按层记录设备发现、拓扑配置及 RAW 数据，分析图像输出异常的来源，为后续视觉处理提供基础。"
+            data-en="Camera output spans the device, driver, media pipeline and application. This phase records device discovery, topology configuration and RAW data by layer to investigate output problems before subsequent vision work."
+          >
+            相机输出涉及设备、驱动、媒体管线和应用等环节。当前按层记录设备发现、拓扑配置及
+            RAW 数据，分析图像输出异常的来源，为后续视觉处理提供基础。
+          </p>
+        </div>
+      </section>
+      <section class="case-section">
+        <div>
+          <p
+            class="eyebrow"
+            data-zh="02 / 实现要点"
+            data-en="02 / Implementation"
+          >
+            02 / 实现要点
+          </p>
+        </div>
+        <div class="decision-list">
+          <article class="reveal">
+            <span class="mono">01</span>
+            <div>
+              <h3>
+                <span
+                  class=""
+                  data-zh="设备发现与 RAW 输出检查"
+                  data-en="Device discovery &amp; RAW-output inspection"
+                  >设备发现与 RAW 输出检查</span
+                >
+              </h3>
+              <p
+                class=""
+                data-zh="分别整理设备发现、媒体拓扑和 RAW 输出记录，用于区分相机、驱动及应用层问题。"
+                data-en="Separate device-discovery, media-topology and RAW-output records support diagnosis of camera, driver and application-layer issues."
+              >
+                分别整理设备发现、媒体拓扑和 RAW
+                输出记录，用于区分相机、驱动及应用层问题。
+              </p>
+            </div>
+          </article>
+          <article class="reveal">
+            <span class="mono">02</span>
+            <div>
+              <h3>
+                <span
+                  class=""
+                  data-zh="后续模块职责划分"
+                  data-en="Planned module responsibilities"
+                  >后续模块职责划分</span
+                >
+              </h3>
+              <p
+                class=""
+                data-zh="下一阶段规划采集、视觉、状态估计、运动控制、UI、日志及回放等模块，明确职责与依赖。这些内容目前属于架构设计。"
+                data-en="The next phase defines responsibilities and dependencies for capture, vision, estimation, motion control, UI, logging and replay. These remain architecture plans."
+              >
+                下一阶段规划采集、视觉、状态估计、运动控制、UI、日志及回放等模块，明确职责与依赖。这些内容目前属于架构设计。
+              </p>
+            </div>
+          </article>
+          <article class="reveal">
+            <span class="mono">03</span>
+            <div>
+              <h3>
+                <span class="" data-zh="UI 概念设计" data-en="UI concept design"
+                  >UI 概念设计</span
+                >
+              </h3>
+              <p
+                class=""
+                data-zh="设计稿用于讨论第二阶段的布局与信息组织。图像、曲线及数值均为占位内容，不代表运行界面或测试结果。"
+                data-en="The mock-up explores Phase 2 layout and information structure. Images, curves and values are placeholders, not a running interface or test results."
+              >
+                设计稿用于讨论第二阶段的布局与信息组织。图像、曲线及数值均为占位内容，不代表运行界面或测试结果。
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <figure class="concept-figure reveal">
+        <img
+          src="../assets/splicia-phase2-ui-concept.svg"
+          width="1200"
+          height="720"
+          loading="lazy"
+          alt="Splicia 第二阶段 UI 设计稿，画面与数值均为占位"
+          data-alt-zh="Splicia 第二阶段 UI 设计稿，画面与数值均为占位"
+          data-alt-en="Splicia Phase 2 UI mock-up; imagery and values are placeholders"
+        />
+        <figcaption>
+          <span
+            class=""
+            data-zh="第二阶段 UI 概念稿，非运行截图。图像与数值为占位内容；视觉算法与运动控制仍在规划。"
+            data-en="Phase 2 UI concept, not a running screenshot. Imagery and values are placeholders; vision and motion control remain planned."
+            >第二阶段 UI
+            概念稿，非运行截图。图像与数值为占位内容；视觉算法与运动控制仍在规划。</span
+          >
+        </figcaption>
+      </figure>
+      <section class="case-section reveal">
+        <div>
+          <p class="eyebrow" data-zh="03 / 公开资料" data-en="03 / Resources">
+            03 / 公开资料
+          </p>
+        </div>
+        <div class="evidence-links">
+          <article>
+            <a
+              href="https://github.com/Sailiono/splicia-vision-platform"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span
+                class=""
+                data-zh="相机调试记录"
+                data-en="Camera bring-up notes"
+                >相机调试记录</span
+              ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+            ></a>
+            <p
+              class=""
+              data-zh="平台与相机调试的公开范围及开发记录。"
+              data-en="Public scope and records of platform and camera bring-up."
+            >
+              平台与相机调试的公开范围及开发记录。
+            </p>
+          </article>
+          <article>
+            <a
+              href="https://github.com/Sailiono/splicia-vision-platform/blob/main/docs/architecture.md"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span
+                class=""
+                data-zh="第二阶段架构设计"
+                data-en="Phase 2 architecture design"
+                >第二阶段架构设计</span
+              ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+            ></a>
+            <p
+              class=""
+              data-zh="下一阶段的模块划分和依赖方向。"
+              data-en="Planned module responsibilities and dependencies."
+            >
+              下一阶段的模块划分和依赖方向。
+            </p>
+          </article>
+          <article>
+            <a
+              href="https://github.com/Sailiono/splicia-vision-platform/blob/main/docs/validation.md"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span
+                class=""
+                data-zh="后续验证计划"
+                data-en="Planned validation"
+                >后续验证计划</span
+              ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+            ></a>
+            <p
+              class=""
+              data-zh="拟采用的验证方法，非已完成测试记录。"
+              data-en="Proposed validation methods, not completed test records."
+            >
+              拟采用的验证方法，非已完成测试记录。
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="case-section reveal">
+        <div>
+          <p
+            class="eyebrow"
+            data-zh="04 / 范围与限制"
+            data-en="04 / Scope &amp; limitations"
+          >
+            04 / 范围与限制
+          </p>
+        </div>
+        <div>
+          <h2>
+            <span
+              class=""
+              data-zh="当前进展与后续规划"
+              data-en="Current status &amp; planned work"
+              >当前进展与后续规划</span
+            >
+          </h2>
+          <p
+            class=""
+            data-zh="当前已记录的工作限于 Linux 平台与相机调试。视觉几何提取、标定双目融合、多轴运动及闭环对准尚未完成；公开内容不含客户资料、旧产品或私有实现。"
+            data-en="Documented work is limited to Linux platform and camera bring-up. Vision geometry, calibrated dual-view fusion, multi-axis motion and closed-loop alignment remain incomplete. Public material excludes customer data, legacy products and private implementations."
+          >
+            当前已记录的工作限于 Linux
+            平台与相机调试。视觉几何提取、标定双目融合、多轴运动及闭环对准尚未完成；公开内容不含客户资料、旧产品或私有实现。
+          </p>
+        </div>
+      </section>
+      <div class="next-case">
+        <p class="eyebrow" data-zh="下一个项目" data-en="Next project">
+          下一个项目
+        </p>
+        <a href="dpiny.html" class="next-link"
+          ><span
+            class=""
+            data-zh="dpiny / RTK 基站硬件与固件"
+            data-en="dpiny / RTK base-station hardware &amp; firmware"
+            >dpiny / RTK 基站硬件与固件</span
+          ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+        ></a>
+      </div>
+    </main>
+    <footer class="site-footer wrap">
+      <a href="../index.html">Clark Cui / Sailiono</a>
+      <p
+        class=""
+        data-zh="嵌入式项目、开源代码与技术记录。"
+        data-en="Embedded projects, open-source code and technical documentation."
+      >
+        嵌入式项目、开源代码与技术记录。
+      </p>
+      <span class="mono">© 2026</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <meta
+      name="description"
+      content="Aerakia 的公开成果：连接运动信息、状态理解与回放分析，展示飞行状态估计的架构与验证方法。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aerakia — 飞行估计算法与主机验证" />
+    <meta
+      property="og:description"
+      content="Aerakia 的公开成果：连接运动信息、状态理解与回放分析，展示飞行状态估计的架构与验证方法。"
+    />
+    <meta
+      property="og:url"
+      content="https://sailiono.github.io/cases/aerakia.html"
+    />
+    <title>Aerakia — 飞行估计算法与主机验证</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../directions/cases.css" />
+    <script src="../script.js" defer></script>
+  </head>
+  <body
+    class="case-page"
+    data-title-zh="Aerakia — 飞行估计算法与主机验证"
+    data-title-en="Aerakia — Flight-estimation algorithms &amp; host validation"
+  >
+    <a class="skip-link" href="#main"
+      ><span class="" data-zh="跳到正文" data-en="Skip to content"
+        >跳到正文</span
+      ></a
+    >
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html"
+          ><span class="brand-mark" aria-hidden="true">cc</span
+          ><span>Clark Cui <span class="brand-sub">/ Sailiono</span></span></a
+        >
+        <nav
+          id="primary-nav"
+          aria-label="主导航"
+          data-aria-zh="主导航"
+          data-aria-en="Main navigation"
+        >
+          <a href="../index.html#projects" class="nav-link"
+            ><span class="" data-zh="项目" data-en="Projects">项目</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a href="../index.html#method" class="nav-link"
+            ><span class="" data-zh="开源与文档" data-en="Source &amp; docs"
+              >开源与文档</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg></a
+          ><a href="../index.html#contact" class="nav-link"
+            ><span class="" data-zh="联系" data-en="Contact">联系</span
+            ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+          ></a>
+        </nav>
+        <div class="header-actions">
+          <button
+            class="motion-toggle"
+            type="button"
+            aria-pressed="true"
+            aria-label="暂停动效"
+          >
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <circle cx="10" cy="10" r="7" />
+              <path class="pause-icon" d="M8 7v6m4-6v6" />
+              <path class="play-icon" d="m8 6 6 4-6 4Z" /></svg
+            ><span class="motion-label">动效</span></button
+          ><button
+            class="language-toggle"
+            type="button"
+            aria-label="Switch to English"
+            aria-pressed="true"
+          >
+            <span class="language-current">中文</span
+            ><span class="language-divider" aria-hidden="true">/</span
+            ><span class="language-other">EN</span></button
+          ><button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            aria-label="打开菜单"
+          >
+            <span class="menu-lines" aria-hidden="true"></span
+            ><span class="" data-zh="菜单" data-en="Menu">菜单</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="case-main wrap">
+      <a href="../index.html#projects" class="back-link"
+        ><span class="" data-zh="返回项目概览" data-en="Back to projects"
+          >返回项目概览</span
+        ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+      ></a>
+      <header class="case-header">
+        <p class="eyebrow" data-zh="项目 / 02" data-en="PROJECT / 02">
+          项目 / 02
+        </p>
+        <p class="case-name mono">Aerakia</p>
+        <h1>
+          <span
+            class=""
+            data-zh="飞行状态的感知与验证"
+            data-en="Understanding and validating flight state"
+            >飞行状态的感知与验证</span
+          >
+        </h1>
+        <p
+          class="case-intro"
+          data-zh="飞行系统需要从连续变化的运动信息中理解自身状态。这部分公开成果将信息输入、状态估计与回放分析连接起来，使不同方法能够在一致条件下接受观察与比较。"
+          data-en="A flight system needs to understand its state from changing motion data. This public part of Aerakia connects inputs, state estimation and replay analysis, allowing different methods to be examined under consistent conditions."
+        >
+          飞行系统需要从连续变化的运动信息中理解自身状态。这部分公开成果将信息输入、状态估计与回放分析连接起来，使不同方法能够在一致条件下接受观察与比较。
+        </p>
+        <p
+          class="case-tech mono"
+          data-zh="信息输入 · 状态理解 · 回放分析"
+          data-en="Inputs · State estimation · Replay analysis"
+        >
+          信息输入 · 状态理解 · 回放分析
+        </p>
+      </header>
+      <aside class="scope-banner">
+        <h2 class="" data-zh="公开内容" data-en="Public scope">公开内容</h2>
+        <p
+          class=""
+          data-zh="公开范围为算法模块与主机侧验证，不包含完整飞控固件；主机测试结果不代表实飞验收。"
+          data-en="The public scope is algorithm modules and host validation, not complete flight-controller firmware. Host-test results do not constitute flight qualification."
+        >
+          公开范围为算法模块与主机侧验证，不包含完整飞控固件；主机测试结果不代表实飞验收。
+        </p>
+      </aside>
+      <section class="case-section reveal">
+        <div>
+          <p class="eyebrow" data-zh="01 / 项目背景" data-en="01 / Context">
+            01 / 项目背景
+          </p>
+        </div>
+        <div>
+          <h2>
+            <span
+              class=""
+              data-zh="统一输入条件下的算法比较"
+              data-en="Comparing algorithms with consistent inputs"
+              >统一输入条件下的算法比较</span
+            >
+          </h2>
+          <p
+            class=""
+            data-zh="估计算法的比较依赖一致的单位、坐标系、时间戳和数据有效性约定。项目通过统一接口、确定性场景及数据回放，在主机环境中检查算法行为，并保留运行方法与覆盖范围。"
+            data-en="Estimator comparison requires consistent units, frames, timestamps and data-validity rules. Shared interfaces, deterministic scenarios and replay support host-side checks, with documented procedures and coverage."
+          >
+            估计算法的比较依赖一致的单位、坐标系、时间戳和数据有效性约定。项目通过统一接口、确定性场景及数据回放，在主机环境中检查算法行为，并保留运行方法与覆盖范围。
+          </p>
+        </div>
+      </section>
+      <section class="case-section">
+        <div>
+          <p
+            class="eyebrow"
+            data-zh="02 / 实现要点"
+            data-en="02 / Implementation"
+          >
+            02 / 实现要点
+          </p>
+        </div>
+        <div class="decision-list">
+          <article class="reveal">
+            <span class="mono">01</span>
+            <div>
+              <h3>
+                <span
+                  class=""
+                  data-zh="统一算法输入"
+                  data-en="Consistent algorithm inputs"
+                  >统一算法输入</span
+                >
+              </h3>
+              <p
+                class=""
+                data-zh="统一定义单位、坐标系、时间戳与有效性，减少输入约定差异对算法比较的影响。"
+                data-en="Define shared units, frames, timestamps and validity rules to reduce input-contract differences in algorithm comparisons."
+              >
+                统一定义单位、坐标系、时间戳与有效性，减少输入约定差异对算法比较的影响。
+              </p>
+            </div>
+          </article>
+          <article class="reveal">
+            <span class="mono">02</span>
+            <div>
+              <h3>
+                <span
+                  class=""
+                  data-zh="固定输入与数据回放"
+                  data-en="Fixed inputs &amp; data replay"
+                  >固定输入与数据回放</span
+                >
+              </h3>
+              <p
+                class=""
+                data-zh="以固定输入进行主机回放，重复检查修改前后的算法行为。验证文档说明运行方式、测试场景与覆盖范围。"
+                data-en="Host replay uses fixed inputs to repeat checks before and after changes. Validation documentation states procedures, scenarios and coverage."
+              >
+                以固定输入进行主机回放，重复检查修改前后的算法行为。验证文档说明运行方式、测试场景与覆盖范围。
+              </p>
+            </div>
+          </article>
+          <article class="reveal">
+            <span class="mono">03</span>
+            <div>
+              <h3>
+                <span
+                  class=""
+                  data-zh="异常场景与回归检查"
+                  data-en="Fault scenarios &amp; regression checks"
+                  >异常场景与回归检查</span
+                >
+              </h3>
+              <p
+                class=""
+                data-zh="以确定性故障场景和回归检查覆盖异常输入，分别记录已验证行为与尚未覆盖的情况。主机侧结果仅用于对应算法和测试场景的分析。"
+                data-en="Deterministic fault scenarios and regression checks examine abnormal inputs, documenting verified behavior and remaining gaps. Host-side conclusions apply to the algorithms and scenarios tested."
+              >
+                以确定性故障场景和回归检查覆盖异常输入，分别记录已验证行为与尚未覆盖的情况。主机侧结果仅用于对应算法和测试场景的分析。
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="case-section reveal">
+        <div>
+          <p class="eyebrow" data-zh="03 / 公开资料" data-en="03 / Resources">
+            03 / 公开资料
+          </p>
+        </div>
+        <div class="evidence-links">
+          <article>
+            <a
+              href="https://github.com/Sailiono/aerakia-flight-algorithms"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span class="" data-zh="算法仓库" data-en="Algorithm repository"
+                >算法仓库</span
+              ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+            ></a>
+            <p
+              class=""
+              data-zh="C99 实现、主机程序和目录说明。"
+              data-en="C99 implementations, host programs and repository layout."
+            >
+              C99 实现、主机程序和目录说明。
+            </p>
+          </article>
+          <article>
+            <a
+              href="https://github.com/Sailiono/aerakia-flight-algorithms/blob/main/docs/validation.md"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span
+                class=""
+                data-zh="验证方法与运行说明"
+                data-en="Validation procedures"
+                >验证方法与运行说明</span
+              ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+            ></a>
+            <p
+              class=""
+              data-zh="回归、回放与数据验证的入口。"
+              data-en="Regression, replay and dataset-validation entry points."
+            >
+              回归、回放与数据验证的入口。
+            </p>
+          </article>
+          <article>
+            <a
+              href="https://github.com/Sailiono/aerakia-flight-algorithms/blob/main/docs/algorithm-status.md"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span
+                class=""
+                data-zh="算法状态与覆盖范围"
+                data-en="Algorithm status &amp; coverage"
+                >算法状态与覆盖范围</span
+              ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+            ></a>
+            <p
+              class=""
+              data-zh="各算法的已完成检查与未覆盖内容。"
+              data-en="Completed checks and remaining coverage gaps for each algorithm."
+            >
+              各算法的已完成检查与未覆盖内容。
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="case-section reveal">
+        <div>
+          <p
+            class="eyebrow"
+            data-zh="04 / 范围与限制"
+            data-en="04 / Scope &amp; limitations"
+          >
+            04 / 范围与限制
+          </p>
+        </div>
+        <div>
+          <h2>
+            <span
+              class=""
+              data-zh="主机验证的适用范围"
+              data-en="Scope of host-side validation"
+              >主机验证的适用范围</span
+            >
+          </h2>
+          <p
+            class=""
+            data-zh="当前公开资料覆盖算法实现与主机测试，不包含完整飞行估计栈的系统级验收。硬件接入、传感器特性和实飞行为仍需独立验证，不能据此推导飞行安全或适航结论。"
+            data-en="The public material covers algorithm implementations and host tests, not system-level acceptance of a complete flight-estimation stack. Hardware integration, sensor characteristics and flight behavior require separate validation; no flight-safety or airworthiness conclusion follows."
+          >
+            当前公开资料覆盖算法实现与主机测试，不包含完整飞行估计栈的系统级验收。硬件接入、传感器特性和实飞行为仍需独立验证，不能据此推导飞行安全或适航结论。
+          </p>
+        </div>
+      </section>
+      <div class="next-case">
+        <p class="eyebrow" data-zh="下一个项目" data-en="Next project">
+          下一个项目
+        </p>
+        <a href="../index.html#lifhalo" class="next-link"
+          ><span
+            class=""
+            data-zh="LifHalo / 设备控制、交互与维护"
+            data-en="LifHalo / Device control, interaction and service"
+            >LifHalo / 设备控制、交互与维护</span
+          ><svg class="arrow" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+        ></a>
+      </div>
+    </main>
+    <footer class="site-footer wrap">
+      <a href="../index.html">Clark Cui / Sailiono</a>
+      <p
+        class=""
+        data-zh="嵌入式项目、开源代码与技术记录。"
+        data-en="Embedded projects, open-source code and technical documentation."
+      >
+        嵌入式项目、开源代码与技术记录。
+      </p>
+      <span class="mono">© 2026</span>
+    </footer>
+  </body>
+</html>
