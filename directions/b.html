@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>B — 电蓝工程档案 / Sailiono</title>
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="stylesheet" href="b.css" />
+    <script src="shared.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#projects">跳到项目</a>
+    <header>
+      <a class="wordmark" href="#top">Sailiono<span>↗</span></a
+      ><span class="header-descriptor"
+        >工程作品 / 开放档案<br />设备 · 算法 · 视觉研究</span
+      >
+      <nav aria-label="主导航">
+        <a href="#projects">项目索引 ↓</a><a href="a.html">方案 A ↗</a
+        ><button hidden data-motion type="button" aria-pressed="false">
+          暂停动效
+        </button>
+      </nav>
+    </header>
+    <main>
+      <section id="top" class="poster" data-scroll>
+        <div class="poster-meta">
+          <span>方向 B / 电蓝工程档案</span
+          ><span>SELECTED ENGINEERING<br />02 PROJECTS + 01 RESEARCH</span>
+        </div>
+        <div class="poster-main">
+          <h1>
+            <span>设备。</span><span class="outline">算法。</span
+            ><span>视觉<span class="blue-dot">*</span></span>
+          </h1>
+          <figure
+            class="kinetic-mark"
+            aria-label="视觉图形：交叠的坐标环，不代表实测结果"
+          >
+            <svg viewBox="0 0 600 600" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="300" cy="300" r="245" />
+                <ellipse
+                  cx="300"
+                  cy="300"
+                  rx="245"
+                  ry="76"
+                  transform="rotate(45 300 300)"
+                />
+                <ellipse
+                  cx="300"
+                  cy="300"
+                  rx="245"
+                  ry="76"
+                  transform="rotate(-45 300 300)"
+                />
+                <ellipse cx="300" cy="300" rx="245" ry="76" />
+                <circle cx="300" cy="300" r="160" stroke-dasharray="2 8" />
+                <path d="M0 300h600M300 0v600" />
+              </g>
+              <circle cx="473" cy="127" r="14" fill="currentColor" />
+              <circle cx="127" cy="473" r="14" fill="currentColor" />
+              <circle cx="300" cy="300" r="25" fill="currentColor" />
+            </svg>
+            <figcaption>
+              从设备实现，到算法验证。<br />三个项目，三种工作尺度。
+            </figcaption>
+          </figure>
+        </div>
+        <div class="poster-bottom">
+          <span class="cross" aria-hidden="true">✳</span>
+          <p>
+            我开发嵌入式设备与算法，<br />也研究图像与运动之间的联系。<br /><span
+              >下面是实现、验证与仍在推进的部分。</span
+            >
+          </p>
+          <a href="#projects">向下阅读<span aria-hidden="true">↘</span></a>
+        </div>
+      </section>
+      <nav id="projects" class="index" aria-label="项目索引">
+        <a data-project-link href="#dpiny"
+          ><span>01 / 设备</span><strong>dpiny</strong
+          ><b aria-hidden="true">↘</b></a
+        ><a data-project-link href="#aerakia"
+          ><span>02 / 算法</span><strong>Aerakia</strong
+          ><b aria-hidden="true">↘</b></a
+        ><a data-project-link href="#splicia"
+          ><span>03 / 在研</span><strong>Splicia</strong
+          ><b aria-hidden="true">↘</b></a
+        >
+      </nav>
+      <section id="dpiny" class="device project" data-index>
+        <div class="project-top">
+          <span>01 — DEVICE</span><span>已公开 / 硬件与固件</span>
+        </div>
+        <div class="device-title">
+          <h2>dpiny<span>↗</span></h2>
+          <p>可维护的<br />RTK 基准站。</p>
+        </div>
+        <div class="device-body">
+          <div class="vertical-label" aria-hidden="true">
+            POSITIONING / POWER / MAINTENANCE
+          </div>
+          <div class="device-intro">
+            <h3>不只接通定位模块。<br />也处理设备运行之后的事。</h3>
+            <p>
+              面向固定部署，将 GNSS
+              定位、隔离供电、差分数据输出与维护入口整合在一套系统中。实现重点包括数据转发、持久化配置、看门狗，以及复位后的
+              USB CDC 恢复。
+            </p>
+            <a href="https://github.com/Sailiono/dpiny-rtk-base-station"
+              >公开固件与工具 ↗</a
+            >
+          </div>
+          <figure class="blueprint">
+            <svg
+              viewBox="0 0 620 420"
+              role="img"
+              aria-labelledby="device-title device-desc"
+            >
+              <title id="device-title">dpiny 系统组成</title>
+              <desc id="device-desc">
+                双路24伏输入经隔离供电，STM32F407连接UM982定位模块，提供USB维护和差分数据输出。原理示意，不是电路图。
+              </desc>
+              <defs>
+                <pattern
+                  id="dots"
+                  width="16"
+                  height="16"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="1" cy="1" r=".7" fill="#1744ed" opacity=".25" />
+                </pattern>
+              </defs>
+              <rect width="620" height="420" fill="url(#dots)" />
+              <g fill="#f5f4ef" stroke="#1744ed" stroke-width="2">
+                <path d="m76 96 170-40 70 49-171 42z" />
+                <path d="m76 96 69 51v64l-69-51z" />
+                <path d="m145 147 171-42v65l-171 41z" />
+                <path d="m250 209 170-40 70 49-171 42z" />
+                <path d="m250 209 69 51v64l-69-51z" />
+                <path d="m319 260 171-42v65l-171 41z" />
+                <path
+                  d="M210 185v58h40M420 170v-60h105M490 251h55v83"
+                  fill="none"
+                />
+                <circle cx="210" cy="185" r="5" fill="#1744ed" />
+                <circle cx="420" cy="170" r="5" fill="#1744ed" />
+              </g>
+              <g
+                fill="#1744ed"
+                font-family="Consolas,Noto Sans CJK SC,monospace"
+              >
+                <text
+                  x="132"
+                  y="108"
+                  font-size="20"
+                  transform="rotate(-13 132 108)"
+                >
+                  24 V / ISOLATED
+                </text>
+                <text
+                  x="300"
+                  y="220"
+                  font-size="23"
+                  transform="rotate(-13 300 220)"
+                >
+                  STM32F407
+                </text>
+                <text x="33" y="270" font-size="19">UM982 / GNSS</text>
+                <text x="465" y="86" font-size="16">USB / SHELL</text>
+                <text x="440" y="365" font-size="16">RTCM / RS-422</text>
+              </g>
+            </svg>
+            <figcaption>系统原理示意 / 非电路设计</figcaption>
+          </figure>
+        </div>
+        <div class="data-heading">
+          <span>公开历史台架记录</span>
+          <p>不是本次硬件复测，不代表定位精度或长期稳定性认证。</p>
+        </div>
+        <div class="data-poster">
+          <div><strong>28</strong><span>RTCM 帧 / CRC OK</span></div>
+          <div><strong>0</strong><span>CRC BAD</span></div>
+          <div><strong>↺</strong><span>USB CDC 复位后恢复</span></div>
+        </div>
+        <details>
+          <summary><b>＋</b> 固件结构与验证材料</summary>
+          <div class="details-body">
+            <p>
+              Core 组织 GNSS、Shell、配置与看门狗；USB_DEVICE 提供 CDC
+              集成；tools 包含构建、烧录、RTCM
+              和寄存器检查工具。公开台架记录包含 6 秒 RTCM 采集、2520 bytes
+              数据与帧校验。
+            </p>
+            <a href="../cases/dpiny.html">阅读完整案例 ↗</a>
+          </div>
+        </details>
+      </section>
+      <div class="blue-tape" aria-hidden="true">
+        <div>
+          CODE / BUILD / MEASURE / REPLAY / CODE / BUILD / MEASURE / REPLAY /
+        </div>
+      </div>
+      <section id="aerakia" class="algorithm project" data-scroll data-index>
+        <div class="project-top">
+          <span>02 — ALGORITHM</span><span>公开 C 算法 / 主机侧验证</span>
+        </div>
+        <div class="algorithm-title">
+          <h2>Aerakia</h2>
+          <span class="asterisk" aria-hidden="true">✳</span>
+        </div>
+        <div class="algorithm-intro">
+          <h3>读数受干扰，<br />朝向估计会怎样？</h3>
+          <p>
+            姿态估计将传感器数据转换为设备朝向。Aerakia
+            实现并比较不同算法配置，用可重复的合成输入，观察磁场干扰、航向突变和数据中断下的响应。
+          </p>
+        </div>
+        <div class="comparison">
+          <div>
+            <span>标准配置 / 整体姿态 RMSE</span
+            ><strong>27.1650<small>°</small></strong>
+          </div>
+          <b aria-hidden="true">↓</b>
+          <div>
+            <span>抗干扰配置 / 整体姿态 RMSE</span
+            ><strong>0.2854<small>°</small></strong>
+          </div>
+        </div>
+        <div class="replay-caption">
+          <h4>一个场景。<br />2000 个实际输出点。</h4>
+          <p>
+            20 秒 / 100 Hz / 种子 7。6.66 秒起加入磁场偏置。以下曲线来自公开 C
+            runner，不是手绘趋势。
+          </p>
+        </div>
+        <figure class="plot">
+          <picture
+            ><source
+              media="(max-width:600px)"
+              srcset="assets/replay-b-compact.svg"
+              width="360"
+              height="320" />
+            <img
+              src="assets/replay-b.svg"
+              width="1000"
+              height="440"
+              loading="lazy"
+              alt="公开 C 算法的实际合成回放：标准配置误差上升，抗干扰配置接近参考值"
+          /></picture>
+          <figcaption>
+            <span class="standard">— 标准配置</span><span>┄ 抗干扰配置</span
+            ><span>合成输入回放，不是实飞。</span>
+          </figcaption>
+        </figure>
+        <p class="boundary">
+          公开范围是算法层与主机验证，不是完整飞控。该场景结果不构成飞行精度、安全或产品可靠性结论。
+        </p>
+        <div class="links">
+          <a href="../assets/evidence/aerakia-mag-bias-series.csv" download
+            >CSV / 原始曲线 ↓</a
+          ><a href="../assets/evidence/aerakia-suite-summary.json"
+            >六场景指标 ↗</a
+          ><a href="https://github.com/Sailiono/aerakia-flight-algorithms"
+            >公开算法仓库 ↗</a
+          >
+        </div>
+        <details>
+          <summary><b>＋</b> 输入条件与验证范围</summary>
+          <div class="details-body">
+            <p>
+              磁偏置为 X 方向 +50 μT、Y 方向 +25
+              μT。验证另含正常运动、磁尖峰、航向突变、倾斜冷启动与导航中断。源参数与构建信息随公开数据提供。
+            </p>
+            <a href="../assets/evidence/aerakia-provenance.json"
+              >来源与参数 ↗</a
+            ><a href="../cases/aerakia.html">完整算法案例 ↗</a>
+          </div>
+        </details>
+      </section>
+      <section id="splicia" class="research project" data-index>
+        <div class="project-top">
+          <span>03 — RESEARCH</span><span>设计进行中 / 非完整系统</span>
+        </div>
+        <div class="research-title">
+          <span class="research-number" aria-hidden="true">03</span>
+          <h2>
+            Splicia<span>显微视觉与<br />精密对准平台。</span>
+          </h2>
+          <span class="research-stamp">IN<br />PROGRESS</span>
+        </div>
+        <p class="research-lead">
+          从相机图像到运动控制，中间还有标定、估计与闭环。Splicia
+          目前先完成平台调试与成像链路排查，架构仍在设计。
+        </p>
+        <div class="research-list">
+          <div>
+            <span>已完成</span>
+            <p>Linux 平台调试、IMX296 相机发现、media 拓扑与 RAW 输出排查。</p>
+          </div>
+          <div>
+            <span>设计中</span>
+            <p>采集、视觉、估计、运动、控制、UI、日志与回放边界。</p>
+          </div>
+          <div>
+            <span>未实现</span>
+            <p>光纤几何提取、标定双视图融合、闭环对准与量化性能验证。</p>
+          </div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/Sailiono/splicia-vision-platform"
+            >在研仓库 ↗</a
+          ><a href="../cases/splicia.html">项目背景 ↗</a>
+        </div>
+      </section>
+      <footer>
+        <div class="footer-top">
+          <p>OPEN<br />SOURCE<span>↗</span></p>
+          <a href="https://github.com/Sailiono">查看全部公开项目 ↗</a>
+        </div>
+        <div class="footer-bottom">
+          <span>SAILIONO / ENGINEERING ARCHIVE</span
+          ><a href="a.html">对比方案 A ↗</a><a href="#top">回到顶部 ↑</a>
+        </div>
+        <small
+          >方向 B ·
+          视觉方案预览。未合并、未上线；所有示意与项目成果分开标注。</small
+        >
+      </footer>
+    </main>
+  </body>
+</html>
