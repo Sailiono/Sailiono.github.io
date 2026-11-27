@@ -219,6 +219,8 @@ replayButton?.addEventListener("click", () => {
   updateControls();
   schedule();
 });
+for (const detail of document.querySelectorAll("details"))
+  detail.addEventListener("toggle", schedule);
 reducedMotion.addEventListener("change", () => {
   paused = reducedMotion.matches || manualPause;
   updateControls();

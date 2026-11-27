@@ -527,13 +527,19 @@ summary b {
     24px/1 Arial,
     sans-serif;
 }
-details[open] summary b {
+details[open] > summary b {
   transform: rotate(45deg);
 }
 .details-body {
   padding: 5px 40px 30px;
   line-height: 2.1;
   max-width: 900px;
+}
+.evidence-foldout {
+  margin-top: 28px;
+}
+.evidence-body {
+  padding-bottom: 24px;
 }
 .details-body a {
   display: inline-block;
