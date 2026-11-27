@@ -63,6 +63,7 @@ let manualPause = ["off", "pause"].includes(stored("portfolio-motion"));
 let paused = reducedMotion.matches || manualPause;
 let fullReplay = false;
 let printing = false;
+let printFoldouts = [];
 let frame = 0;
 let heroProgress = 0;
 let compareProgress = 1;
@@ -229,10 +230,17 @@ reducedMotion.addEventListener("change", () => {
 addEventListener("scroll", schedule, { passive: true });
 addEventListener("resize", schedule, { passive: true });
 addEventListener("beforeprint", () => {
+  if (printing) return;
   printing = true;
+  printFoldouts = [
+    ...document.querySelectorAll(".evidence-foldout:not([open])"),
+  ];
+  for (const detail of printFoldouts) detail.open = true;
   paint();
 });
 addEventListener("afterprint", () => {
+  for (const detail of printFoldouts) detail.open = false;
+  printFoldouts = [];
   printing = false;
   schedule();
 });
