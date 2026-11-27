@@ -323,6 +323,9 @@ html[data-motion-ready="true"] .blue-tape > div {
   background: var(--blue);
   color: var(--paper);
   --line: #7190f7;
+  /* Keep the rotating decoration inside its full-bleed panel. */
+  overflow-x: clip;
+  overflow-y: visible;
   padding-top: 75px;
   padding-bottom: 100px;
 }
