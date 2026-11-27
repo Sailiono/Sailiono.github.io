@@ -1047,6 +1047,20 @@ footer a:hover {
   max-width: 850px;
   color: #4f5957;
 }
+.archive-notice {
+  display: none;
+  border-top: 1px solid currentColor;
+  margin-top: 30px;
+  padding-top: 24px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.archive-notice:target {
+  display: block;
+}
+.archive-notice p {
+  margin-bottom: 10px;
+}
 html[lang="en"] .poster h1 {
   font:
     800 clamp(55px, 8.8vw, 142px) / 1.16 Arial,
