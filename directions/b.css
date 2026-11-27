@@ -295,6 +295,10 @@ header nav a {
   border-bottom: 1px solid var(--line);
   padding-bottom: 18px;
 }
+.tape-viewport {
+  overflow-x: clip;
+  overflow-y: visible;
+}
 .blue-tape {
   overflow: clip;
   background: var(--blue);
