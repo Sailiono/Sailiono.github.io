@@ -1,0 +1,35 @@
+{
+  "publication_scope": "Owner-authorized functional, architecture and validation summaries only. No private code, product artwork, display binaries, private protocol definitions or raw device records.",
+  "checked_on": "2026-11-27",
+  "environment": "Linux host; no connected target hardware or official Windows HMI simulator",
+  "aerakia": {
+    "full_stack": "Private research engineering project; summarized functions include STM32H743 sensor integration, FreeRTOS, state estimation, HIL/SIL, replay and comparison tooling.",
+    "historical_issue": "Host timestamps restarted while MCU state persisted. Timestamp rollback produced an abnormally large integration step; target-side rollback detection and abnormal time-step protection were added. This is a historical fix summary, not a hardware retest.",
+    "public_algorithm_repository": "https://github.com/Sailiono/aerakia-flight-algorithms",
+    "public_algorithm_evidence": "aerakia-provenance.json",
+    "limitations": "No new full-firmware build, target-board HIL, Ethernet bring-up or flight test performed for this preview. No certified flight-safety or reliability claim. Public algorithm replay is a distinct validation scope."
+  },
+  "lifhalo": {
+    "firmware_host_core": {
+      "result": "passed",
+      "ctest_suites": 1,
+      "failed": 0,
+      "scope": "Native C core regression, not board firmware execution"
+    },
+    "service_tool": {
+      "result": "passed",
+      "tests_passed": 16,
+      "failed": 0,
+      "scope": "Host-side application tests; default assembly profile uses a simulator and rejects serial before opening a port"
+    },
+    "hmi_offline": {
+      "result": "passed_with_skip",
+      "tests_passed": 44,
+      "tests_skipped": 1,
+      "failed": 0,
+      "skip_reason": "Official-loop test requires Windows and vendor tools; not run here"
+    },
+    "current_target": "STM32F103RBT6 / assembly-v1",
+    "limitations": "Current RBT6 application has not been flashed or board-tested. Heating remains disabled. Load, timing, temperature-rise, official HMI editor/simulator and physical-screen acceptance are not established by these software results."
+  }
+}

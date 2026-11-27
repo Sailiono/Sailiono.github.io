@@ -1,0 +1,46 @@
+/* Shared direction-B palette for the existing bilingual deep-dive pages. */
+:root {
+  --paper: #f5f4ef;
+  --ink: #171a1c;
+  --green: #1744ed;
+  --copper: #1744ed;
+  --muted: #51595a;
+  --line: #c7c8c0;
+  --wash: #e9edfb;
+  --serif: "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.case-header h1 {
+  font-size: clamp(32px, 5.1vw, 70px);
+  line-height: 1.35;
+  letter-spacing: -0.065em;
+}
+.case-header {
+  padding-block: 55px 45px;
+}
+.scope-banner {
+  border-left-width: 4px;
+}
+.case-section h2 {
+  font-size: 29px;
+  letter-spacing: -0.045em;
+}
+.case-page .site-header,
+.error-page .site-header {
+  background: var(--paper);
+}
+.brand-mark {
+  font-family: Arial, sans-serif;
+  border-radius: 0;
+}
+::selection {
+  background: #1744ed;
+  color: white;
+}
+@media (max-width: 600px) {
+  .case-header h1 {
+    font-size: 34px;
+  }
+  .case-section h2 {
+    font-size: 25px;
+  }
+}
